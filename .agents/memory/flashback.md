@@ -82,6 +82,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-04] — Step 9.1b: Chat Input, Message List & Header Components Shipped
+- **Details**: Implemented `ChatInput` (`src/components/chat/chat-input.tsx`), `ChatMessageList` (`src/components/chat/chat-message-list.tsx`), and `ChatHeader` (`src/components/chat/chat-header.tsx`), updated chat barrel export (`src/components/chat/index.ts`). Features auto-resizing accessible textarea with Enter-to-send and Shift+Enter multi-line support, auto-scrolling message list with empty-state reflection card and starter question suggestions, loading indicator state during prompt execution, and sticky header with persona switcher tabs (Current Path amber vs Improved Path emerald), dashboard back navigation, and clear chat triggers. 100% test coverage with 73 passing test suites (410 tests).
+- **Commit**: `feat(chat): implement chat input, message list, and header components with tests`
+- **Key Files**: `src/components/chat/chat-input.tsx`, `src/components/chat/chat-message-list.tsx`, `src/components/chat/chat-header.tsx`, `src/components/chat/index.ts`, `src/components/chat/__tests__/chat-input.test.tsx`, `src/components/chat/__tests__/chat-message-list.test.tsx`, `src/components/chat/__tests__/chat-header.test.tsx`, `docs/specs/step-9-1b-chat-input-list.md`
+
 ### [2026-10-04] — Step 9.1a: Chat Message Bubble & Suggested Questions Shipped
 - **Details**: Implemented `ChatMessageBubble` (`src/components/chat/chat-message-bubble.tsx`) and `SuggestedQuestions` (`src/components/chat/suggested-questions.tsx`) with chat barrel export (`src/components/chat/index.ts`). Features distinct persona styling (Current Path amber tint vs Improved Path emerald tint, speaker indicators, timestamps), streaming token cursor pulse animation, audio playback TTS trigger, and psychologically grounded conversation starter prompts tailored to each future self trajectory. 100% test coverage with 70 passing test suites (392 tests).
 - **Commit**: `feat(chat): implement chat message bubble and suggested questions components with tests`
