@@ -5,3 +5,4 @@
 
 export * from './client';
 export * from './generate-life-model';
+export * from './generate-personas';

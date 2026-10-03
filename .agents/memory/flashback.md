@@ -65,7 +65,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
-| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a Shipped) |
+| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a-b Shipped) |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 5.2b: Persona Generation & Enrichment Orchestrator Shipped
+- **Details**: Implemented `buildPersonaSystemPrompt`, `buildPersonaUserPrompt`, and `parsePersonaResponse` in `src/lib/prompts/persona-generator.ts`, and orchestrated individual and dual persona synthesis via `generatePersona` and `generatePersonas` in `src/lib/ai/generate-personas.ts`. Integrates mandatory reflection disclaimer, psychological tone differentiation between Current and Improved trajectories, resilient code fence stripping with deep fallback defaults, token metrics accumulation, and exponential backoff retry logic. 100% test coverage with 50 passing test suites (278 tests).
+- **Commit**: `feat(ai): implement persona generation and enrichment orchestrator`
+- **Key Files**: `src/lib/prompts/persona-generator.ts`, `src/lib/prompts/index.ts`, `src/lib/ai/generate-personas.ts`, `src/lib/ai/index.ts`, `src/lib/prompts/__tests__/persona-generator.test.ts`, `src/lib/ai/__tests__/generate-personas.test.ts`, `docs/specs/step-5-2b-generate-personas.md`
 
 ### [2026-10-04] — Step 5.2a: Life Model Generation Orchestrator Shipped
 - **Details**: Implemented `generateLifeModel` in `src/lib/ai/generate-life-model.ts` and exported it via `src/lib/ai/index.ts`. Consumes `OnboardingData`, connects to the configured OpenAI-compatible AI client using settings from `useSettingsStore`, applies system and user prompts with the mandatory reflection disclaimer, handles resilient parsing with fallbacks, supports `AbortSignal` cancellation, reports token usage metrics, and implements exponential backoff retries on transient errors while immediately halting on non-retryable 401/abort errors. 100% test coverage with 48 passing test suites (264 tests).
