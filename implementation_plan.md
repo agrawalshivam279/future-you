@@ -181,7 +181,7 @@ With UI and user data ready, we need the core engine that generates the app's un
 - [x] Audit prompt templates with `/eval_persona` (validate JSON schema conformance, tone differentiation, and honesty disclaimer)
 
 ### 5.2 - Generation Orchestration
-- [ ] Implement `lib/ai/generate-life-model.ts` (calls LLM, parses response, validates, retries)
+- [x] Implement `lib/ai/generate-life-model.ts` (calls LLM, parses response, validates, retries)
 - [ ] Implement `lib/ai/generate-personas.ts`
 - [ ] Implement `lib/ai/generate-timeline.ts`
 - [ ] Implement `lib/ai/generate-letter.ts` and `lib/ai/generate-regret-gratitude.ts`

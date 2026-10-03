@@ -15,9 +15,9 @@ Future You is a client-side web application using AI to generate two simulated f
 | **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
 | **Type System** | TypeScript strict | 🟢 Phase 2 Complete (100% Shipped) |
 | **State Management** | Zustand + localStorage + IndexedDB | 🟢 Phase 2 Complete (All 5 Stores Shipped) |
-| **AI Integration** | OpenAI SDK (configurable) | 🟡 In Progress (Client & Ping Ready) |
+| **AI Integration** | OpenAI SDK (configurable) | 🟡 In Progress (Life Model Generator Shipped) |
 | **Settings & Data Management** | React + Zustand + IndexedDB | 🟢 Phase 3 Complete (100% Shipped) |
-| **Onboarding** | 6-step wizard | 🔴 Not Started |
+| **Onboarding** | 6-step wizard | 🟢 Phase 4 Complete (100% Shipped) |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🔴 Not Started |
 | **Chat** | Streaming persona chat | 🔴 Not Started |
 | **Letter + TTS** | Web Speech API | 🔴 Not Started |
@@ -65,7 +65,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
-| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, Entering 5.2) |
+| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a Shipped) |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 5.2a: Life Model Generation Orchestrator Shipped
+- **Details**: Implemented `generateLifeModel` in `src/lib/ai/generate-life-model.ts` and exported it via `src/lib/ai/index.ts`. Consumes `OnboardingData`, connects to the configured OpenAI-compatible AI client using settings from `useSettingsStore`, applies system and user prompts with the mandatory reflection disclaimer, handles resilient parsing with fallbacks, supports `AbortSignal` cancellation, reports token usage metrics, and implements exponential backoff retries on transient errors while immediately halting on non-retryable 401/abort errors. 100% test coverage with 48 passing test suites (264 tests).
+- **Commit**: `feat(ai): implement life model generation orchestrator with retry and validation`
+- **Key Files**: `src/lib/ai/generate-life-model.ts`, `src/lib/ai/index.ts`, `src/lib/ai/__tests__/generate-life-model.test.ts`, `docs/specs/step-5-2a-generate-life-model.md`
 
 ### [2026-10-04] — Step 5.1e: Persona Fidelity Audit & Prompt Suite Verification Shipped
 - **Details**: Executed comprehensive `/eval_persona` audit across all prompt templates in `src/lib/prompts/` (`life-model-generator.ts`, `system-current-path.ts`, `system-improved-path.ts`, `timeline-generator.ts`, `letter-generator.ts`, and `regret-gratitude-generator.ts`). All 5 evaluation vectors passed with 100% compliance: mandatory honesty reflection disclaimer verified across all templates, tone differentiation between Current and Improved paths maintained without fatalism or toxic positivity, strict schema conformance to TypeScript interfaces (`LifeModel`, `Persona`, `TimelineMilestone`), Year 1/3/5 horizons preserved, and LOC budget respected ($\le 300$ LOC/file). Formally concludes Section 5.1 of Phase 5.
