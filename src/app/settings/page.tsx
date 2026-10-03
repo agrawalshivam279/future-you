@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { ApiConfigForm } from '@/components/settings/api-config-form';
+import { ApiConfigForm, DataManagementCard } from '@/components/settings';
 
 /**
  * Settings & Preferences page view for Future You.
@@ -33,6 +33,7 @@ export default function SettingsPage() {
       {/* Main Settings Sections */}
       <div className="space-y-6">
         <ApiConfigForm />
+        <DataManagementCard />
       </div>
     </div>
   );
