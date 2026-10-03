@@ -81,6 +81,23 @@ describe('OnboardingWizard Component', () => {
     expect(screen.getByText('Target Capabilities & Learning Goals')).toBeInTheDocument();
   });
 
+  it('advances to step 6 and renders Fears, Values & Drivers form', () => {
+    useOnboardingStore.getState().setCurrentStep(5);
+    render(<OnboardingWizard />);
+
+    const continueBtn = screen.getByRole('button', { name: /continue to next step/i });
+    fireEvent.click(continueBtn);
+
+    expect(useOnboardingStore.getState().currentStep).toBe(6);
+    expect(screen.getByRole('progressbar', { name: /step 6 of 6/i })).toHaveAttribute(
+      'aria-valuenow',
+      '6'
+    );
+    expect(screen.getAllByText('Fears, Values & Drivers').length).toBeGreaterThan(0);
+    expect(screen.getByText('Primary Anxieties & Potential Regrets')).toBeInTheDocument();
+    expect(screen.getByText('Non-Negotiable Core Values')).toBeInTheDocument();
+  });
+
   it('navigates back to step 1 from step 2 when back button is clicked', () => {
     useOnboardingStore.getState().setCurrentStep(2);
     render(<OnboardingWizard />);

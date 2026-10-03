@@ -5,7 +5,14 @@ import { useOnboardingStore } from '@/stores';
 import { WizardProgress } from './wizard-progress';
 import { StepWrapper } from './step-wrapper';
 import { WizardNav } from './wizard-nav';
-import { GoalsStep, HabitsStep, TimeStep, MoneyStep, SkillsStep } from './steps';
+import {
+  GoalsStep,
+  HabitsStep,
+  TimeStep,
+  MoneyStep,
+  SkillsStep,
+  FearsValuesStep,
+} from './steps';
 import { ONBOARDING_STEPS, TOTAL_STEPS } from './constants';
 import { cn } from '@/lib/utils';
 
@@ -76,18 +83,7 @@ export function OnboardingWizard({
           {currentStep === 3 && <TimeStep />}
           {currentStep === 4 && <MoneyStep />}
           {currentStep === 5 && <SkillsStep />}
-          {currentStep > 5 && (
-            <div
-              data-testid={`onboarding-step-content-${currentStep}`}
-              className="rounded-xl border border-dashed border-border-primary/80 bg-bg-tertiary/40 p-8 text-center space-y-2 my-2"
-            >
-              <currentMeta.icon className="w-8 h-8 mx-auto text-accent-improved/70" aria-hidden="true" />
-              <h3 className="text-base font-semibold text-text-primary">{currentMeta.title}</h3>
-              <p className="text-xs text-text-muted max-w-md mx-auto">
-                {currentMeta.description}
-              </p>
-            </div>
-          )}
+          {currentStep === 6 && <FearsValuesStep />}
         </div>
 
         {/* Step Navigation Controls */}

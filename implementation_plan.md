@@ -151,7 +151,7 @@ Onboarding data is the raw input required for generating the life model and pers
 - [x] Implement Step 3: Time (work, study, social, creative, wasted hours)
 - [x] Implement Step 4: Money (income range, savings rate, debt, spending, goals)
 - [x] Implement Step 5: Skills (current, learning goals, career field, satisfaction, growth mindset)
-- [ ] Implement Step 6: Fears & Values (fears, values, regrets, motivation, risk tolerance)
+- [x] Implement Step 6: Fears & Values (fears, values, regrets, motivation, risk tolerance)
 
 ### 4.2 - Logic & Integration
 - [ ] Add form validation per step
