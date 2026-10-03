@@ -64,6 +64,23 @@ describe('OnboardingWizard Component', () => {
     expect(screen.getByText('Monthly Savings & Investment Rate')).toBeInTheDocument();
   });
 
+  it('advances to step 5 and renders Skills & Learning form', () => {
+    useOnboardingStore.getState().setCurrentStep(4);
+    render(<OnboardingWizard />);
+
+    const continueBtn = screen.getByRole('button', { name: /continue to next step/i });
+    fireEvent.click(continueBtn);
+
+    expect(useOnboardingStore.getState().currentStep).toBe(5);
+    expect(screen.getByRole('progressbar', { name: /step 5 of 6/i })).toHaveAttribute(
+      'aria-valuenow',
+      '5'
+    );
+    expect(screen.getAllByText('Skills & Learning').length).toBeGreaterThan(0);
+    expect(screen.getByText('Key Current Strengths & Capabilities')).toBeInTheDocument();
+    expect(screen.getByText('Target Capabilities & Learning Goals')).toBeInTheDocument();
+  });
+
   it('navigates back to step 1 from step 2 when back button is clicked', () => {
     useOnboardingStore.getState().setCurrentStep(2);
     render(<OnboardingWizard />);
