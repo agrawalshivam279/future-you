@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 0 / Project Scaffold (Complete)
+> **Status**: 📋 Phase 0 / Project Scaffold (In Planning)
 > **Last Synchronized**: 2026-10-03
 
 ---
@@ -52,7 +52,7 @@ Future You is a client-side web application using AI to generate two simulated f
 
 | Phase | Description | Status |
 | :--- | :--- | :--- |
-| **Phase 0** | Project Scaffold & Tooling | 🟢 Completed |
+| **Phase 0** | Project Scaffold & Tooling | 🟡 In Progress |
 | **Phase 1** | Design System & UI Primitives | 🔴 Not Started |
 | **Phase 2** | Type Definitions & State Management | 🔴 Not Started |
 | **Phase 3** | Settings & Configuration | 🔴 Not Started |

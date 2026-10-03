@@ -39,12 +39,12 @@ This document serves as the step-by-step implementation guide for the Future You
 We must establish the foundation of the Next.js App Router, global styles, and essential dependencies before building any UI components or logic.
 
 ### 0.1 - Initialization
-- [x] Create Next.js 14 project with App Router and strict TypeScript configuration
-- [x] Set up Tailwind CSS with custom color tokens and install Framer Motion
-- [x] Install Zustand with persist middleware and OpenAI SDK
-- [x] Bundle Inter font locally
-- [x] Create directory structure according to `architecture.md`
-- [x] Create base layout (header, footer with disclaimer) and Globals.css with custom properties
+- [ ] Create Next.js 14 project with App Router and strict TypeScript configuration
+- [ ] Set up Tailwind CSS with custom color tokens and install Framer Motion
+- [ ] Install Zustand with persist middleware and OpenAI SDK
+- [ ] Bundle Inter font locally
+- [ ] Create directory structure according to `architecture.md`
+- [ ] Create base layout (header, footer with disclaimer) and Globals.css with custom properties
 
 ### Phase 0 Exit Criteria
 - Project runs locally without errors.
