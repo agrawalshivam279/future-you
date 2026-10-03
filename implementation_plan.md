@@ -144,8 +144,8 @@ The application cannot function without an AI provider configured. We need this 
 Onboarding data is the raw input required for generating the life model and personas.
 
 ### 4.1 - Wizard Structure
-- [ ] Build Onboarding page with step navigation and progress bar
-- [ ] Implement Step wrapper with animated transitions between steps
+- [x] Build Onboarding page with step navigation and progress bar
+- [x] Implement Step wrapper with animated transitions between steps
 - [ ] Implement Step 1: Goals (short-term, long-term, dream life)
 - [ ] Implement Step 2: Habits (sleep, exercise, diet, screen time, meditation)
 - [ ] Implement Step 3: Time (work, study, social, creative, wasted hours)
