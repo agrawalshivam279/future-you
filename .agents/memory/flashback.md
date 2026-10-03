@@ -15,7 +15,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
 | **Type System** | TypeScript strict | 🟢 Phase 2 Complete (100% Shipped) |
 | **State Management** | Zustand + localStorage + IndexedDB | 🟢 Phase 2 Complete (All 5 Stores Shipped) |
-| **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
+| **AI Integration** | OpenAI SDK (configurable) | 🟡 In Progress (Client & Ping Ready) |
 | **Onboarding** | 6-step wizard | 🔴 Not Started |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🔴 Not Started |
 | **Chat** | Streaming persona chat | 🔴 Not Started |
@@ -62,7 +62,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 0** | Project Scaffold & Tooling | 🟢 Completed |
 | **Phase 1** | Design System & UI Primitives | 🟢 Completed |
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
-| **Phase 3** | Settings & Configuration | 🔴 Not Started |
+| **Phase 3** | Settings & Configuration | 🟡 In Progress (Step 3.1a Shipped) |
 | **Phase 4** | Onboarding Wizard | 🔴 Not Started |
 | **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
@@ -78,6 +78,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 3.1a: Settings API Configuration Form & Connection Tester Shipped
+- **Details**: Implemented `createAIClient` and `testAIConnection` in `src/lib/ai/client.ts`, the full API configuration form in `src/components/settings/api-config-form.tsx` (provider presets for FreeLLMAPI, OpenAI, Gemini, OpenRouter, Custom; masked API key with show/hide toggle; baseURL & model name inputs; live connection tester with toast feedback; privacy warning banner), and the `/settings` page view in `src/app/settings/page.tsx`. Configured Node/jsdom Web Fetch API polyfills in `jest.setup.ts`. 100% test coverage with 27 passing test suites (130 tests).
+- **Commit**: `feat(settings): implement api configuration form and connection tester`
+- **Key Files**: `src/lib/ai/client.ts`, `src/components/settings/api-config-form.tsx`, `src/app/settings/page.tsx`, `src/components/layout/app-shell.tsx`, `jest.setup.ts`, `src/lib/ai/__tests__/client.test.ts`, `src/components/settings/__tests__/api-config-form.test.tsx`, `src/app/settings/__tests__/page.test.tsx`, `docs/specs/step-3-1a-api-config-form.md`
 
 ### [2026-10-03] — Step 2.2d: Chat Store & IndexedDB Storage Shipped
 - **Details**: Implemented pure client-side `createIndexedDBStorage` in `src/lib/storage/indexed-db.ts` and `useChatStore` in `src/stores/chat-store.ts` managing multi-persona conversation logs (Current Path vs. Improved Path), message generation, token-by-token streaming accumulation, and selective IndexedDB persistence (`future-you-db`). 100% Phase 2 state architecture completed with unit tests.
