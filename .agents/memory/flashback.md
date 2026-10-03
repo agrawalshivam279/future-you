@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 7 / Dashboard & Split View
+> **Status**: 📋 Phase 8 / Timeline
 > **Last Synchronized**: 2026-10-04
 
 ---
@@ -19,7 +19,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Settings & Data Management** | React + Zustand + IndexedDB | 🟢 Phase 3 Complete (100% Shipped) |
 | **Onboarding** | 6-step wizard | 🟢 Phase 4 Complete (100% Shipped) |
 | **Generation Flow** | Pipeline Orchestrator + Stepper | 🟢 Phase 6 Complete (100% Shipped) |
-| **Dashboard** | Split view + Timeline + Habit Levers | 🟡 In Progress (Step 7.1a Shipped) |
+| **Dashboard** | Split view + Timeline + Habit Levers | 🟢 Phase 7 Complete (100% Shipped) |
 | **Chat** | Streaming persona chat | 🔴 Not Started |
 | **Letter + TTS** | Web Speech API | 🔴 Not Started |
 
@@ -68,7 +68,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
 | **Phase 5** | AI Integration Core | 🟢 Completed |
 | **Phase 6** | Generation Flow | 🟢 Completed |
-| **Phase 7** | Dashboard & Split View | 🟡 In Progress |
+| **Phase 7** | Dashboard & Split View | 🟢 Completed |
 | **Phase 8** | Timeline | 🔴 Not Started |
 | **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
 | **Phase 10** | Habit Levers | 🔴 Not Started |
@@ -80,6 +80,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 7.1b: Split View Container & Dashboard Page Shipped (Phase 7 Complete)
+- **Details**: Implemented `SplitViewContainer` (`src/components/dashboard/split-view-container.tsx`), updated dashboard index barrel (`src/components/dashboard/index.ts`), and created the primary `DashboardPage` route (`src/app/dashboard/page.tsx`). Features 2-column desktop / stacked mobile responsive layout displaying Current and Improved path `PersonaCard`s alongside `ComparisonStatsGrid`. Includes empty-state redirect cards prompting onboarding, top header action controls for settings and modal-confirmed futures regeneration, route transitions to persona chat, letters, and reflections, and permanent honesty disclaimer footer. Formally concludes Phase 7 Dashboard & Split View. 100% test coverage with 65 passing test suites (366 tests).
+- **Commit**: `feat(dashboard): implement split view container and dashboard page with regenerate flow`
+- **Key Files**: `src/components/dashboard/split-view-container.tsx`, `src/components/dashboard/index.ts`, `src/app/dashboard/page.tsx`, `src/components/dashboard/__tests__/split-view-container.test.tsx`, `src/app/dashboard/__tests__/page.test.tsx`, `docs/specs/step-7-1b-dashboard-page.md`
 
 ### [2026-10-04] — Step 7.1a: Persona Card & Comparison Stat Components Shipped
 - **Details**: Implemented `PersonaCard` (`src/components/dashboard/persona-card.tsx`), `ComparisonStatRow`, and `ComparisonStatsGrid` (`src/components/dashboard/comparison-stat-row.tsx`) with dashboard barrel export (`src/components/dashboard/index.ts`). Delivers high-contrast presentation for simulated 5-year personas (Current Path amber accent vs Improved Path emerald accent) with career, sleep, savings, and skills breakdown, emotional mood pills, top achievements/struggles, accessible action buttons (Talk to Persona, Read Letter, Reflections), and auto-computed metric delta comparisons. 100% test coverage with 63 passing test suites (355 tests).
