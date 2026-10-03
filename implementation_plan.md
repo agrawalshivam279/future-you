@@ -72,9 +72,9 @@ Constructing primitive UI elements first ensures consistency and speeds up the d
 - [x] Implement Badge component
 
 ### 1.2 - Layout Components
-- [ ] Implement Header component
-- [ ] Implement Footer component (with disclaimer)
-- [ ] Implement Disclaimer modal (first-time visitor)
+- [x] Implement Header component
+- [x] Implement Footer component (with disclaimer)
+- [x] Implement Disclaimer modal (first-time visitor)
 
 ### Phase 1 Exit Criteria
 - All primitive UI components are built and visually match `design.md`.

@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 0 / Project Scaffold (In Planning)
+> **Status**: 📋 Phase 2 / Type Definitions & State Management
 > **Last Synchronized**: 2026-10-03
 
 ---
@@ -12,7 +12,7 @@ Future You is a client-side web application using AI to generate two simulated f
 
 | Module | Stack | Status |
 | :--- | :--- | :--- |
-| **UI Primitives** | React + Tailwind + Framer Motion | 🟢 Core Primitives Complete (1.1 Done) |
+| **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
 | **Type System** | TypeScript strict | 🔴 Not Started |
 | **State Management** | Zustand + localStorage + IndexedDB | 🔴 Not Started |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
@@ -60,7 +60,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | Phase | Description | Status |
 | :--- | :--- | :--- |
 | **Phase 0** | Project Scaffold & Tooling | 🟢 Completed |
-| **Phase 1** | Design System & UI Primitives | 🟡 In Progress |
+| **Phase 1** | Design System & UI Primitives | 🟢 Completed |
 | **Phase 2** | Type Definitions & State Management | 🔴 Not Started |
 | **Phase 3** | Settings & Configuration | 🔴 Not Started |
 | **Phase 4** | Onboarding Wizard | 🔴 Not Started |
@@ -78,6 +78,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 1.2: Layout Components & Disclaimer Modal Shipped
+- **Details**: Implemented Header (sticky navbar, branding, settings shortcut), persistent Footer (honesty disclaimer & zero cloud storage privacy guarantee), DisclaimerModal (first-time visitor onboarding with localStorage persistence), and AppShell layout coordinator. 100% Phase 1 design system complete with unit tests.
+- **Commit**: `feat(layout): implement header, footer, disclaimer modal, and app shell`
+- **Key Files**: `src/components/layout/header.tsx`, `src/components/layout/footer.tsx`, `src/components/layout/disclaimer-modal.tsx`, `src/components/layout/app-shell.tsx`, `src/app/layout.tsx`, `src/components/layout/__tests__/header.test.tsx`, `src/components/layout/__tests__/footer.test.tsx`, `src/components/layout/__tests__/disclaimer-modal.test.tsx`, `src/components/layout/__tests__/app-shell.test.tsx`, `docs/specs/step-1-2-layout-components.md`
 
 ### [2026-10-03] — Step 1.1d: Skeleton & Spinner Primitives Shipped
 - **Details**: Implemented accessible Skeleton loading placeholder (predefined variants: default, circular, text, card; inline dimensions support; motion-safe pulse) and Spinner component (size: sm, md, lg, xl; variants: default, primary, current, improved; motion-safe spin; sr-only labels). 100% line coverage.

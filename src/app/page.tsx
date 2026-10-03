@@ -9,21 +9,7 @@ import { ArrowRight, Settings } from 'lucide-react';
  */
 export default function HomePage(): React.JSX.Element {
   return (
-    <div className="flex flex-col flex-1">
-      {/* Top Navigation Bar */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-border-primary/50 max-w-6xl w-full mx-auto">
-        <div className="flex items-center gap-2">
-          <span className="font-semibold tracking-tight text-text-primary text-lg">Future You</span>
-        </div>
-        <Link
-          href="/settings"
-          aria-label="Application Settings"
-          className="p-2 rounded-lg text-text-secondary hover:text-text-primary hover:bg-bg-secondary transition-colors"
-        >
-          <Settings className="w-5 h-5" aria-hidden="true" />
-        </Link>
-      </header>
-
+    <div className="flex flex-col flex-1 items-center justify-center">
       {/* Hero Section */}
       <div className="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center max-w-3xl mx-auto">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-text-primary mb-6">

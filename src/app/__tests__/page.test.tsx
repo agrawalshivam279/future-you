@@ -15,11 +15,4 @@ describe('HomePage Landing View', () => {
     expect(beginLink).toBeInTheDocument();
     expect(beginLink).toHaveAttribute('href', '/onboarding');
   });
-
-  it('renders an accessible Settings link in the header', () => {
-    render(<HomePage />);
-    const settingsLink = screen.getByRole('link', { name: /application settings/i });
-    expect(settingsLink).toBeInTheDocument();
-    expect(settingsLink).toHaveAttribute('href', '/settings');
-  });
 });
