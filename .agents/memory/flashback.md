@@ -20,6 +20,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Onboarding** | 6-step wizard | 🟢 Phase 4 Complete (100% Shipped) |
 | **Generation Flow** | Pipeline Orchestrator + Stepper | 🟢 Phase 6 Complete (100% Shipped) |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🟢 Phase 7 Complete (100% Shipped) |
+| **Timeline** | Chronological dual-track visualization | 🟡 In Progress (Step 8.1a Shipped) |
 | **Chat** | Streaming persona chat | 🔴 Not Started |
 | **Letter + TTS** | Web Speech API | 🔴 Not Started |
 
@@ -69,7 +70,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 5** | AI Integration Core | 🟢 Completed |
 | **Phase 6** | Generation Flow | 🟢 Completed |
 | **Phase 7** | Dashboard & Split View | 🟢 Completed |
-| **Phase 8** | Timeline | 🔴 Not Started |
+| **Phase 8** | Timeline | 🟡 In Progress |
 | **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
 | **Phase 10** | Habit Levers | 🔴 Not Started |
 | **Phase 11** | Letter from Future Self + TTS | 🔴 Not Started |
@@ -80,6 +81,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 8.1a: Timeline Node & Milestone Tooltip Components Shipped
+- **Details**: Implemented `TimelineNode` (`src/components/timeline/timeline-node.tsx`) and `MilestoneTooltip` (`src/components/timeline/milestone-tooltip.tsx`) with timeline barrel export (`src/components/timeline/index.ts`). Anchors chronological future milestones (Years 1, 3, and 5) with year-scaled node diameters (14px, 18px, 24px) and persona path styling (Current Path amber vs Improved Path emerald). Features interactive floating tooltips displaying headline, mood badge, narrative description, and key domain metric badges with keyboard focus and screen-reader accessibility (`aria-label`, `aria-expanded`). 100% test coverage with 67 passing test suites (376 tests).
+- **Commit**: `feat(timeline): implement timeline node and milestone tooltip components with tests`
+- **Key Files**: `src/components/timeline/timeline-node.tsx`, `src/components/timeline/milestone-tooltip.tsx`, `src/components/timeline/index.ts`, `src/components/timeline/__tests__/timeline-node.test.tsx`, `src/components/timeline/__tests__/milestone-tooltip.test.tsx`, `docs/specs/step-8-1a-timeline-nodes.md`
 
 ### [2026-10-04] — Step 7.1b: Split View Container & Dashboard Page Shipped (Phase 7 Complete)
 - **Details**: Implemented `SplitViewContainer` (`src/components/dashboard/split-view-container.tsx`), updated dashboard index barrel (`src/components/dashboard/index.ts`), and created the primary `DashboardPage` route (`src/app/dashboard/page.tsx`). Features 2-column desktop / stacked mobile responsive layout displaying Current and Improved path `PersonaCard`s alongside `ComparisonStatsGrid`. Includes empty-state redirect cards prompting onboarding, top header action controls for settings and modal-confirmed futures regeneration, route transitions to persona chat, letters, and reflections, and permanent honesty disclaimer footer. Formally concludes Phase 7 Dashboard & Split View. 100% test coverage with 65 passing test suites (366 tests).

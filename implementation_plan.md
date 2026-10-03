@@ -249,9 +249,9 @@ The timeline is a core piece of the persona details, providing a concrete path f
 
 ### 8.1 - Timeline Component Implementation
 - [ ] Build Timeline component (horizontal desktop, vertical mobile)
-- [ ] Implement Timeline node component with hover/click details
+- [x] Implement Timeline node component with hover/click details
 - [ ] Create Dual timeline layout (Current + Improved parallel tracks)
-- [ ] Add Milestone detail tooltip/popover
+- [x] Add Milestone detail tooltip/popover
 - [ ] Add Draw animation on first render
 
 ### Phase 8 Exit Criteria
