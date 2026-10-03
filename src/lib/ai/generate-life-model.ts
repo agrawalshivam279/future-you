@@ -11,15 +11,7 @@ import {
   parseLifeModelResponse,
 } from '@/lib/prompts/life-model-generator';
 import { LifeModel, OnboardingData, AISettings } from '@/types';
-
-/**
- * Token usage report returned by the AI provider.
- */
-export interface TokenUsage {
-  promptTokens: number;
-  completionTokens: number;
-  totalTokens: number;
-}
+import { TokenUsage } from '@/lib/ai/ai-utils';
 
 /**
  * Options for configuring Life Model generation behavior.

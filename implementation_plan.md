@@ -183,7 +183,7 @@ With UI and user data ready, we need the core engine that generates the app's un
 ### 5.2 - Generation Orchestration
 - [x] Implement `lib/ai/generate-life-model.ts` (calls LLM, parses response, validates, retries)
 - [x] Implement `lib/ai/generate-personas.ts`
-- [ ] Implement `lib/ai/generate-timeline.ts`
+- [x] Implement `lib/ai/generate-timeline.ts`
 - [ ] Implement `lib/ai/generate-letter.ts` and `lib/ai/generate-regret-gratitude.ts`
 - [ ] Implement `lib/ai/chat-with-persona.ts` (streaming chat context)
 - [ ] Implement `lib/ai/regenerate-futures.ts` (for habit levers)

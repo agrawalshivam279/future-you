@@ -65,7 +65,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
-| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a-b Shipped) |
+| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a-c Shipped) |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 5.2c: Timeline Milestone Generation Orchestrator Shipped
+- **Details**: Implemented `generateTimelines` (dual trajectory milestone generation for Years 1, 3, and 5) and `generateSingleTimeline` (targeted single trajectory milestone generation for habit levers) in `src/lib/ai/generate-timeline.ts`, with shared AI orchestration utilities in `src/lib/ai/ai-utils.ts`. Uses `timeline-generator.ts` prompt builders enforcing the mandatory reflection disclaimer, chronological milestone normalization (Years 1, 3, 5), mood normalization ('positive' | 'neutral' | 'negative'), token metrics accumulation, and exponential backoff retry. 100% test coverage with 51 passing test suites (285 tests).
+- **Commit**: `feat(ai): implement timeline milestone generation orchestrator with retry and shared utilities`
+- **Key Files**: `src/lib/ai/generate-timeline.ts`, `src/lib/ai/ai-utils.ts`, `src/lib/ai/index.ts`, `src/lib/prompts/timeline-generator.ts`, `src/lib/ai/__tests__/generate-timeline.test.ts`, `docs/specs/step-5-2c-generate-timeline.md`
 
 ### [2026-10-04] — Step 5.2b: Persona Generation & Enrichment Orchestrator Shipped
 - **Details**: Implemented `buildPersonaSystemPrompt`, `buildPersonaUserPrompt`, and `parsePersonaResponse` in `src/lib/prompts/persona-generator.ts`, and orchestrated individual and dual persona synthesis via `generatePersona` and `generatePersonas` in `src/lib/ai/generate-personas.ts`. Integrates mandatory reflection disclaimer, psychological tone differentiation between Current and Improved trajectories, resilient code fence stripping with deep fallback defaults, token metrics accumulation, and exponential backoff retry logic. 100% test coverage with 50 passing test suites (278 tests).
