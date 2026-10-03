@@ -14,7 +14,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | :--- | :--- | :--- |
 | **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
 | **Type System** | TypeScript strict | 🟢 In Progress (2.1 Domain Types Shipped) |
-| **State Management** | Zustand + localStorage + IndexedDB | 🟡 In Progress (Settings, UI & Onboarding Stores Shipped) |
+| **State Management** | Zustand + localStorage + IndexedDB | 🟡 In Progress (Settings, UI, Onboarding & Life Model Stores Shipped) |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
 | **Onboarding** | 6-step wizard | 🔴 Not Started |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🔴 Not Started |
@@ -78,6 +78,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 2.2c: Life Model Store Shipped
+- **Details**: Implemented `useLifeModelStore` in `src/stores/life-model-store.ts` managing the generated AI LifeModel (Current Path & Improved Path personas, habit levers, generation lifecycle states, and errors) with immutable updates and `future-you:life-model` localStorage persistence. 100% test coverage.
+- **Commit**: `feat(stores): implement life model and habit levers zustand store`
+- **Key Files**: `src/stores/life-model-store.ts`, `src/stores/index.ts`, `src/stores/__tests__/life-model-store.test.ts`, `docs/specs/step-2-2c-life-model-store.md`
 
 ### [2026-10-03] — Step 2.2b: Onboarding Store Shipped
 - **Details**: Implemented `useOnboardingStore` in `src/stores/onboarding-store.ts` managing the 6-step form flow, demographic basics, habits, weekly time allocation, financial goals, professional skills, and emotional drivers with bounded step navigation and `future-you:onboarding` localStorage persistence. 100% test coverage.
