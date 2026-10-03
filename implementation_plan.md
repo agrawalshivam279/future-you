@@ -186,8 +186,8 @@ With UI and user data ready, we need the core engine that generates the app's un
 - [x] Implement `lib/ai/generate-timeline.ts`
 - [x] Implement `lib/ai/generate-letter.ts` and `lib/ai/generate-regret-gratitude.ts`
 - [x] Implement `lib/ai/chat-with-persona.ts` (streaming chat context)
-- [ ] Implement `lib/ai/regenerate-futures.ts` (for habit levers)
-- [ ] Add robust error handling (timeout, parse failure, API errors)
+- [x] Implement `lib/ai/regenerate-futures.ts` (for habit levers)
+- [x] Add robust error handling (timeout, parse failure, API errors)
 
 ### Phase 5 Exit Criteria
 - All AI generation functions can be executed successfully and return structured JSON/text.
