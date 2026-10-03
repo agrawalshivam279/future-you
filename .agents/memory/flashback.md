@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 9 / Chat Interface
+> **Status**: 📋 Phase 10 / Habit Levers
 > **Last Synchronized**: 2026-10-04
 
 ---
@@ -21,7 +21,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Generation Flow** | Pipeline Orchestrator + Stepper | 🟢 Phase 6 Complete (100% Shipped) |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🟢 Phase 7 Complete (100% Shipped) |
 | **Timeline** | Chronological dual-track visualization | 🟢 Phase 8 Complete (100% Shipped) |
-| **Chat** | Streaming persona chat | 🟡 In Progress (Step 9.1a Shipped) |
+| **Chat** | Streaming persona chat | 🟢 Phase 9 Complete (100% Shipped) |
 | **Letter + TTS** | Web Speech API | 🔴 Not Started |
 
 ---
@@ -71,7 +71,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 6** | Generation Flow | 🟢 Completed |
 | **Phase 7** | Dashboard & Split View | 🟢 Completed |
 | **Phase 8** | Timeline | 🟢 Completed |
-| **Phase 9** | Chat Interface | 🟡 In Progress *(⚠️ Run /eval_persona on persona chat tone)* |
+| **Phase 9** | Chat Interface | 🟢 Completed |
 | **Phase 10** | Habit Levers | 🔴 Not Started |
 | **Phase 11** | Letter from Future Self + TTS | 🔴 Not Started |
 | **Phase 12** | Regret & Gratitude View | 🔴 Not Started |
@@ -81,6 +81,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 9.1c: Chat Page Route & Streaming Persona Integration Shipped (Phase 9 Complete)
+- **Details**: Implemented `usePersonaChat` orchestration hook (`src/hooks/use-persona-chat.ts`) and full-page `ChatPage` route (`src/app/chat/page.tsx`). Coordinates real-time token streaming accumulation via `chatWithPersona`, `useChatStore` IndexedDB persistence, URL query synchronization (`/chat?persona=...`), persona switcher tabs (Current Path amber vs Improved Path emerald), empty simulation redirection guards, clear conversation confirmation modal, and browser Web Speech API text-to-speech audio playback. Executed `/eval_persona` audit validating tone contrast between inertia-bound Current Path and compounding Improved Path. Formally concludes Phase 9 Chat Interface. 100% test coverage with 75 passing test suites (424 tests).
+- **Commit**: `feat(chat): implement persona chat hook and page route with streaming and tests`
+- **Key Files**: `src/hooks/use-persona-chat.ts`, `src/app/chat/page.tsx`, `src/hooks/__tests__/use-persona-chat.test.ts`, `src/app/chat/__tests__/page.test.tsx`, `docs/specs/step-9-1c-chat-page.md`
 
 ### [2026-10-04] — Step 9.1b: Chat Input, Message List & Header Components Shipped
 - **Details**: Implemented `ChatInput` (`src/components/chat/chat-input.tsx`), `ChatMessageList` (`src/components/chat/chat-message-list.tsx`), and `ChatHeader` (`src/components/chat/chat-header.tsx`), updated chat barrel export (`src/components/chat/index.ts`). Features auto-resizing accessible textarea with Enter-to-send and Shift+Enter multi-line support, auto-scrolling message list with empty-state reflection card and starter question suggestions, loading indicator state during prompt execution, and sticky header with persona switcher tabs (Current Path amber vs Improved Path emerald), dashboard back navigation, and clear chat triggers. 100% test coverage with 73 passing test suites (410 tests).
