@@ -8,3 +8,5 @@ export * from './ai-utils';
 export * from './generate-life-model';
 export * from './generate-personas';
 export * from './generate-timeline';
+export * from './generate-letter';
+export * from './generate-regret-gratitude';

@@ -65,7 +65,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
-| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a-c Shipped) |
+| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a-d Shipped) |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 5.2d: Future Self Letter & Regret/Gratitude Orchestrators Shipped
+- **Details**: Implemented `generateLetter` & `generateLetters` in `src/lib/ai/generate-letter.ts`, and `generateRegretGratitude` & `generateDualRegretGratitude` in `src/lib/ai/generate-regret-gratitude.ts`. Leverages externalized prompt generators (`letter-generator.ts` and `regret-gratitude-generator.ts`) enforcing reflection disclaimers, authentic psychological tone differentiation, resilient JSON parsing with `throwOnError` retry capabilities, markdown fence stripping, and token usage metrics. 100% test coverage with 53 passing test suites (300 tests).
+- **Commit**: `feat(ai): implement letter and regret-gratitude generation orchestrators with tests`
+- **Key Files**: `src/lib/ai/generate-letter.ts`, `src/lib/ai/generate-regret-gratitude.ts`, `src/lib/ai/index.ts`, `src/lib/prompts/regret-gratitude-generator.ts`, `src/lib/ai/__tests__/generate-letter.test.ts`, `src/lib/ai/__tests__/generate-regret-gratitude.test.ts`, `docs/specs/step-5-2d-generate-letter-regret-gratitude.md`
 
 ### [2026-10-04] — Step 5.2c: Timeline Milestone Generation Orchestrator Shipped
 - **Details**: Implemented `generateTimelines` (dual trajectory milestone generation for Years 1, 3, and 5) and `generateSingleTimeline` (targeted single trajectory milestone generation for habit levers) in `src/lib/ai/generate-timeline.ts`, with shared AI orchestration utilities in `src/lib/ai/ai-utils.ts`. Uses `timeline-generator.ts` prompt builders enforcing the mandatory reflection disclaimer, chronological milestone normalization (Years 1, 3, 5), mood normalization ('positive' | 'neutral' | 'negative'), token metrics accumulation, and exponential backoff retry. 100% test coverage with 51 passing test suites (285 tests).
