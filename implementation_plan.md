@@ -62,8 +62,8 @@ We must establish the foundation of the Next.js App Router, global styles, and e
 Constructing primitive UI elements first ensures consistency and speeds up the development of complex views later (like Onboarding and Dashboard).
 
 ### 1.1 - Core Components
-- [ ] Implement Button component (all variants)
-- [ ] Implement Card component (with persona variant)
+- [x] Implement Button component (all variants)
+- [x] Implement Card component (with persona variant)
 - [ ] Implement Input and Textarea components
 - [ ] Implement Slider component
 - [ ] Implement Modal component

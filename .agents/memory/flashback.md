@@ -12,7 +12,7 @@ Future You is a client-side web application using AI to generate two simulated f
 
 | Module | Stack | Status |
 | :--- | :--- | :--- |
-| **UI Primitives** | React + Tailwind + Framer Motion | 🔴 Not Started |
+| **UI Primitives** | React + Tailwind + Framer Motion | 🟡 In Progress (Button & Card Shipped) |
 | **Type System** | TypeScript strict | 🔴 Not Started |
 | **State Management** | Zustand + localStorage + IndexedDB | 🔴 Not Started |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
@@ -53,7 +53,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | Phase | Description | Status |
 | :--- | :--- | :--- |
 | **Phase 0** | Project Scaffold & Tooling | 🟢 Completed |
-| **Phase 1** | Design System & UI Primitives | 🔴 Not Started |
+| **Phase 1** | Design System & UI Primitives | 🟡 In Progress |
 | **Phase 2** | Type Definitions & State Management | 🔴 Not Started |
 | **Phase 3** | Settings & Configuration | 🔴 Not Started |
 | **Phase 4** | Onboarding Wizard | 🔴 Not Started |
@@ -71,6 +71,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 1.1a: Button & Card Primitives Shipped
+- **Details**: Implemented accessible Button and Card primitives with persona-aware border styling (amber for Current Path, emerald for Improved Path), responsive subcomponents, and unit tests with 100% line coverage.
+- **Commit**: `feat(ui): implement accessible button and persona card primitives`
+- **Key Files**: `src/components/ui/button.tsx`, `src/components/ui/card.tsx`, `src/components/ui/__tests__/button.test.tsx`, `src/components/ui/__tests__/card.test.tsx`, `docs/specs/step-1-1a-button-card.md`
 
 ### [2026-10-03] — Step 0.1: Project Scaffold & Next.js 14 Tooling Shipped
 - **Details**: Built physical Next.js 14 App Router foundation with Tailwind CSS design tokens, Zustand, Framer Motion, Jest unit tests (100% coverage), and root layout with persistent honesty disclaimer.
