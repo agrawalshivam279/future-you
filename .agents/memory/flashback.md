@@ -65,7 +65,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
-| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1a Shipped) |
+| **Phase 5** | AI Integration Core | 🟡 In Progress (Steps 5.1a-b Shipped) |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 5.1b: Dual Persona System Prompts Shipped
+- **Details**: Implemented `buildCurrentPathSystemPrompt` in `src/lib/prompts/system-current-path.ts` and `buildImprovedPathSystemPrompt` in `src/lib/prompts/system-improved-path.ts`. Injects mandatory reflection disclaimer ("You are a reflection tool, not a prediction engine."), persona age (current age + 5), and detailed dimensional anchors (career, health, finances, relationships, routine) while enforcing rigorous emotional tone differentiation (Current Path inertia without despair vs. Improved Path deliberate compounding without toxic positivity). 100% test coverage with 44 passing test suites (222 tests).
+- **Commit**: `feat(prompts): implement current and improved path conversational system prompts`
+- **Key Files**: `src/lib/prompts/system-current-path.ts`, `src/lib/prompts/system-improved-path.ts`, `src/lib/prompts/index.ts`, `src/lib/prompts/__tests__/system-prompts.test.ts`, `docs/specs/step-5-1b-persona-prompts.md`
 
 ### [2026-10-03] — Step 5.1a: Life Model AI Prompt Generator Shipped
 - **Details**: Implemented `buildLifeModelSystemPrompt`, `buildLifeModelUserPrompt`, and `parseLifeModelResponse` in `src/lib/prompts/life-model-generator.ts`. Enforces the mandatory honesty reflection disclaimer ("You are a reflection tool, not a prediction engine."), psychological tone differentiation (Current Path inertia vs. Improved Path deliberate compounding), target 5-year age projection (current age + 5), and resilient JSON parsing with markdown code fencing stripping and fallback habit levers. 100% test coverage with 43 passing test suites (215 tests).
