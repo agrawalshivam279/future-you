@@ -66,7 +66,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
 | **Phase 5** | AI Integration Core | 🟢 Completed |
-| **Phase 6** | Generation Flow | 🔴 Not Started |
+| **Phase 6** | Generation Flow | 🟡 In Progress (Step 6.1a Pipeline Shipped) |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
 | **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 6.1a: Sequential Generation Pipeline Orchestrator Shipped
+- **Details**: Implemented `generatePipeline` in `src/lib/ai/generate-pipeline.ts` with complete integration across all 5 AI modules (`generateLifeModel`, `generatePersonas`, `generateTimelines`, `generateLetters`, `generateDualRegretGratitude`). Provides granular stage tracking (`life-model` -> `personas` -> `timelines` -> `letters` -> `reflections` -> `complete`), cumulative token tracking across calls, immediate `AbortSignal` cancellation support, and unified `LifeModel` assembly with full persona structures. 100% test coverage with 56 passing test suites (321 tests).
+- **Commit**: `feat(ai): implement sequential generation pipeline orchestrator with progress tracking`
+- **Key Files**: `src/lib/ai/generate-pipeline.ts`, `src/lib/ai/index.ts`, `src/lib/ai/__tests__/generate-pipeline.test.ts`, `docs/specs/step-6-1a-generate-pipeline.md`
 
 ### [2026-10-04] — Step 5.2f: Habit Levers Futures Regeneration Orchestrator Shipped (Phase 5 Complete)
 - **Details**: Implemented `applyLeverUpdates` and `regenerateFutures` in `src/lib/ai/regenerate-futures.ts`. Recalculates Improved Path persona and timeline dynamically when habit lever sliders shift, clamping values strictly to lever limits, preserving user inputs and Current Path data, supporting optional timeline regeneration, accumulating token metrics, and enforcing AbortSignal cancellation. Concludes Phase 5 AI Integration Core. 100% test coverage with 55 passing test suites (315 tests).
