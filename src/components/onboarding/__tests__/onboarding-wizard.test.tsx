@@ -47,6 +47,23 @@ describe('OnboardingWizard Component', () => {
     expect(screen.getByText('Career & Work Hours')).toBeInTheDocument();
   });
 
+  it('advances to step 4 and renders Finances & Resources form', () => {
+    useOnboardingStore.getState().setCurrentStep(3);
+    render(<OnboardingWizard />);
+
+    const continueBtn = screen.getByRole('button', { name: /continue to next step/i });
+    fireEvent.click(continueBtn);
+
+    expect(useOnboardingStore.getState().currentStep).toBe(4);
+    expect(screen.getByRole('progressbar', { name: /step 4 of 6/i })).toHaveAttribute(
+      'aria-valuenow',
+      '4'
+    );
+    expect(screen.getAllByText('Finances & Resources').length).toBeGreaterThan(0);
+    expect(screen.getByText('Current Annual Income Bracket')).toBeInTheDocument();
+    expect(screen.getByText('Monthly Savings & Investment Rate')).toBeInTheDocument();
+  });
+
   it('navigates back to step 1 from step 2 when back button is clicked', () => {
     useOnboardingStore.getState().setCurrentStep(2);
     render(<OnboardingWizard />);
