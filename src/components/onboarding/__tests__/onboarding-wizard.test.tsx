@@ -30,6 +30,23 @@ describe('OnboardingWizard Component', () => {
     expect(screen.getByText('Nightly Sleep Duration')).toBeInTheDocument();
   });
 
+  it('advances to step 3 and renders Weekly Time Allocation form', () => {
+    useOnboardingStore.getState().setCurrentStep(2);
+    render(<OnboardingWizard />);
+
+    const continueBtn = screen.getByRole('button', { name: /continue to next step/i });
+    fireEvent.click(continueBtn);
+
+    expect(useOnboardingStore.getState().currentStep).toBe(3);
+    expect(screen.getByRole('progressbar', { name: /step 3 of 6/i })).toHaveAttribute(
+      'aria-valuenow',
+      '3'
+    );
+    expect(screen.getAllByText('Time Allocation').length).toBeGreaterThan(0);
+    expect(screen.getByText('168-Hour Weekly Budget')).toBeInTheDocument();
+    expect(screen.getByText('Career & Work Hours')).toBeInTheDocument();
+  });
+
   it('navigates back to step 1 from step 2 when back button is clicked', () => {
     useOnboardingStore.getState().setCurrentStep(2);
     render(<OnboardingWizard />);
