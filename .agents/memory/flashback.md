@@ -21,7 +21,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Generation Flow** | Pipeline Orchestrator + Stepper | 🟢 Phase 6 Complete (100% Shipped) |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🟢 Phase 7 Complete (100% Shipped) |
 | **Timeline** | Chronological dual-track visualization | 🟢 Phase 8 Complete (100% Shipped) |
-| **Chat** | Streaming persona chat | 🔴 Not Started |
+| **Chat** | Streaming persona chat | 🟡 In Progress (Step 9.1a Shipped) |
 | **Letter + TTS** | Web Speech API | 🔴 Not Started |
 
 ---
@@ -71,7 +71,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 6** | Generation Flow | 🟢 Completed |
 | **Phase 7** | Dashboard & Split View | 🟢 Completed |
 | **Phase 8** | Timeline | 🟢 Completed |
-| **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
+| **Phase 9** | Chat Interface | 🟡 In Progress *(⚠️ Run /eval_persona on persona chat tone)* |
 | **Phase 10** | Habit Levers | 🔴 Not Started |
 | **Phase 11** | Letter from Future Self + TTS | 🔴 Not Started |
 | **Phase 12** | Regret & Gratitude View | 🔴 Not Started |
@@ -81,6 +81,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 9.1a: Chat Message Bubble & Suggested Questions Shipped
+- **Details**: Implemented `ChatMessageBubble` (`src/components/chat/chat-message-bubble.tsx`) and `SuggestedQuestions` (`src/components/chat/suggested-questions.tsx`) with chat barrel export (`src/components/chat/index.ts`). Features distinct persona styling (Current Path amber tint vs Improved Path emerald tint, speaker indicators, timestamps), streaming token cursor pulse animation, audio playback TTS trigger, and psychologically grounded conversation starter prompts tailored to each future self trajectory. 100% test coverage with 70 passing test suites (392 tests).
+- **Commit**: `feat(chat): implement chat message bubble and suggested questions components with tests`
+- **Key Files**: `src/components/chat/chat-message-bubble.tsx`, `src/components/chat/suggested-questions.tsx`, `src/components/chat/index.ts`, `src/components/chat/__tests__/chat-message-bubble.test.tsx`, `src/components/chat/__tests__/suggested-questions.test.tsx`, `docs/specs/step-9-1a-chat-bubbles-starters.md`
 
 ### [2026-10-04] — Step 8.1b: Dual Timeline Component & Dashboard Integration Shipped (Phase 8 Complete)
 - **Details**: Implemented `DualTimeline` (`src/components/timeline/dual-timeline.tsx`), updated timeline index barrel (`src/components/timeline/index.ts`), and integrated parallel 5-year chronological milestone tracks into `DashboardPage` (`src/app/dashboard/page.tsx`). Features parallel horizontal tracks on desktop and vertical tracks on mobile connecting Year 1, 3, and 5 `TimelineNode`s with Framer Motion connecting line draw animations, full legend guidance, and floating interactive milestone tooltips. Formally concludes Phase 8 Timeline. 100% test coverage with 68 passing test suites (381 tests).
