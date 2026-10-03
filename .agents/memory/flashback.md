@@ -12,7 +12,7 @@ Future You is a client-side web application using AI to generate two simulated f
 
 | Module | Stack | Status |
 | :--- | :--- | :--- |
-| **UI Primitives** | React + Tailwind + Framer Motion | 🟡 In Progress (Button, Card, Form, Modal, Toast & Badge Shipped) |
+| **UI Primitives** | React + Tailwind + Framer Motion | 🟢 Core Primitives Complete (1.1 Done) |
 | **Type System** | TypeScript strict | 🔴 Not Started |
 | **State Management** | Zustand + localStorage + IndexedDB | 🔴 Not Started |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
@@ -71,6 +71,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 1.1d: Skeleton & Spinner Primitives Shipped
+- **Details**: Implemented accessible Skeleton loading placeholder (predefined variants: default, circular, text, card; inline dimensions support; motion-safe pulse) and Spinner component (size: sm, md, lg, xl; variants: default, primary, current, improved; motion-safe spin; sr-only labels). 100% line coverage.
+- **Commit**: `feat(ui): implement skeleton loader and spinner primitives`
+- **Key Files**: `src/components/ui/skeleton.tsx`, `src/components/ui/spinner.tsx`, `src/components/ui/__tests__/skeleton.test.tsx`, `src/components/ui/__tests__/spinner.test.tsx`, `docs/specs/step-1-1d-skeleton-spinner.md`
 
 ### [2026-10-03] — Step 1.1c: Modal, Toast & Badge Primitives Shipped
 - **Details**: Implemented accessible Modal (Framer Motion animations, Escape key dismiss, focus containment, body scroll locking), Toast notification system (ToastProvider context, useToast hook, auto-dismiss, ARIA polite live regions), and Badge component (status & persona variants). Tested with 100% line coverage.
