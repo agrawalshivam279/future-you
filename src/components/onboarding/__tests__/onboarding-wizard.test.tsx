@@ -13,7 +13,9 @@ describe('OnboardingWizard Component', () => {
 
     expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '1');
     expect(screen.getAllByText('Goals & Aspirations').length).toBeGreaterThan(0);
-    expect(screen.getByTestId('onboarding-step-content-1')).toBeInTheDocument();
+    expect(
+      screen.getByLabelText(/what should your future selves call you/i)
+    ).toBeInTheDocument();
   });
 
   it('advances to step 2 when continue button is clicked', () => {
