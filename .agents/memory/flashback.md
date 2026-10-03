@@ -65,7 +65,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
-| **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
+| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1a Shipped) |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 5.1a: Life Model AI Prompt Generator Shipped
+- **Details**: Implemented `buildLifeModelSystemPrompt`, `buildLifeModelUserPrompt`, and `parseLifeModelResponse` in `src/lib/prompts/life-model-generator.ts`. Enforces the mandatory honesty reflection disclaimer ("You are a reflection tool, not a prediction engine."), psychological tone differentiation (Current Path inertia vs. Improved Path deliberate compounding), target 5-year age projection (current age + 5), and resilient JSON parsing with markdown code fencing stripping and fallback habit levers. 100% test coverage with 43 passing test suites (215 tests).
+- **Commit**: `feat(prompts): implement life model prompt generator and resilient json response parser`
+- **Key Files**: `src/lib/prompts/life-model-generator.ts`, `src/lib/prompts/index.ts`, `src/lib/prompts/__tests__/life-model-generator.test.ts`, `docs/specs/step-5-1a-life-model-prompt.md`
 
 ### [2026-10-03] — Step 4.2: Onboarding Form Validation & Completion Handshake Shipped
 - **Details**: Implemented pure client-side validation engine in `src/lib/validation/onboarding-validator.ts` covering data invariants across all 6 onboarding steps (name/callsign min length, age bounds, at least 1 goal, valid habit metrics, 168-hour weekly budget constraint, required income and financial goal, required skills and career domain, core values, and anxieties). Integrated validation checks and accessible error alert notifications into `OnboardingWizard`, preventing advancement with empty or out-of-bounds fields and executing completion handshake (`setCompleted(true)`) upon final step submission. 100% test coverage with 42 passing test suites (208 tests). Completes Phase 4.
