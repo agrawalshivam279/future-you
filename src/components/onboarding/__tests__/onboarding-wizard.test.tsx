@@ -27,6 +27,7 @@ describe('OnboardingWizard Component', () => {
     expect(useOnboardingStore.getState().currentStep).toBe(2);
     expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '2');
     expect(screen.getAllByText('Daily Habits & Lifestyle').length).toBeGreaterThan(0);
+    expect(screen.getByText('Nightly Sleep Duration')).toBeInTheDocument();
   });
 
   it('navigates back to step 1 from step 2 when back button is clicked', () => {
