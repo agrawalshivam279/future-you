@@ -64,7 +64,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 1** | Design System & UI Primitives | 🟢 Completed |
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
-| **Phase 4** | Onboarding Wizard | 🔴 Not Started |
+| **Phase 4** | Onboarding Wizard | 🟡 In Progress (Step 4.1a Shipped) |
 | **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 4.1a: Onboarding Wizard Scaffold & Navigation Shipped
+- **Details**: Built the complete structural foundation of the 6-step Onboarding Wizard, including `ONBOARDING_STEPS` metadata in `src/components/onboarding/constants.ts`, responsive `WizardProgress` (desktop stepper bar with step states & mobile compact bar with percentage fill), animated `StepWrapper` using Framer Motion directional slide transitions, accessible `WizardNav` (Back / Continue controls with step counter), and `OnboardingWizard` coordinator managing state transitions synced to `useOnboardingStore`. Created `/onboarding` page view in `src/app/onboarding/page.tsx`. 100% test coverage with 34 passing test suites (150 tests).
+- **Commit**: `feat(onboarding): implement wizard scaffold with step progress and slide transitions`
+- **Key Files**: `src/components/onboarding/constants.ts`, `src/components/onboarding/wizard-progress.tsx`, `src/components/onboarding/step-wrapper.tsx`, `src/components/onboarding/wizard-nav.tsx`, `src/components/onboarding/onboarding-wizard.tsx`, `src/components/onboarding/index.ts`, `src/app/onboarding/page.tsx`, `docs/specs/step-4-1a-onboarding-wizard-scaffold.md`
 
 ### [2026-10-03] — Step 3.1b: Settings Data Management & Purge Shipped
 - **Details**: Implemented client-side `exportLocalData`, `downloadDataAsJSON`, and `deleteAllLocalData` in `src/lib/storage/data-manager.ts`, extended `src/lib/storage/indexed-db.ts` with `clearIndexedDBDatabase`, and built `DataManagementCard` in `src/components/settings/data-management-card.tsx` with one-click JSON backup export, irreversible purge confirmation modal, zero cloud storage privacy statement, and toast notifications. Integrated into `/settings` page. 100% Phase 3 complete with 29 passing test suites (137 tests).
