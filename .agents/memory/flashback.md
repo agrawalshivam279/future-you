@@ -64,7 +64,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 1** | Design System & UI Primitives | 🟢 Completed |
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
-| **Phase 4** | Onboarding Wizard | 🟡 In Progress (Step 4.1a Shipped) |
+| **Phase 4** | Onboarding Wizard | 🟡 In Progress (Steps 4.1a-d Shipped) |
 | **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 4.1d: Weekly Time Allocation Form Shipped
+- **Details**: Implemented `TimeStep` form component in `src/components/onboarding/steps/time-step.tsx` featuring an interactive 168-hour weekly budget visualizer (segmented progress bar showing sleep, career/work, study, social, creative, and downtime hours, with dynamic buffer/overbooked calculation) and 5 granular sliders with unit labels for work, study, social, creative, and wasted hours. Integrated into `OnboardingWizard` on step 3 with real-time two-way synchronization to `useOnboardingStore`. 100% test coverage with 38 passing test suites (176 tests).
+- **Commit**: `feat(onboarding): implement step 3 time allocation form with 168-hour budget visualizer`
+- **Key Files**: `src/components/onboarding/steps/time-step.tsx`, `src/components/onboarding/steps/index.ts`, `src/components/onboarding/onboarding-wizard.tsx`, `src/components/onboarding/steps/__tests__/time-step.test.tsx`, `src/components/onboarding/__tests__/onboarding-wizard.test.tsx`, `docs/specs/step-4-1d-time-step.md`
 
 ### [2026-10-03] — Step 4.1c: Habits & Lifestyle Form Shipped
 - **Details**: Implemented `HabitsStep` form component in `src/components/onboarding/steps/habits-step.tsx` capturing nightly sleep hours slider (4-12 hrs), physical exercise frequency segmented radiogroup (Never, Rarely, Weekly, Daily), diet & nutrition quality radiogroup (Poor, Average, Good, Excellent), recreational screen time slider (0-16 hrs), and daily meditation/reflection practice toggle. Integrated into `OnboardingWizard` on step 2 with real-time two-way synchronization to `useOnboardingStore`. 100% test coverage with 37 passing test suites (167 tests).
