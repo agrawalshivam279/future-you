@@ -65,7 +65,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
-| **Phase 5** | AI Integration Core | 🟡 In Progress (Steps 5.1a-c Shipped) |
+| **Phase 5** | AI Integration Core | 🟡 In Progress (Steps 5.1a-d Shipped) |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 5.1d: Letter & Regret/Gratitude Prompts Shipped
+- **Details**: Implemented `buildLetterSystemPrompt` and `buildLetterUserPrompt` in `src/lib/prompts/letter-generator.ts`, and `buildRegretGratitudeSystemPrompt`, `buildRegretGratitudeUserPrompt`, and `parseRegretGratitudeResponse` in `src/lib/prompts/regret-gratitude-generator.ts`. Enforces the mandatory honesty reflection disclaimer ("You are a reflection tool, not a prediction engine.") across all system prompts, creates poignant and grounded psychological reflections comparing 5-year inertia with compound discipline, and provides resilient JSON extraction with typed fallbacks. 100% test coverage with 47 passing test suites (255 tests).
+- **Commit**: `feat(prompts): add future self letter and regret-gratitude prompt generators`
+- **Key Files**: `src/lib/prompts/letter-generator.ts`, `src/lib/prompts/regret-gratitude-generator.ts`, `src/lib/prompts/index.ts`, `src/lib/prompts/__tests__/letter-generator.test.ts`, `src/lib/prompts/__tests__/regret-gratitude-generator.test.ts`, `docs/specs/step-5-1d-letters-regrets-prompts.md`
 
 ### [2026-10-04] — Step 5.1c: Timeline Prompt Generator & Resilient Parser Shipped
 - **Details**: Implemented `buildTimelineSystemPrompt`, `buildTimelineUserPrompt`, `buildSinglePathTimelineUserPrompt`, `parseTimelineResponse`, and `parseSinglePathTimelineResponse` in `src/lib/prompts/timeline-generator.ts`. Enforces the mandatory honesty reflection disclaimer ("You are a reflection tool, not a prediction engine."), chronological consistency (Years 1, 3, and 5), mood normalization ('positive' | 'neutral' | 'negative'), and resilient JSON parsing supporting both object and array markdown code fence completions with robust fallback milestones. 100% test coverage with 45 passing test suites (238 tests).
