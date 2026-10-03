@@ -72,6 +72,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-03] — Step 1.1b: Input, Textarea & Slider Primitives Shipped
+- **Details**: Implemented accessible form controls (Input with labels/errors/icons, Textarea with multiline feedback, and Slider with track fill & ARIA indicators) with unit tests passing at 100% line coverage.
+- **Commit**: `feat(ui): implement input, textarea, and range slider primitives`
+- **Key Files**: `src/components/ui/input.tsx`, `src/components/ui/textarea.tsx`, `src/components/ui/slider.tsx`, `src/components/ui/__tests__/input.test.tsx`, `src/components/ui/__tests__/textarea.test.tsx`, `src/components/ui/__tests__/slider.test.tsx`, `docs/specs/step-1-1b-input-textarea-slider.md`
+
 ### [2026-10-03] — Step 1.1a: Button & Card Primitives Shipped
 - **Details**: Implemented accessible Button and Card primitives with persona-aware border styling (amber for Current Path, emerald for Improved Path), responsive subcomponents, and unit tests with 100% line coverage.
 - **Commit**: `feat(ui): implement accessible button and persona card primitives`
