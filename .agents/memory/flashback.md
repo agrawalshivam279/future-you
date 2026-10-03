@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 2 / Type Definitions & State Management
+> **Status**: 📋 Phase 3 / Settings & Configuration
 > **Last Synchronized**: 2026-10-03
 
 ---
@@ -13,8 +13,8 @@ Future You is a client-side web application using AI to generate two simulated f
 | Module | Stack | Status |
 | :--- | :--- | :--- |
 | **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
-| **Type System** | TypeScript strict | 🟢 In Progress (2.1 Domain Types Shipped) |
-| **State Management** | Zustand + localStorage + IndexedDB | 🟡 In Progress (Settings, UI, Onboarding & Life Model Stores Shipped) |
+| **Type System** | TypeScript strict | 🟢 Phase 2 Complete (100% Shipped) |
+| **State Management** | Zustand + localStorage + IndexedDB | 🟢 Phase 2 Complete (All 5 Stores Shipped) |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
 | **Onboarding** | 6-step wizard | 🔴 Not Started |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🔴 Not Started |
@@ -61,7 +61,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | :--- | :--- | :--- |
 | **Phase 0** | Project Scaffold & Tooling | 🟢 Completed |
 | **Phase 1** | Design System & UI Primitives | 🟢 Completed |
-| **Phase 2** | Type Definitions & State Management | 🟡 In Progress |
+| **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🔴 Not Started |
 | **Phase 4** | Onboarding Wizard | 🔴 Not Started |
 | **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
@@ -78,6 +78,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 2.2d: Chat Store & IndexedDB Storage Shipped
+- **Details**: Implemented pure client-side `createIndexedDBStorage` in `src/lib/storage/indexed-db.ts` and `useChatStore` in `src/stores/chat-store.ts` managing multi-persona conversation logs (Current Path vs. Improved Path), message generation, token-by-token streaming accumulation, and selective IndexedDB persistence (`future-you-db`). 100% Phase 2 state architecture completed with unit tests.
+- **Commit**: `feat(stores): implement chat store and async indexeddb storage adapter`
+- **Key Files**: `src/lib/storage/indexed-db.ts`, `src/stores/chat-store.ts`, `src/stores/index.ts`, `jest.setup.ts`, `src/lib/storage/__tests__/indexed-db.test.ts`, `src/stores/__tests__/chat-store.test.ts`, `docs/specs/step-2-2d-chat-store.md`
 
 ### [2026-10-03] — Step 2.2c: Life Model Store Shipped
 - **Details**: Implemented `useLifeModelStore` in `src/stores/life-model-store.ts` managing the generated AI LifeModel (Current Path & Improved Path personas, habit levers, generation lifecycle states, and errors) with immutable updates and `future-you:life-model` localStorage persistence. 100% test coverage.

@@ -102,7 +102,7 @@ Strong typing and centralized state are prerequisites for building robust forms,
 - [x] Create `settings-store.ts` (API key, provider, base URL, model name)
 - [x] Create `onboarding-store.ts` (form data for all 6 steps, completion state)
 - [x] Create `life-model-store.ts` (generated model, personas, loading state)
-- [ ] Create `chat-store.ts` (messages per persona, IndexedDB integration)
+- [x] Create `chat-store.ts` (messages per persona, IndexedDB integration)
 - [x] Create `ui-store.ts` (modal visibility, toast queue)
 
 ### Phase 2 Exit Criteria
