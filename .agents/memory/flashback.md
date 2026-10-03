@@ -12,7 +12,7 @@ Future You is a client-side web application using AI to generate two simulated f
 
 | Module | Stack | Status |
 | :--- | :--- | :--- |
-| **UI Primitives** | React + Tailwind + Framer Motion | 🟡 In Progress (Button & Card Shipped) |
+| **UI Primitives** | React + Tailwind + Framer Motion | 🟡 In Progress (Button, Card, Form, Modal, Toast & Badge Shipped) |
 | **Type System** | TypeScript strict | 🔴 Not Started |
 | **State Management** | Zustand + localStorage + IndexedDB | 🔴 Not Started |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
@@ -71,6 +71,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 1.1c: Modal, Toast & Badge Primitives Shipped
+- **Details**: Implemented accessible Modal (Framer Motion animations, Escape key dismiss, focus containment, body scroll locking), Toast notification system (ToastProvider context, useToast hook, auto-dismiss, ARIA polite live regions), and Badge component (status & persona variants). Tested with 100% line coverage.
+- **Commit**: `feat(ui): implement modal, toast notification, and badge primitives`
+- **Key Files**: `src/components/ui/modal.tsx`, `src/components/ui/toast.tsx`, `src/components/ui/badge.tsx`, `src/components/ui/__tests__/modal.test.tsx`, `src/components/ui/__tests__/toast.test.tsx`, `src/components/ui/__tests__/badge.test.tsx`, `docs/specs/step-1-1c-modal-toast-badge.md`
 
 ### [2026-10-03] — Step 1.1b: Input, Textarea & Slider Primitives Shipped
 - **Details**: Implemented accessible form controls (Input with labels/errors/icons, Textarea with multiline feedback, and Slider with track fill & ARIA indicators) with unit tests passing at 100% line coverage.

@@ -66,10 +66,10 @@ Constructing primitive UI elements first ensures consistency and speeds up the d
 - [x] Implement Card component (with persona variant)
 - [x] Implement Input and Textarea components
 - [x] Implement Slider component
-- [ ] Implement Modal component
-- [ ] Implement Toast component + provider
+- [x] Implement Modal component
+- [x] Implement Toast component + provider
 - [ ] Implement Skeleton loader and Spinner components
-- [ ] Implement Badge component
+- [x] Implement Badge component
 
 ### 1.2 - Layout Components
 - [ ] Implement Header component
