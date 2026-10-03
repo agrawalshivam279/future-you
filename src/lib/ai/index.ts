@@ -10,3 +10,4 @@ export * from './generate-personas';
 export * from './generate-timeline';
 export * from './generate-letter';
 export * from './generate-regret-gratitude';
+export * from './chat-with-persona';

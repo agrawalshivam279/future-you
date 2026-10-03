@@ -65,7 +65,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
-| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a-d Shipped) |
+| **Phase 5** | AI Integration Core | 🟡 In Progress (Step 5.1 Complete, 5.2a-e Shipped) |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 5.2e: Streaming Persona Chat Orchestrator Shipped
+- **Details**: Implemented `chatWithPersona` and `buildChatMessages` in `src/lib/ai/chat-with-persona.ts`. Seamlessly connects persona conversational prompts (`buildCurrentPathSystemPrompt` and `buildImprovedPathSystemPrompt`) with historical chat transcripts, caps prior message history to `maxContextMessages` (default 16), executes OpenAI-compatible token streaming with real-time `onToken` callbacks, and supports immediate cancellation via `AbortSignal`. 100% test coverage with 54 passing test suites (308 tests).
+- **Commit**: `feat(ai): implement streaming persona chat orchestrator with history and abort support`
+- **Key Files**: `src/lib/ai/chat-with-persona.ts`, `src/lib/ai/index.ts`, `src/lib/ai/__tests__/chat-with-persona.test.ts`, `docs/specs/step-5-2e-chat-with-persona.md`
 
 ### [2026-10-04] — Step 5.2d: Future Self Letter & Regret/Gratitude Orchestrators Shipped
 - **Details**: Implemented `generateLetter` & `generateLetters` in `src/lib/ai/generate-letter.ts`, and `generateRegretGratitude` & `generateDualRegretGratitude` in `src/lib/ai/generate-regret-gratitude.ts`. Leverages externalized prompt generators (`letter-generator.ts` and `regret-gratitude-generator.ts`) enforcing reflection disclaimers, authentic psychological tone differentiation, resilient JSON parsing with `throwOnError` retry capabilities, markdown fence stripping, and token usage metrics. 100% test coverage with 53 passing test suites (300 tests).

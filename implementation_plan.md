@@ -185,7 +185,7 @@ With UI and user data ready, we need the core engine that generates the app's un
 - [x] Implement `lib/ai/generate-personas.ts`
 - [x] Implement `lib/ai/generate-timeline.ts`
 - [x] Implement `lib/ai/generate-letter.ts` and `lib/ai/generate-regret-gratitude.ts`
-- [ ] Implement `lib/ai/chat-with-persona.ts` (streaming chat context)
+- [x] Implement `lib/ai/chat-with-persona.ts` (streaming chat context)
 - [ ] Implement `lib/ai/regenerate-futures.ts` (for habit levers)
 - [ ] Add robust error handling (timeout, parse failure, API errors)
 
