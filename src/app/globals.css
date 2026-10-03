@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core Canvas */
+  --bg-primary: #0A0A0B;
+  --bg-secondary: #141416;
+  --bg-tertiary: #1C1C1F;
+  --bg-hover: #232328;
+
+  /* Text Hierarchy */
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1AA;
+  --text-tertiary: #71717A;
+  --text-muted: #52525B;
+
+  /* Borders & Dividers */
+  --border-primary: #27272A;
+  --border-focus: #3F3F46;
+
+  /* Accent Colors */
+  --accent-current: #F59E0B;
+  --accent-improved: #10B981;
+  --accent-info: #3B82F6;
+  --accent-danger: #EF4444;
+
+  /* Current Path (Amber Palette) */
+  --current-bg: #1C1710;
+  --current-border: #92400E40;
+  --current-text: #FCD34D;
+
+  /* Improved Path (Emerald Palette) */
+  --improved-bg: #0F1C16;
+  --improved-border: #065F4640;
+  --improved-text: #6EE7B7;
+
+  /* Font Stacks */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility: Respect user reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

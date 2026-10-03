@@ -52,7 +52,7 @@ Future You is a client-side web application using AI to generate two simulated f
 
 | Phase | Description | Status |
 | :--- | :--- | :--- |
-| **Phase 0** | Project Scaffold & Tooling | 🟡 In Progress |
+| **Phase 0** | Project Scaffold & Tooling | 🟢 Completed |
 | **Phase 1** | Design System & UI Primitives | 🔴 Not Started |
 | **Phase 2** | Type Definitions & State Management | 🔴 Not Started |
 | **Phase 3** | Settings & Configuration | 🔴 Not Started |
@@ -72,14 +72,8 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
-### [2026-10-03] — Phase 0: Project Scaffold & Tooling Setup
-- **Details**: Initial project scaffolding completed.
-  - Next.js 14 project with App Router initialized
-  - TypeScript strict mode configured
-  - Tailwind CSS setup with custom color tokens
-  - Framer Motion, Zustand, OpenAI SDK installed
-  - Inter font bundled locally
-  - Directory structure created per architecture.md
-  - Base layout with header and footer (including honesty disclaimer)
-  - globals.css with custom properties
-- **Key Files Created**: layout.tsx, globals.css, package.json, tsconfig.json, tailwind.config.ts
+### [2026-10-03] — Step 0.1: Project Scaffold & Next.js 14 Tooling Shipped
+- **Details**: Built physical Next.js 14 App Router foundation with Tailwind CSS design tokens, Zustand, Framer Motion, Jest unit tests (100% coverage), and root layout with persistent honesty disclaimer.
+- **Commit**: `feat(scaffold): initialize next.js 14 app router with tailwind and zustand`
+- **Key Files**: `package.json`, `tsconfig.json`, `tailwind.config.ts`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/lib/constants.ts`, `src/lib/utils.ts`, `jest.config.js`, `jest.setup.ts`, `docs/specs/step-0-1-project-scaffold.md`
+
