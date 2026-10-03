@@ -64,8 +64,8 @@ Constructing primitive UI elements first ensures consistency and speeds up the d
 ### 1.1 - Core Components
 - [x] Implement Button component (all variants)
 - [x] Implement Card component (with persona variant)
-- [ ] Implement Input and Textarea components
-- [ ] Implement Slider component
+- [x] Implement Input and Textarea components
+- [x] Implement Slider component
 - [ ] Implement Modal component
 - [ ] Implement Toast component + provider
 - [ ] Implement Skeleton loader and Spinner components
