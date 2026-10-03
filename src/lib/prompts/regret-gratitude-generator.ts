@@ -142,7 +142,8 @@ function createDefaultReflections(path: PersonaId, inputs?: Partial<OnboardingDa
 export function parseRegretGratitudeResponse(
   rawText: string,
   path: PersonaId,
-  inputs?: Partial<OnboardingData>
+  inputs?: Partial<OnboardingData>,
+  throwOnError: boolean = false
 ): RegretGratitudeResult {
   const defaults = createDefaultReflections(path, inputs);
 
@@ -166,7 +167,14 @@ export function parseRegretGratitudeResponse(
       regrets: regrets.length > 0 ? regrets : defaults.regrets,
       gratitudes: gratitudes.length > 0 ? gratitudes : defaults.gratitudes,
     };
-  } catch {
+  } catch (err) {
+    if (throwOnError) {
+      throw new Error(
+        `Failed to parse LLM RegretGratitude response as JSON: ${
+          err instanceof Error ? err.message : String(err)
+        }`
+      );
+    }
     return defaults;
   }
 }
