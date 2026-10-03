@@ -5,7 +5,7 @@ import { useOnboardingStore } from '@/stores';
 import { WizardProgress } from './wizard-progress';
 import { StepWrapper } from './step-wrapper';
 import { WizardNav } from './wizard-nav';
-import { GoalsStep, HabitsStep, TimeStep } from './steps';
+import { GoalsStep, HabitsStep, TimeStep, MoneyStep } from './steps';
 import { ONBOARDING_STEPS, TOTAL_STEPS } from './constants';
 import { cn } from '@/lib/utils';
 
@@ -74,7 +74,8 @@ export function OnboardingWizard({
           {currentStep === 1 && <GoalsStep />}
           {currentStep === 2 && <HabitsStep />}
           {currentStep === 3 && <TimeStep />}
-          {currentStep > 3 && (
+          {currentStep === 4 && <MoneyStep />}
+          {currentStep > 4 && (
             <div
               data-testid={`onboarding-step-content-${currentStep}`}
               className="rounded-xl border border-dashed border-border-primary/80 bg-bg-tertiary/40 p-8 text-center space-y-2 my-2"
