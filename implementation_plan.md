@@ -268,20 +268,20 @@ The timeline is a core piece of the persona details, providing a concrete path f
 Chat is the primary interactive feature post-generation, requiring the complex streaming setup built in Phase 5.
 
 ### 9.1 - Chat UI Implementation
-- [ ] Build Chat page (dynamic route: `/chat/current` or `/chat/improved`)
+- [x] Build Chat page (dynamic route: `/chat/current` or `/chat/improved` or `/chat?persona=...`)
 - [x] Implement Chat interface component with Message bubble component
 - [x] Add Chat input with send button
-- [ ] Display streaming response token-by-token
-- [ ] Implement Chat history persistence via IndexedDB
+- [x] Display streaming response token-by-token
+- [x] Implement Chat history persistence via IndexedDB
 - [x] Create Persona header (name, summary, accent color)
 - [x] Add "Clear chat" button and auto-scroll to bottom on new message
 - [x] Show Loading indicator during response
-- [ ] Run `/eval_persona` to test and calibrate chat character grounding and tone contrast between Current Path and Improved Path
+- [x] Run `/eval_persona` to test and calibrate chat character grounding and tone contrast between Current Path and Improved Path
 
 ### Phase 9 Exit Criteria
-- Users can have a fluid, streaming conversation with either persona.
-- Chat history persists across reloads.
-- `/eval_persona` verification passes for both `/chat/current` and `/chat/improved` persona voices.
+- [x] Users can have a fluid, streaming conversation with either persona.
+- [x] Chat history persists across reloads via IndexedDB.
+- [x] `/eval_persona` verification passes for both `/chat/current` and `/chat/improved` persona voices.
 
 ---
 
