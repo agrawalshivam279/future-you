@@ -91,12 +91,12 @@ Constructing primitive UI elements first ensures consistency and speeds up the d
 Strong typing and centralized state are prerequisites for building robust forms, AI logic, and data flow.
 
 ### 2.1 - Type Definitions
-- [ ] Define `onboarding.types.ts` (all onboarding form data)
-- [ ] Define `life-model.types.ts` (generated life model structure)
-- [ ] Define `persona.types.ts` (persona definition, career, health, etc.)
-- [ ] Define `chat.types.ts` (chat messages)
-- [ ] Define `timeline.types.ts` (milestone structure)
-- [ ] Define `settings.types.ts` (API provider, keys)
+- [x] Define `onboarding.types.ts` (all onboarding form data)
+- [x] Define `life-model.types.ts` (generated life model structure)
+- [x] Define `persona.types.ts` (persona definition, career, health, etc.)
+- [x] Define `chat.types.ts` (chat messages)
+- [x] Define `timeline.types.ts` (milestone structure)
+- [x] Define `settings.types.ts` (API provider, keys)
 
 ### 2.2 - Zustand Stores
 - [ ] Create `settings-store.ts` (API key, provider, base URL, model name)

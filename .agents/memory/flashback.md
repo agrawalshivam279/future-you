@@ -13,7 +13,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | Module | Stack | Status |
 | :--- | :--- | :--- |
 | **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
-| **Type System** | TypeScript strict | 🔴 Not Started |
+| **Type System** | TypeScript strict | 🟢 In Progress (2.1 Domain Types Shipped) |
 | **State Management** | Zustand + localStorage + IndexedDB | 🔴 Not Started |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
 | **Onboarding** | 6-step wizard | 🔴 Not Started |
@@ -61,7 +61,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | :--- | :--- | :--- |
 | **Phase 0** | Project Scaffold & Tooling | 🟢 Completed |
 | **Phase 1** | Design System & UI Primitives | 🟢 Completed |
-| **Phase 2** | Type Definitions & State Management | 🔴 Not Started |
+| **Phase 2** | Type Definitions & State Management | 🟡 In Progress |
 | **Phase 3** | Settings & Configuration | 🔴 Not Started |
 | **Phase 4** | Onboarding Wizard | 🔴 Not Started |
 | **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
@@ -78,6 +78,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 2.1: Core Domain Type Definitions Shipped
+- **Details**: Established comprehensive, strictly typed domain interfaces and models for Onboarding data (goals, habits, time, money, skills, fears & values), Persona trajectories & sub-dimensions, Timeline milestones, AI LifeModel composite structures, ChatMessage & ChatConversation records, and AISettings & Provider presets. Complete with barrel export `src/types/index.ts` and 100% test validation.
+- **Commit**: `feat(types): define core domain interfaces for onboarding, life-model, persona, and settings`
+- **Key Files**: `src/types/onboarding.types.ts`, `src/types/timeline.types.ts`, `src/types/persona.types.ts`, `src/types/life-model.types.ts`, `src/types/chat.types.ts`, `src/types/settings.types.ts`, `src/types/index.ts`, `src/types/__tests__/types.test.ts`, `docs/specs/step-2-1-type-definitions.md`
 
 ### [2026-10-03] — Step 1.2: Layout Components & Disclaimer Modal Shipped
 - **Details**: Implemented Header (sticky navbar, branding, settings shortcut), persistent Footer (honesty disclaimer & zero cloud storage privacy guarantee), DisclaimerModal (first-time visitor onboarding with localStorage persistence), and AppShell layout coordinator. 100% Phase 1 design system complete with unit tests.
