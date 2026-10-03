@@ -14,7 +14,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | :--- | :--- | :--- |
 | **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
 | **Type System** | TypeScript strict | 🟢 In Progress (2.1 Domain Types Shipped) |
-| **State Management** | Zustand + localStorage + IndexedDB | 🔴 Not Started |
+| **State Management** | Zustand + localStorage + IndexedDB | 🟡 In Progress (Settings & UI Stores Shipped) |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
 | **Onboarding** | 6-step wizard | 🔴 Not Started |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🔴 Not Started |
@@ -78,6 +78,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 2.2a: Settings & UI Stores Shipped
+- **Details**: Implemented universal OpenAI-compatible `useSettingsStore` (managing provider selection, apiKey, baseURL, modelName, temperature, and tokens with `future-you:settings` localStorage persistence) and `useUIStore` (managing active tabs, persona focus, and modal states under `future-you:ui`). 100% test coverage.
+- **Commit**: `feat(stores): implement settings and ui zustand stores with local persistence`
+- **Key Files**: `src/stores/settings-store.ts`, `src/stores/ui-store.ts`, `src/stores/index.ts`, `src/stores/__tests__/settings-store.test.ts`, `src/stores/__tests__/ui-store.test.ts`, `docs/specs/step-2-2a-settings-ui-stores.md`
 
 ### [2026-10-03] — Step 2.1: Core Domain Type Definitions Shipped
 - **Details**: Established comprehensive, strictly typed domain interfaces and models for Onboarding data (goals, habits, time, money, skills, fears & values), Persona trajectories & sub-dimensions, Timeline milestones, AI LifeModel composite structures, ChatMessage & ChatConversation records, and AISettings & Provider presets. Complete with barrel export `src/types/index.ts` and 100% test validation.
