@@ -148,12 +148,13 @@ describe('DashboardPage Component', () => {
     expect(mockPush).toHaveBeenCalledWith('/onboarding');
   });
 
-  it('renders dashboard with both personas when life model is loaded', () => {
+  it('renders dashboard with both personas and timeline when life model is loaded', () => {
     useLifeModelStore.setState({ model: mockLifeModel });
     render(<DashboardPage />);
 
     expect(screen.getByText('Your Two Futures')).toBeInTheDocument();
     expect(screen.getByTestId('split-view-container')).toBeInTheDocument();
+    expect(screen.getByTestId('dual-timeline')).toBeInTheDocument();
     expect(screen.getByText('Taylor in 2031 (Current)')).toBeInTheDocument();
     expect(screen.getByText('Taylor in 2031 (Improved)')).toBeInTheDocument();
   });

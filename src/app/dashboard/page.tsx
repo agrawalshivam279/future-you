@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Settings, RotateCcw, Sparkles, ArrowRight } from 'lucide-react';
 import { useLifeModelStore } from '@/stores/life-model-store';
 import { SplitViewContainer } from '@/components/dashboard';
+import { DualTimeline } from '@/components/timeline';
 import { Button } from '@/components/ui/button';
 import { Modal } from '@/components/ui/modal';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
@@ -121,6 +122,12 @@ export default function DashboardPage(): React.JSX.Element {
           onChatClick={handleChat}
           onLetterClick={handleLetter}
           onReflectionsClick={handleReflections}
+        />
+
+        {/* 5-Year Milestone Timeline */}
+        <DualTimeline
+          currentMilestones={model.currentPath.timeline || []}
+          improvedMilestones={model.improvedPath.timeline || []}
         />
 
         {/* Honesty Disclaimer Banner */}
