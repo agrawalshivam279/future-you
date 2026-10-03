@@ -68,7 +68,7 @@ Constructing primitive UI elements first ensures consistency and speeds up the d
 - [x] Implement Slider component
 - [x] Implement Modal component
 - [x] Implement Toast component + provider
-- [ ] Implement Skeleton loader and Spinner components
+- [x] Implement Skeleton loader and Spinner components
 - [x] Implement Badge component
 
 ### 1.2 - Layout Components
