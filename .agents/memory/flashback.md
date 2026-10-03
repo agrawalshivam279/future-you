@@ -1,8 +1,8 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 4 / Onboarding Wizard
-> **Last Synchronized**: 2026-10-03
+> **Status**: 📋 Phase 7 / Dashboard & Split View
+> **Last Synchronized**: 2026-10-04
 
 ---
 
@@ -15,10 +15,11 @@ Future You is a client-side web application using AI to generate two simulated f
 | **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
 | **Type System** | TypeScript strict | 🟢 Phase 2 Complete (100% Shipped) |
 | **State Management** | Zustand + localStorage + IndexedDB | 🟢 Phase 2 Complete (All 5 Stores Shipped) |
-| **AI Integration** | OpenAI SDK (configurable) | 🟡 In Progress (Life Model Generator Shipped) |
+| **AI Integration** | OpenAI SDK (configurable) | 🟢 Phase 5 Complete (100% Shipped) |
 | **Settings & Data Management** | React + Zustand + IndexedDB | 🟢 Phase 3 Complete (100% Shipped) |
 | **Onboarding** | 6-step wizard | 🟢 Phase 4 Complete (100% Shipped) |
-| **Dashboard** | Split view + Timeline + Habit Levers | 🔴 Not Started |
+| **Generation Flow** | Pipeline Orchestrator + Stepper | 🟢 Phase 6 Complete (100% Shipped) |
+| **Dashboard** | Split view + Timeline + Habit Levers | 🟡 In Progress (Step 7.1a Shipped) |
 | **Chat** | Streaming persona chat | 🔴 Not Started |
 | **Letter + TTS** | Web Speech API | 🔴 Not Started |
 
@@ -67,7 +68,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
 | **Phase 5** | AI Integration Core | 🟢 Completed |
 | **Phase 6** | Generation Flow | 🟢 Completed |
-| **Phase 7** | Dashboard & Split View | 🔴 Not Started |
+| **Phase 7** | Dashboard & Split View | 🟡 In Progress |
 | **Phase 8** | Timeline | 🔴 Not Started |
 | **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
 | **Phase 10** | Habit Levers | 🔴 Not Started |
@@ -79,6 +80,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 7.1a: Persona Card & Comparison Stat Components Shipped
+- **Details**: Implemented `PersonaCard` (`src/components/dashboard/persona-card.tsx`), `ComparisonStatRow`, and `ComparisonStatsGrid` (`src/components/dashboard/comparison-stat-row.tsx`) with dashboard barrel export (`src/components/dashboard/index.ts`). Delivers high-contrast presentation for simulated 5-year personas (Current Path amber accent vs Improved Path emerald accent) with career, sleep, savings, and skills breakdown, emotional mood pills, top achievements/struggles, accessible action buttons (Talk to Persona, Read Letter, Reflections), and auto-computed metric delta comparisons. 100% test coverage with 63 passing test suites (355 tests).
+- **Commit**: `feat(dashboard): implement persona card and comparison stat components with tests`
+- **Key Files**: `src/components/dashboard/persona-card.tsx`, `src/components/dashboard/comparison-stat-row.tsx`, `src/components/dashboard/index.ts`, `src/components/dashboard/__tests__/persona-card.test.tsx`, `src/components/dashboard/__tests__/comparison-stat-row.test.tsx`, `docs/specs/step-7-1a-persona-card-stats.md`
 
 ### [2026-10-04] — Step 6.1c: Generation Page & Wizard Completion Transition Shipped (Phase 6 Complete)
 - **Details**: Implemented `GenerationPage` (`src/app/generate/page.tsx`) with onboarding input verification guards, active simulation orchestration via `useGenerationPipeline`, live visual status reporting with `GenerationStepper` and `ReflectiveQuoteTicker`, error recovery with `GenerationErrorCard`, and seamless automated redirection to `/dashboard` upon synthesis completion. Updated `OnboardingWizard` (`src/components/onboarding/onboarding-wizard.tsx`) to route directly to `/generate` upon completing step 6. Formally concludes Phase 6 Generation Flow. 100% test coverage with 61 passing test suites (341 tests).
