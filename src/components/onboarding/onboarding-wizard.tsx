@@ -5,6 +5,7 @@ import { useOnboardingStore } from '@/stores';
 import { WizardProgress } from './wizard-progress';
 import { StepWrapper } from './step-wrapper';
 import { WizardNav } from './wizard-nav';
+import { GoalsStep } from './steps';
 import { ONBOARDING_STEPS, TOTAL_STEPS } from './constants';
 import { cn } from '@/lib/utils';
 
@@ -69,18 +70,20 @@ export function OnboardingWizard({
         description={currentMeta.description}
         direction={direction}
       >
-        <div className="py-6 min-h-[220px] flex flex-col justify-center">
-          {/* Step content slot placeholder (will host individual step forms in 4.1b-g) */}
-          <div
-            data-testid={`onboarding-step-content-${currentStep}`}
-            className="rounded-xl border border-dashed border-border-primary/80 bg-bg-tertiary/40 p-8 text-center space-y-2"
-          >
-            <currentMeta.icon className="w-8 h-8 mx-auto text-accent-improved/70" aria-hidden="true" />
-            <h3 className="text-base font-semibold text-text-primary">{currentMeta.title}</h3>
-            <p className="text-xs text-text-muted max-w-md mx-auto">
-              {currentMeta.description}
-            </p>
-          </div>
+        <div className="py-4 min-h-[220px]">
+          {currentStep === 1 && <GoalsStep />}
+          {currentStep > 1 && (
+            <div
+              data-testid={`onboarding-step-content-${currentStep}`}
+              className="rounded-xl border border-dashed border-border-primary/80 bg-bg-tertiary/40 p-8 text-center space-y-2 my-2"
+            >
+              <currentMeta.icon className="w-8 h-8 mx-auto text-accent-improved/70" aria-hidden="true" />
+              <h3 className="text-base font-semibold text-text-primary">{currentMeta.title}</h3>
+              <p className="text-xs text-text-muted max-w-md mx-auto">
+                {currentMeta.description}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Step Navigation Controls */}

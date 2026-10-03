@@ -80,6 +80,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-03] — Step 4.1b: Goals & Aspirations Form Shipped
+- **Details**: Implemented `GoalsStep` form component in `src/components/onboarding/steps/goals-step.tsx` and modular `GoalListBuilder` in `src/components/onboarding/steps/goal-list-builder.tsx` capturing user callsign, current age (demographic anchor), 1-year short-term goals, 5-year long-term aspirations, quick suggestion chips, removable badges, and ideal dream life narrative text. Integrated into `OnboardingWizard` on step 1 with full two-way binding to `useOnboardingStore`. 100% test coverage with 36 passing test suites (161 tests).
+- **Commit**: `feat(onboarding): implement step 1 goals and aspirations form with goal builder`
+- **Key Files**: `src/components/onboarding/steps/goals-step.tsx`, `src/components/onboarding/steps/goal-list-builder.tsx`, `src/components/onboarding/steps/index.ts`, `src/components/onboarding/index.ts`, `src/components/onboarding/onboarding-wizard.tsx`, `src/components/onboarding/steps/__tests__/goals-step.test.tsx`, `src/components/onboarding/steps/__tests__/goal-list-builder.test.tsx`, `docs/specs/step-4-1b-goals-step.md`
+
 ### [2026-10-03] — Step 4.1a: Onboarding Wizard Scaffold & Navigation Shipped
 - **Details**: Built the complete structural foundation of the 6-step Onboarding Wizard, including `ONBOARDING_STEPS` metadata in `src/components/onboarding/constants.ts`, responsive `WizardProgress` (desktop stepper bar with step states & mobile compact bar with percentage fill), animated `StepWrapper` using Framer Motion directional slide transitions, accessible `WizardNav` (Back / Continue controls with step counter), and `OnboardingWizard` coordinator managing state transitions synced to `useOnboardingStore`. Created `/onboarding` page view in `src/app/onboarding/page.tsx`. 100% test coverage with 34 passing test suites (150 tests).
 - **Commit**: `feat(onboarding): implement wizard scaffold with step progress and slide transitions`
