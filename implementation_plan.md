@@ -228,9 +228,9 @@ The dashboard is the central hub where users consume the generated content.
 ### 7.1 - Dashboard Implementation
 - [ ] Build Dashboard page
 - [ ] Implement Split view container (2-column desktop, stacked mobile)
-- [ ] Create Persona card component (summary, mood, key stats)
-- [ ] Add navigation links to chat, letter, regret/gratitude for each persona
-- [ ] Implement Comparison stat rows (career, health, finances, skills) side by side
+- [x] Create Persona card component (summary, mood, key stats)
+- [x] Add navigation links to chat, letter, regret/gratitude for each persona
+- [x] Implement Comparison stat rows (career, health, finances, skills) side by side
 - [ ] Implement Regenerate button (re-runs generation with same inputs)
 
 ### Phase 7 Exit Criteria
