@@ -66,7 +66,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
 | **Phase 5** | AI Integration Core | 🟢 Completed |
-| **Phase 6** | Generation Flow | 🟡 In Progress (Step 6.1b UI Components & Hook Shipped) |
+| **Phase 6** | Generation Flow | 🟢 Completed |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
 | **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 6.1c: Generation Page & Wizard Completion Transition Shipped (Phase 6 Complete)
+- **Details**: Implemented `GenerationPage` (`src/app/generate/page.tsx`) with onboarding input verification guards, active simulation orchestration via `useGenerationPipeline`, live visual status reporting with `GenerationStepper` and `ReflectiveQuoteTicker`, error recovery with `GenerationErrorCard`, and seamless automated redirection to `/dashboard` upon synthesis completion. Updated `OnboardingWizard` (`src/components/onboarding/onboarding-wizard.tsx`) to route directly to `/generate` upon completing step 6. Formally concludes Phase 6 Generation Flow. 100% test coverage with 61 passing test suites (341 tests).
+- **Commit**: `feat(generation): implement generation page and onboarding wizard completion transition`
+- **Key Files**: `src/app/generate/page.tsx`, `src/app/generate/__tests__/page.test.tsx`, `src/components/onboarding/onboarding-wizard.tsx`, `jest.setup.ts`, `docs/specs/step-6-1c-generation-page.md`
 
 ### [2026-10-04] — Step 6.1b: Generation Flow UI Components & Pipeline Hook Shipped
 - **Details**: Implemented `useGenerationPipeline` hook (`src/hooks/use-generation-pipeline.ts`), `GenerationStepper` (`src/components/generation/generation-stepper.tsx`), `GenerationErrorCard` (`src/components/generation/generation-error-card.tsx`), and `ReflectiveQuoteTicker` (`src/components/generation/reflective-quote-ticker.tsx`). Drives the 5-stage generation lifecycle with client-side AbortController unmount safety, animated Framer Motion progress bars with full WCAG AA accessibility (`role="progressbar"`), clear error recovery actions (Try Again, Edit Onboarding), and philosophical quote ticker. 100% test coverage with 60 passing test suites (336 tests).

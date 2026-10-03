@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { AlertCircle } from 'lucide-react';
 import { useOnboardingStore } from '@/stores';
 import { validateStep } from '@/lib/validation';
@@ -42,6 +43,7 @@ export function OnboardingWizard({
     getOnboardingData,
     setCompleted,
   } = useOnboardingStore();
+  const router = useRouter();
   const [direction, setDirection] = useState<number>(0);
   const [stepErrors, setStepErrors] = useState<string[]>([]);
 
@@ -63,6 +65,7 @@ export function OnboardingWizard({
     } else {
       setCompleted(true);
       onComplete?.();
+      router.push('/generate');
     }
   };
 
