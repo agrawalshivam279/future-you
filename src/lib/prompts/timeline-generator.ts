@@ -231,7 +231,8 @@ function normalizeMilestoneList(
  */
 export function parseTimelineResponse(
   rawText: string,
-  inputs?: Partial<OnboardingData>
+  inputs?: Partial<OnboardingData>,
+  throwOnError: boolean = false
 ): TimelineGenerationResult {
   try {
     const jsonStr = extractJsonString(rawText);
@@ -241,7 +242,14 @@ export function parseTimelineResponse(
       currentTimeline: normalizeMilestoneList(parsed.currentTimeline || parsed.current, 'current', inputs),
       improvedTimeline: normalizeMilestoneList(parsed.improvedTimeline || parsed.improved, 'improved', inputs),
     };
-  } catch {
+  } catch (err) {
+    if (throwOnError) {
+      throw new Error(
+        `Failed to parse LLM Timeline response as JSON: ${
+          err instanceof Error ? err.message : String(err)
+        }`
+      );
+    }
     return {
       currentTimeline: createDefaultMilestones('current', inputs),
       improvedTimeline: createDefaultMilestones('improved', inputs),
@@ -255,14 +263,22 @@ export function parseTimelineResponse(
 export function parseSinglePathTimelineResponse(
   rawText: string,
   path: PersonaId,
-  inputs?: Partial<OnboardingData>
+  inputs?: Partial<OnboardingData>,
+  throwOnError: boolean = false
 ): TimelineMilestone[] {
   try {
     const jsonStr = extractJsonString(rawText);
     const parsed = JSON.parse(jsonStr);
     const list = parsed.timeline || parsed.milestones || parsed;
     return normalizeMilestoneList(list, path, inputs);
-  } catch {
+  } catch (err) {
+    if (throwOnError) {
+      throw new Error(
+        `Failed to parse LLM single path timeline response as JSON: ${
+          err instanceof Error ? err.message : String(err)
+        }`
+      );
+    }
     return createDefaultMilestones(path, inputs);
   }
 }
