@@ -205,11 +205,11 @@ With UI and user data ready, we need the core engine that generates the app's un
 Generating the models takes time; we need a proper UX to keep the user informed and handle generation errors before showing the dashboard.
 
 ### 6.1 - Loading Screen Implementation
-- [ ] Build Generation page / loading state shown after onboarding
+- [x] Build Generation page / loading state shown after onboarding
 - [x] Implement sequential generation orchestration (life model → personas → timelines → letters → regret/gratitude)
 - [x] Add progress indicator showing current generation step
 - [x] Implement error recovery (retry button, go back to edit)
-- [ ] Redirect to dashboard upon successful completion
+- [x] Redirect to dashboard upon successful completion
 
 ### Phase 6 Exit Criteria
 - User experiences a smooth, informative loading flow after onboarding.

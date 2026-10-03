@@ -32,3 +32,15 @@ if (typeof window !== 'undefined') {
   // @ts-expect-error - node-fetch types slightly differ from DOM fetch
   window.Response = Response;
 }
+
+// Global next/navigation mock for Next.js App Router tests
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+    back: jest.fn(),
+  }),
+  usePathname: () => '/',
+  useSearchParams: () => new URLSearchParams(),
+}));
