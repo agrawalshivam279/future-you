@@ -99,11 +99,11 @@ Strong typing and centralized state are prerequisites for building robust forms,
 - [x] Define `settings.types.ts` (API provider, keys)
 
 ### 2.2 - Zustand Stores
-- [ ] Create `settings-store.ts` (API key, provider, base URL, model name)
+- [x] Create `settings-store.ts` (API key, provider, base URL, model name)
 - [ ] Create `onboarding-store.ts` (form data for all 6 steps, completion state)
 - [ ] Create `life-model-store.ts` (generated model, personas, loading state)
 - [ ] Create `chat-store.ts` (messages per persona, IndexedDB integration)
-- [ ] Create `ui-store.ts` (modal visibility, toast queue)
+- [x] Create `ui-store.ts` (modal visibility, toast queue)
 
 ### Phase 2 Exit Criteria
 - TypeScript compiles without errors.
