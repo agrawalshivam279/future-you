@@ -120,11 +120,11 @@ Strong typing and centralized state are prerequisites for building robust forms,
 The application cannot function without an AI provider configured. We need this ready before building features that make AI calls.
 
 ### 3.1 - Settings Page Implementation
-- [ ] Build Settings page with API configuration form
-- [ ] Implement Provider selector (OpenAI, Gemini, FreeLLMAPI, OpenRouter, Custom)
-- [ ] Implement API key input (password field with show/hide)
-- [ ] Implement Base URL input (auto-filled by provider selection, editable) and Model name input
-- [ ] Create "Test connection" button to validate API keys
+- [x] Build Settings page with API configuration form
+- [x] Implement Provider selector (OpenAI, Gemini, FreeLLMAPI, OpenRouter, Custom)
+- [x] Implement API key input (password field with show/hide)
+- [x] Implement Base URL input (auto-filled by provider selection, editable) and Model name input
+- [x] Create "Test connection" button to validate API keys
 - [ ] Implement "Delete All Data" button with confirmation modal
 - [ ] Implement Data export (download all localStorage as JSON)
 
