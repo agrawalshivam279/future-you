@@ -18,7 +18,24 @@ describe('OnboardingWizard Component', () => {
     ).toBeInTheDocument();
   });
 
-  it('advances to step 2 when continue button is clicked', () => {
+  it('prevents advancing from step 1 when required fields are missing', () => {
+    render(<OnboardingWizard />);
+
+    const continueBtn = screen.getByRole('button', { name: /continue to next step/i });
+    fireEvent.click(continueBtn);
+
+    // Stays on step 1
+    expect(useOnboardingStore.getState().currentStep).toBe(1);
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(
+      screen.getByText(/please enter your name or callsign/i)
+    ).toBeInTheDocument();
+  });
+
+  it('advances to step 2 when step 1 validation criteria are met', () => {
+    useOnboardingStore.getState().updateBasics('Alex', 28);
+    useOnboardingStore.getState().updateGoals({ shortTerm: ['Launch my product'] });
+
     render(<OnboardingWizard />);
 
     const continueBtn = screen.getByRole('button', { name: /continue to next step/i });
@@ -28,6 +45,7 @@ describe('OnboardingWizard Component', () => {
     expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '2');
     expect(screen.getAllByText('Daily Habits & Lifestyle').length).toBeGreaterThan(0);
     expect(screen.getByText('Nightly Sleep Duration')).toBeInTheDocument();
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 
   it('advances to step 3 and renders Weekly Time Allocation form', () => {
@@ -64,8 +82,13 @@ describe('OnboardingWizard Component', () => {
     expect(screen.getByText('Monthly Savings & Investment Rate')).toBeInTheDocument();
   });
 
-  it('advances to step 5 and renders Skills & Learning form', () => {
+  it('advances to step 5 when step 4 financial data is provided', () => {
     useOnboardingStore.getState().setCurrentStep(4);
+    useOnboardingStore.getState().updateMoney({
+      incomeRange: '$60k - $100k',
+      financialGoal: 'Save $50k down payment',
+    });
+
     render(<OnboardingWizard />);
 
     const continueBtn = screen.getByRole('button', { name: /continue to next step/i });
@@ -81,8 +104,13 @@ describe('OnboardingWizard Component', () => {
     expect(screen.getByText('Target Capabilities & Learning Goals')).toBeInTheDocument();
   });
 
-  it('advances to step 6 and renders Fears, Values & Drivers form', () => {
+  it('advances to step 6 when step 5 skills data is provided', () => {
     useOnboardingStore.getState().setCurrentStep(5);
+    useOnboardingStore.getState().updateSkills({
+      currentSkills: ['Fullstack React'],
+      careerField: 'Software Engineering',
+    });
+
     render(<OnboardingWizard />);
 
     const continueBtn = screen.getByRole('button', { name: /continue to next step/i });
@@ -98,7 +126,7 @@ describe('OnboardingWizard Component', () => {
     expect(screen.getByText('Non-Negotiable Core Values')).toBeInTheDocument();
   });
 
-  it('navigates back to step 1 from step 2 when back button is clicked', () => {
+  it('navigates back to step 1 from step 2 when back button is clicked and clears errors', () => {
     useOnboardingStore.getState().setCurrentStep(2);
     render(<OnboardingWizard />);
 
@@ -107,11 +135,16 @@ describe('OnboardingWizard Component', () => {
 
     expect(useOnboardingStore.getState().currentStep).toBe(1);
     expect(screen.getAllByText('Goals & Aspirations').length).toBeGreaterThan(0);
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument();
   });
 
-  it('calls onComplete when clicking continue on the final step', () => {
+  it('validates final step, sets completion flag, and invokes onComplete callback', () => {
     const handleComplete = jest.fn();
     useOnboardingStore.getState().setCurrentStep(6);
+    useOnboardingStore.getState().updateFearsAndValues({
+      coreValues: ['Autonomy', 'Truth'],
+      biggestFears: ['Stagnation'],
+    });
 
     render(<OnboardingWizard onComplete={handleComplete} />);
 
@@ -120,6 +153,7 @@ describe('OnboardingWizard Component', () => {
     });
     fireEvent.click(finishBtn);
 
+    expect(useOnboardingStore.getState().isCompleted).toBe(true);
     expect(handleComplete).toHaveBeenCalledTimes(1);
   });
 });

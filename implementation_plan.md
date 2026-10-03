@@ -154,9 +154,9 @@ Onboarding data is the raw input required for generating the life model and pers
 - [x] Implement Step 6: Fears & Values (fears, values, regrets, motivation, risk tolerance)
 
 ### 4.2 - Logic & Integration
-- [ ] Add form validation per step
-- [ ] Connect wizard to `onboarding-store.ts` to save progress
-- [ ] Implement "Generate My Futures" button on the final step
+- [x] Add form validation per step
+- [x] Connect wizard to `onboarding-store.ts` to save progress
+- [x] Implement "Generate My Futures" button on the final step
 
 ### Phase 4 Exit Criteria
 - Users can complete all 6 steps smoothly with data persisted on reload.

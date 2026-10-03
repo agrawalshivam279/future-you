@@ -64,7 +64,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 1** | Design System & UI Primitives | 🟢 Completed |
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
-| **Phase 4** | Onboarding Wizard | 🟡 In Progress (Steps 4.1a-g Shipped) |
+| **Phase 4** | Onboarding Wizard | 🟢 Completed |
 | **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 4.2: Onboarding Form Validation & Completion Handshake Shipped
+- **Details**: Implemented pure client-side validation engine in `src/lib/validation/onboarding-validator.ts` covering data invariants across all 6 onboarding steps (name/callsign min length, age bounds, at least 1 goal, valid habit metrics, 168-hour weekly budget constraint, required income and financial goal, required skills and career domain, core values, and anxieties). Integrated validation checks and accessible error alert notifications into `OnboardingWizard`, preventing advancement with empty or out-of-bounds fields and executing completion handshake (`setCompleted(true)`) upon final step submission. 100% test coverage with 42 passing test suites (208 tests). Completes Phase 4.
+- **Commit**: `feat(onboarding): implement step validation engine, completion handshake, and error alerts`
+- **Key Files**: `src/lib/validation/onboarding-validator.ts`, `src/lib/validation/index.ts`, `src/components/onboarding/onboarding-wizard.tsx`, `src/lib/validation/__tests__/onboarding-validator.test.ts`, `src/components/onboarding/__tests__/onboarding-wizard.test.tsx`, `docs/specs/step-4-2-onboarding-validation.md`
 
 ### [2026-10-03] — Step 4.1g: Fears, Values & Drivers Form Shipped
 - **Details**: Implemented `FearsValuesStep` form component in `src/components/onboarding/steps/fears-values-step.tsx` integrating reusable `GoalListBuilder` for primary anxieties & potential regrets and non-negotiable core values with custom suggestions and badges, a past regrets & patterns to break reflection `Textarea`, a 3-way motivational drive selector (Internal, External, Mixed), and an appetite for risk slider (1–10) with dynamic risk tolerance mindset feedback. Integrated into `OnboardingWizard` on step 6 completing the full 6-step questionnaire. 100% test coverage with 41 passing test suites (199 tests).
