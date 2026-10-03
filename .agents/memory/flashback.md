@@ -80,6 +80,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-03] — Step 4.1c: Habits & Lifestyle Form Shipped
+- **Details**: Implemented `HabitsStep` form component in `src/components/onboarding/steps/habits-step.tsx` capturing nightly sleep hours slider (4-12 hrs), physical exercise frequency segmented radiogroup (Never, Rarely, Weekly, Daily), diet & nutrition quality radiogroup (Poor, Average, Good, Excellent), recreational screen time slider (0-16 hrs), and daily meditation/reflection practice toggle. Integrated into `OnboardingWizard` on step 2 with real-time two-way synchronization to `useOnboardingStore`. 100% test coverage with 37 passing test suites (167 tests).
+- **Commit**: `feat(onboarding): implement step 2 habits and lifestyle form with sliders and radio groups`
+- **Key Files**: `src/components/onboarding/steps/habits-step.tsx`, `src/components/onboarding/steps/index.ts`, `src/components/onboarding/onboarding-wizard.tsx`, `src/components/onboarding/step-wrapper.tsx`, `src/components/onboarding/steps/__tests__/habits-step.test.tsx`, `docs/specs/step-4-1c-habits-step.md`
+
 ### [2026-10-03] — Step 4.1b: Goals & Aspirations Form Shipped
 - **Details**: Implemented `GoalsStep` form component in `src/components/onboarding/steps/goals-step.tsx` and modular `GoalListBuilder` in `src/components/onboarding/steps/goal-list-builder.tsx` capturing user callsign, current age (demographic anchor), 1-year short-term goals, 5-year long-term aspirations, quick suggestion chips, removable badges, and ideal dream life narrative text. Integrated into `OnboardingWizard` on step 1 with full two-way binding to `useOnboardingStore`. 100% test coverage with 36 passing test suites (161 tests).
 - **Commit**: `feat(onboarding): implement step 1 goals and aspirations form with goal builder`

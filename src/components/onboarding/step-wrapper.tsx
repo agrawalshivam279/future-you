@@ -57,7 +57,7 @@ export function StepWrapper({
 }: StepWrapperProps): React.JSX.Element {
   return (
     <div className={cn('w-full relative overflow-hidden', className)}>
-      <AnimatePresence mode="wait" custom={direction}>
+      <AnimatePresence mode="popLayout" custom={direction} initial={false}>
         <motion.div
           key={stepNumber}
           custom={direction}
