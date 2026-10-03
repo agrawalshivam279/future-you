@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 8 / Timeline
+> **Status**: 📋 Phase 9 / Chat Interface
 > **Last Synchronized**: 2026-10-04
 
 ---
@@ -20,7 +20,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Onboarding** | 6-step wizard | 🟢 Phase 4 Complete (100% Shipped) |
 | **Generation Flow** | Pipeline Orchestrator + Stepper | 🟢 Phase 6 Complete (100% Shipped) |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🟢 Phase 7 Complete (100% Shipped) |
-| **Timeline** | Chronological dual-track visualization | 🟡 In Progress (Step 8.1a Shipped) |
+| **Timeline** | Chronological dual-track visualization | 🟢 Phase 8 Complete (100% Shipped) |
 | **Chat** | Streaming persona chat | 🔴 Not Started |
 | **Letter + TTS** | Web Speech API | 🔴 Not Started |
 
@@ -70,7 +70,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 5** | AI Integration Core | 🟢 Completed |
 | **Phase 6** | Generation Flow | 🟢 Completed |
 | **Phase 7** | Dashboard & Split View | 🟢 Completed |
-| **Phase 8** | Timeline | 🟡 In Progress |
+| **Phase 8** | Timeline | 🟢 Completed |
 | **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
 | **Phase 10** | Habit Levers | 🔴 Not Started |
 | **Phase 11** | Letter from Future Self + TTS | 🔴 Not Started |
@@ -81,6 +81,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 8.1b: Dual Timeline Component & Dashboard Integration Shipped (Phase 8 Complete)
+- **Details**: Implemented `DualTimeline` (`src/components/timeline/dual-timeline.tsx`), updated timeline index barrel (`src/components/timeline/index.ts`), and integrated parallel 5-year chronological milestone tracks into `DashboardPage` (`src/app/dashboard/page.tsx`). Features parallel horizontal tracks on desktop and vertical tracks on mobile connecting Year 1, 3, and 5 `TimelineNode`s with Framer Motion connecting line draw animations, full legend guidance, and floating interactive milestone tooltips. Formally concludes Phase 8 Timeline. 100% test coverage with 68 passing test suites (381 tests).
+- **Commit**: `feat(timeline): implement dual timeline component and integrate into dashboard`
+- **Key Files**: `src/components/timeline/dual-timeline.tsx`, `src/components/timeline/index.ts`, `src/app/dashboard/page.tsx`, `src/components/timeline/__tests__/dual-timeline.test.tsx`, `src/app/dashboard/__tests__/page.test.tsx`, `docs/specs/step-8-1b-dual-timeline.md`
 
 ### [2026-10-04] — Step 8.1a: Timeline Node & Milestone Tooltip Components Shipped
 - **Details**: Implemented `TimelineNode` (`src/components/timeline/timeline-node.tsx`) and `MilestoneTooltip` (`src/components/timeline/milestone-tooltip.tsx`) with timeline barrel export (`src/components/timeline/index.ts`). Anchors chronological future milestones (Years 1, 3, and 5) with year-scaled node diameters (14px, 18px, 24px) and persona path styling (Current Path amber vs Improved Path emerald). Features interactive floating tooltips displaying headline, mood badge, narrative description, and key domain metric badges with keyboard focus and screen-reader accessibility (`aria-label`, `aria-expanded`). 100% test coverage with 67 passing test suites (376 tests).

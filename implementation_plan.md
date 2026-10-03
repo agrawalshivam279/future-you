@@ -248,11 +248,11 @@ The dashboard is the central hub where users consume the generated content.
 The timeline is a core piece of the persona details, providing a concrete path for the user to review.
 
 ### 8.1 - Timeline Component Implementation
-- [ ] Build Timeline component (horizontal desktop, vertical mobile)
+- [x] Build Timeline component (horizontal desktop, vertical mobile)
 - [x] Implement Timeline node component with hover/click details
-- [ ] Create Dual timeline layout (Current + Improved parallel tracks)
+- [x] Create Dual timeline layout (Current + Improved parallel tracks)
 - [x] Add Milestone detail tooltip/popover
-- [ ] Add Draw animation on first render
+- [x] Add Draw animation on first render
 
 ### Phase 8 Exit Criteria
 - Timeline renders milestones chronologically for both paths with interactive tooltips.
