@@ -64,7 +64,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 1** | Design System & UI Primitives | 🟢 Completed |
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
-| **Phase 4** | Onboarding Wizard | 🟡 In Progress (Steps 4.1a-e Shipped) |
+| **Phase 4** | Onboarding Wizard | 🟡 In Progress (Steps 4.1a-f Shipped) |
 | **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 4.1f: Skills & Learning Form Shipped
+- **Details**: Implemented `SkillsStep` form component in `src/components/onboarding/steps/skills-step.tsx` integrating reusable `GoalListBuilder` for current core capabilities and target learning goals with custom suggestion chips and removable badges, a primary career domain input with common industry presets, a career satisfaction rating slider (1–10) with dynamic fulfillment notes, and a growth mindset orientation slider (1–10) with adaptive learning feedback. Integrated into `OnboardingWizard` on step 5 with real-time two-way synchronization to `useOnboardingStore`. 100% test coverage with 40 passing test suites (192 tests).
+- **Commit**: `feat(onboarding): implement step 5 skills and learning form with skill builders and ratings`
+- **Key Files**: `src/components/onboarding/steps/skills-step.tsx`, `src/components/onboarding/steps/index.ts`, `src/components/onboarding/onboarding-wizard.tsx`, `src/components/onboarding/steps/__tests__/skills-step.test.tsx`, `src/components/onboarding/__tests__/onboarding-wizard.test.tsx`, `docs/specs/step-4-1f-skills-step.md`
 
 ### [2026-10-03] — Step 4.1e: Finances & Resources Form Shipped
 - **Details**: Implemented `MoneyStep` form component in `src/components/onboarding/steps/money-step.tsx` capturing current annual income bracket radiogroup (<$30k through $250k+), monthly savings & investment rate slider (0-100%) with dynamic wealth trajectory notes, debt burden level radiogroup (None, Low, Moderate, High), spending habits reflection selector, and primary 5-year financial milestone input with quick idea chips. Integrated into `OnboardingWizard` on step 4 with real-time two-way synchronization to `useOnboardingStore`. 100% test coverage with 39 passing test suites (184 tests).
