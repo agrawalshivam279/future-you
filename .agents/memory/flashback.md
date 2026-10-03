@@ -46,6 +46,13 @@ Future You is a client-side web application using AI to generate two simulated f
 - **Decision**: Use Zustand with `persist` middleware for localStorage. IndexedDB for chat history (which can grow large).
 - **Consequences**: Simpler than Context, no provider nesting, works in lib/ai/ modules.
 
+### ADR-004: Mandatory /eval_persona Audit for AI Prompts & Chat Personas
+- **Date**: 2026-10-03
+- **Status**: Accepted
+- **Context**: Future You generates two distinct personas (Current Path and Improved Path) across 1/3/5-year horizons. In Phase 5 (AI Integration Core) and Phase 9 (Chat Interface), prompt changes risk character drift, toxic positivity, fatalism, or schema mismatch.
+- **Decision**: Mandate running `/eval_persona` during Phase 5 (validating prompt templates in `lib/prompts/`) and Phase 9 (evaluating persona chat grounding and tone differentiation).
+- **Consequences**: Guarantees tone differentiation, structured JSON compliance, and presence of the mandatory reflection disclaimer.
+
 ---
 
 ## 3. Implementation Phase Tracker
@@ -57,11 +64,11 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 2** | Type Definitions & State Management | 🔴 Not Started |
 | **Phase 3** | Settings & Configuration | 🔴 Not Started |
 | **Phase 4** | Onboarding Wizard | 🔴 Not Started |
-| **Phase 5** | AI Integration Core | 🔴 Not Started |
+| **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
-| **Phase 9** | Chat Interface | 🔴 Not Started |
+| **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
 | **Phase 10** | Habit Levers | 🔴 Not Started |
 | **Phase 11** | Letter from Future Self + TTS | 🔴 Not Started |
 | **Phase 12** | Regret & Gratitude View | 🔴 Not Started |

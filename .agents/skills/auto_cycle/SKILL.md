@@ -1,25 +1,31 @@
 ---
 name: auto_cycle
-version: '2.0'
+version: '2.1'
 description: >-
   Master Autonomous Feature Lifecycle Orchestrator for Future You. Coordinates the full end-to-end development cycle
-  by sequentially executing plan_step, code synthesis, verify_step, and ship_step with explicit
+  by sequentially executing doctor preflight checks, plan_step, code synthesis, verify_step, and ship_step with explicit
   context-window budget monitoring (40-50% headroom buffer), subagent delegation, timeout circuit-breakers,
   and Next.js 14 / TypeScript quality checks. Use whenever executing a complete atomic feature from start to finish, or calling /auto_cycle.
 ---
 
 # ♾️ Auto Cycle — Master Autonomous Feature Lifecycle Orchestrator
 
-`auto_cycle` is the overarching development orchestrator for the **Future You** project. It connects **[`plan_step`](file:///d:/Future%20You/.agents/skills/plan_step/SKILL.md)**, **Code Implementation**, **[`verify_step`](file:///d:/Future%20You/.agents/skills/verify_step/SKILL.md)**, and **[`ship_step`](file:///d:/Future%20You/.agents/skills/ship_step/SKILL.md)** into a continuous, guarded development loop.
+`auto_cycle` is the overarching development orchestrator for the **Future You** project. It connects **[`doctor`](file:///d:/Future%20You/.agents/skills/doctor/SKILL.md)**, **[`plan_step`](file:///d:/Future%20You/.agents/skills/plan_step/SKILL.md)**, **Code Implementation**, **[`verify_step`](file:///d:/Future%20You/.agents/skills/verify_step/SKILL.md)**, and **[`ship_step`](file:///d:/Future%20You/.agents/skills/ship_step/SKILL.md)** into a continuous, guarded development loop.
 
 ---
 
-## 🔄 The 4-Phase Lifecycle Architecture
+## 🔄 The 5-Phase Lifecycle Architecture
 
 ```mermaid
 flowchart TD
+    subgraph Phase0["Phase 0: Preflight Health Gate"]
+        A["Trigger /auto_cycle"] --> Pre["Run /doctor"]
+        Pre --> PreCheck{"Environment Healthy?"}
+        PreCheck -- "❌ No" --> PreFail["🛑 HALT: Output Health Diagnostics & Fix Command"]
+    end
+
     subgraph Phase1["Phase 1: Plan & Branch"]
-        A["Trigger /auto_cycle"] --> B["Run /plan_step"]
+        PreCheck -- "✅ Yes" --> B["Run /plan_step"]
         B --> C["Verify Git Clean ➔ Branch ➔ Privacy & Schema Checklist ➔ Author Spec"]
     end
 
@@ -45,22 +51,23 @@ flowchart TD
         N --> O["🎯 Pre-fetch Next Atomic Step from Queue"]
     end
 
-    Phase1 --> Phase2 --> Phase3 --> Phase4
+    Phase0 --> Phase1 --> Phase2 --> Phase3 --> Phase4
 ```
 
 ---
 
-## 🔒 The 5 Invariant Guardrails & Circuit Breakers
+## 🔒 The 6 Invariant Guardrails & Circuit Breakers
 
-To guarantee stability, preserve user privacy, and eliminate runaway errors, `auto_cycle` enforces five non-negotiable gates:
+To guarantee stability, preserve user privacy, and eliminate runaway errors, `auto_cycle` enforces six non-negotiable gates:
 
 | Gate | Trigger Condition | Automated Action |
 | :--- | :--- | :--- |
+| **0. Preflight Health Gate (doctor)** | Any failure in working tree, remote origin, CI workflow (`.github/workflows/ci.yml`), test setup (`fake-indexeddb`), or compiler (`tsc`). | **Halts immediately before branching or planning**. Outputs diagnostic remediation command. |
 | **1. Clean Tree Gate** | Modified or untracked files detected before starting. | **Halts immediately**. Prompts developer to commit or stash. |
 | **2. Context Window Gate** | Turn token consumption exceeds $\sim 75,000$ tokens. | Completes current atomic step, ships PR, and **pauses to start a fresh turn**, preserving 40–50% headroom. |
 | **3. Test & Contract Failure Gate** | Any TypeScript error (`tsc --noEmit`), lint failure, or Jest/React assertion fails during verification. | **Hard stop**. Does NOT review or ship. Outputs failure analysis and single-turn fix prompt. |
 | **4. Subagent Boundary Rule** | Subagents are used for parallel testing and code review. | **Subagents never touch Git directly**. All Git commits, pushes, and PR merges are strictly synchronous on the primary agent. |
-| **5. Stage Timeout Circuit Breaker** | Any stage exceeds its time threshold: `plan_step` (5 min), Code Synthesis (10 min), `verify_step` (**10 min**), `ship_step` (**8 min** including CI polling). | **Interrupts hung process**, logs timeout diagnostic, and asks developer to resume or inspect. |
+| **5. Stage Timeout Circuit Breaker** | Any stage exceeds its time threshold: `doctor` (1 min), `plan_step` (5 min), Code Synthesis (10 min), `verify_step` (**10 min**), `ship_step` (**8 min** including CI polling). | **Interrupts hung process**, logs timeout diagnostic, and asks developer to resume or inspect. |
 
 ---
 
@@ -70,6 +77,7 @@ To guarantee stability, preserve user privacy, and eliminate runaway errors, `au
 
 | Layer / Target | Compilation & Lint Command | Verification Suite |
 | :--- | :--- | :--- |
+| **Preflight Environment** | `npx tsc --noEmit && npm run lint` | `npm test -- --passWithNoTests` |
 | **TypeScript & Next.js** | `npx tsc --noEmit && npm run lint` | `npm test -- <target>.test.tsx` |
 | **Zustand & Local Storage** | `npx tsc --noEmit` | `npm test -- src/stores/<store>.test.ts` |
 | **AI Client & Prompts** | `npx tsc --noEmit` | `npm test -- src/lib/ai/<module>.test.ts` |
@@ -78,6 +86,14 @@ To guarantee stability, preserve user privacy, and eliminate runaway errors, `au
 ---
 
 ## 📋 Execution Protocol
+
+### Step 0: Preflight Health Inspection (`doctor`)
+
+1. Executes [`doctor`](file:///d:/Future%20You/.agents/skills/doctor/SKILL.md).
+2. Verifies working tree cleanliness, remote origin connectivity, CI workflow presence in `.github/workflows/ci.yml`, `fake-indexeddb` test setup, and zero TypeScript compiler errors.
+3. If any check fails, **HALTS IMMEDIATELY** and outputs the diagnostic remediation instructions.
+
+---
 
 ### Step 1: Planning & Branch Provisioning (`plan_step`)
 
@@ -125,6 +141,7 @@ To guarantee stability, preserve user privacy, and eliminate runaway errors, `au
 
 ### 📊 Lifecycle Execution Summary
 
+- **0. Preflight Health**: `✓` Environment, CI workflow & dependencies verified by `doctor`.
 - **1. Planning & Spec**: `✓` Created branch `feat/[slug]` and spec `docs/specs/[slug].md`.
 - **2. Implementation**: `✓` Generated [N] files ([X] LOC total, max <= 300 LOC/file).
 - **3. Dynamic Verification**: `✓` [K] tests passed (0 failures, contracts verified).

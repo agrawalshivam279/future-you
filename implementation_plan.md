@@ -177,6 +177,7 @@ With UI and user data ready, we need the core engine that generates the app's un
 - [ ] Create `lib/prompts/system-current-path.ts` and `lib/prompts/system-improved-path.ts`
 - [ ] Create `lib/prompts/timeline-generator.ts`
 - [ ] Create `lib/prompts/letter-generator.ts` and `lib/prompts/regret-gratitude-generator.ts`
+- [ ] Audit prompt templates with `/eval_persona` (validate JSON schema conformance, tone differentiation, and honesty disclaimer)
 
 ### 5.2 - Generation Orchestration
 - [ ] Implement `lib/ai/generate-life-model.ts` (calls LLM, parses response, validates, retries)
@@ -190,6 +191,7 @@ With UI and user data ready, we need the core engine that generates the app's un
 ### Phase 5 Exit Criteria
 - All AI generation functions can be executed successfully and return structured JSON/text.
 - Timeouts and errors are caught gracefully.
+- `/eval_persona` fidelity audit passes for both Current and Improved persona prompts.
 
 ---
 
@@ -273,10 +275,12 @@ Chat is the primary interactive feature post-generation, requiring the complex s
 - [ ] Create Persona header (name, summary, accent color)
 - [ ] Add "Clear chat" button and auto-scroll to bottom on new message
 - [ ] Show Loading indicator during response
+- [ ] Run `/eval_persona` to test and calibrate chat character grounding and tone contrast between Current Path and Improved Path
 
 ### Phase 9 Exit Criteria
 - Users can have a fluid, streaming conversation with either persona.
 - Chat history persists across reloads.
+- `/eval_persona` verification passes for both `/chat/current` and `/chat/improved` persona voices.
 
 ---
 
