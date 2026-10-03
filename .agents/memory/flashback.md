@@ -14,7 +14,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | :--- | :--- | :--- |
 | **UI Primitives & Layout** | React + Tailwind + Framer Motion | 🟢 Phase 1 Complete (100% Shipped) |
 | **Type System** | TypeScript strict | 🟢 In Progress (2.1 Domain Types Shipped) |
-| **State Management** | Zustand + localStorage + IndexedDB | 🟡 In Progress (Settings & UI Stores Shipped) |
+| **State Management** | Zustand + localStorage + IndexedDB | 🟡 In Progress (Settings, UI & Onboarding Stores Shipped) |
 | **AI Integration** | OpenAI SDK (configurable) | 🔴 Not Started |
 | **Onboarding** | 6-step wizard | 🔴 Not Started |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🔴 Not Started |
@@ -78,6 +78,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 2.2b: Onboarding Store Shipped
+- **Details**: Implemented `useOnboardingStore` in `src/stores/onboarding-store.ts` managing the 6-step form flow, demographic basics, habits, weekly time allocation, financial goals, professional skills, and emotional drivers with bounded step navigation and `future-you:onboarding` localStorage persistence. 100% test coverage.
+- **Commit**: `feat(stores): implement onboarding wizard zustand store with local persistence`
+- **Key Files**: `src/stores/onboarding-store.ts`, `src/stores/index.ts`, `src/stores/__tests__/onboarding-store.test.ts`, `docs/specs/step-2-2b-onboarding-store.md`
 
 ### [2026-10-03] — Step 2.2a: Settings & UI Stores Shipped
 - **Details**: Implemented universal OpenAI-compatible `useSettingsStore` (managing provider selection, apiKey, baseURL, modelName, temperature, and tokens with `future-you:settings` localStorage persistence) and `useUIStore` (managing active tabs, persona focus, and modal states under `future-you:ui`). 100% test coverage.
