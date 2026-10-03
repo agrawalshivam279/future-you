@@ -270,12 +270,12 @@ Chat is the primary interactive feature post-generation, requiring the complex s
 ### 9.1 - Chat UI Implementation
 - [ ] Build Chat page (dynamic route: `/chat/current` or `/chat/improved`)
 - [x] Implement Chat interface component with Message bubble component
-- [ ] Add Chat input with send button
+- [x] Add Chat input with send button
 - [ ] Display streaming response token-by-token
 - [ ] Implement Chat history persistence via IndexedDB
-- [ ] Create Persona header (name, summary, accent color)
-- [ ] Add "Clear chat" button and auto-scroll to bottom on new message
-- [ ] Show Loading indicator during response
+- [x] Create Persona header (name, summary, accent color)
+- [x] Add "Clear chat" button and auto-scroll to bottom on new message
+- [x] Show Loading indicator during response
 - [ ] Run `/eval_persona` to test and calibrate chat character grounding and tone contrast between Current Path and Improved Path
 
 ### Phase 9 Exit Criteria
