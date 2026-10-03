@@ -178,7 +178,7 @@ With UI and user data ready, we need the core engine that generates the app's un
 - [x] Create `lib/prompts/system-current-path.ts` and `lib/prompts/system-improved-path.ts`
 - [x] Create `lib/prompts/timeline-generator.ts`
 - [x] Create `lib/prompts/letter-generator.ts` and `lib/prompts/regret-gratitude-generator.ts`
-- [ ] Audit prompt templates with `/eval_persona` (validate JSON schema conformance, tone differentiation, and honesty disclaimer)
+- [x] Audit prompt templates with `/eval_persona` (validate JSON schema conformance, tone differentiation, and honesty disclaimer)
 
 ### 5.2 - Generation Orchestration
 - [ ] Implement `lib/ai/generate-life-model.ts` (calls LLM, parses response, validates, retries)
