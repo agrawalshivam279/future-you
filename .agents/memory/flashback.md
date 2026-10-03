@@ -66,7 +66,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🟢 Completed |
 | **Phase 5** | AI Integration Core | 🟢 Completed |
-| **Phase 6** | Generation Flow | 🟡 In Progress (Step 6.1a Pipeline Shipped) |
+| **Phase 6** | Generation Flow | 🟡 In Progress (Step 6.1b UI Components & Hook Shipped) |
 | **Phase 7** | Dashboard & Split View | 🔴 Not Started |
 | **Phase 8** | Timeline | 🔴 Not Started |
 | **Phase 9** | Chat Interface | 🔴 Not Started *(⚠️ Run /eval_persona on persona chat tone)* |
@@ -79,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 6.1b: Generation Flow UI Components & Pipeline Hook Shipped
+- **Details**: Implemented `useGenerationPipeline` hook (`src/hooks/use-generation-pipeline.ts`), `GenerationStepper` (`src/components/generation/generation-stepper.tsx`), `GenerationErrorCard` (`src/components/generation/generation-error-card.tsx`), and `ReflectiveQuoteTicker` (`src/components/generation/reflective-quote-ticker.tsx`). Drives the 5-stage generation lifecycle with client-side AbortController unmount safety, animated Framer Motion progress bars with full WCAG AA accessibility (`role="progressbar"`), clear error recovery actions (Try Again, Edit Onboarding), and philosophical quote ticker. 100% test coverage with 60 passing test suites (336 tests).
+- **Commit**: `feat(generation): implement generation pipeline hook and ui stepper components`
+- **Key Files**: `src/hooks/use-generation-pipeline.ts`, `src/components/generation/generation-stepper.tsx`, `src/components/generation/generation-error-card.tsx`, `src/components/generation/reflective-quote-ticker.tsx`, `src/components/generation/index.ts`, `docs/specs/step-6-1b-generation-ui.md`
 
 ### [2026-10-04] — Step 6.1a: Sequential Generation Pipeline Orchestrator Shipped
 - **Details**: Implemented `generatePipeline` in `src/lib/ai/generate-pipeline.ts` with complete integration across all 5 AI modules (`generateLifeModel`, `generatePersonas`, `generateTimelines`, `generateLetters`, `generateDualRegretGratitude`). Provides granular stage tracking (`life-model` -> `personas` -> `timelines` -> `letters` -> `reflections` -> `complete`), cumulative token tracking across calls, immediate `AbortSignal` cancellation support, and unified `LifeModel` assembly with full persona structures. 100% test coverage with 56 passing test suites (321 tests).
