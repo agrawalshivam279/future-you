@@ -125,12 +125,13 @@ The application cannot function without an AI provider configured. We need this 
 - [x] Implement API key input (password field with show/hide)
 - [x] Implement Base URL input (auto-filled by provider selection, editable) and Model name input
 - [x] Create "Test connection" button to validate API keys
-- [ ] Implement "Delete All Data" button with confirmation modal
-- [ ] Implement Data export (download all localStorage as JSON)
+- [x] Implement "Delete All Data" button with confirmation modal
+- [x] Implement Data export (download all localStorage as JSON)
 
 ### Phase 3 Exit Criteria
 - Users can input and save API credentials.
 - Test connection successfully pings the selected API.
+- Users can export all local data and permanently purge data with one click.
 
 ---
 

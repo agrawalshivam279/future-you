@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 3 / Settings & Configuration
+> **Status**: 📋 Phase 4 / Onboarding Wizard
 > **Last Synchronized**: 2026-10-03
 
 ---
@@ -16,6 +16,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Type System** | TypeScript strict | 🟢 Phase 2 Complete (100% Shipped) |
 | **State Management** | Zustand + localStorage + IndexedDB | 🟢 Phase 2 Complete (All 5 Stores Shipped) |
 | **AI Integration** | OpenAI SDK (configurable) | 🟡 In Progress (Client & Ping Ready) |
+| **Settings & Data Management** | React + Zustand + IndexedDB | 🟢 Phase 3 Complete (100% Shipped) |
 | **Onboarding** | 6-step wizard | 🔴 Not Started |
 | **Dashboard** | Split view + Timeline + Habit Levers | 🔴 Not Started |
 | **Chat** | Streaming persona chat | 🔴 Not Started |
@@ -62,7 +63,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 0** | Project Scaffold & Tooling | 🟢 Completed |
 | **Phase 1** | Design System & UI Primitives | 🟢 Completed |
 | **Phase 2** | Type Definitions & State Management | 🟢 Completed |
-| **Phase 3** | Settings & Configuration | 🟡 In Progress (Step 3.1a Shipped) |
+| **Phase 3** | Settings & Configuration | 🟢 Completed |
 | **Phase 4** | Onboarding Wizard | 🔴 Not Started |
 | **Phase 5** | AI Integration Core | 🔴 Not Started *(⚠️ Run /eval_persona on prompt templates)* |
 | **Phase 6** | Generation Flow | 🔴 Not Started |
@@ -78,6 +79,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-03] — Step 3.1b: Settings Data Management & Purge Shipped
+- **Details**: Implemented client-side `exportLocalData`, `downloadDataAsJSON`, and `deleteAllLocalData` in `src/lib/storage/data-manager.ts`, extended `src/lib/storage/indexed-db.ts` with `clearIndexedDBDatabase`, and built `DataManagementCard` in `src/components/settings/data-management-card.tsx` with one-click JSON backup export, irreversible purge confirmation modal, zero cloud storage privacy statement, and toast notifications. Integrated into `/settings` page. 100% Phase 3 complete with 29 passing test suites (137 tests).
+- **Commit**: `feat(settings): implement data backup export and local purge management`
+- **Key Files**: `src/lib/storage/data-manager.ts`, `src/lib/storage/indexed-db.ts`, `src/components/settings/data-management-card.tsx`, `src/components/settings/index.ts`, `src/app/settings/page.tsx`, `src/lib/storage/__tests__/data-manager.test.ts`, `src/components/settings/__tests__/data-management-card.test.tsx`, `docs/specs/step-3-1b-data-management.md`
 
 ### [2026-10-03] — Step 3.1a: Settings API Configuration Form & Connection Tester Shipped
 - **Details**: Implemented `createAIClient` and `testAIConnection` in `src/lib/ai/client.ts`, the full API configuration form in `src/components/settings/api-config-form.tsx` (provider presets for FreeLLMAPI, OpenAI, Gemini, OpenRouter, Custom; masked API key with show/hide toggle; baseURL & model name inputs; live connection tester with toast feedback; privacy warning banner), and the `/settings` page view in `src/app/settings/page.tsx`. Configured Node/jsdom Web Fetch API polyfills in `jest.setup.ts`. 100% test coverage with 27 passing test suites (130 tests).

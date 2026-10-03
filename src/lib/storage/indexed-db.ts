@@ -121,3 +121,23 @@ export function createIndexedDBStorage(
     },
   };
 }
+
+/**
+ * Permanently deletes the specified IndexedDB database.
+ *
+ * @param dbName - Database name to delete
+ */
+export async function clearIndexedDBDatabase(
+  dbName: string = DEFAULT_DB_NAME
+): Promise<void> {
+  if (typeof window === 'undefined' || typeof window.indexedDB === 'undefined') {
+    return;
+  }
+
+  return new Promise<void>((resolve, reject) => {
+    const request = window.indexedDB.deleteDatabase(dbName);
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+    request.onblocked = () => resolve();
+  });
+}
