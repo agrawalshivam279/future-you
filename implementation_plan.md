@@ -206,7 +206,7 @@ Generating the models takes time; we need a proper UX to keep the user informed 
 
 ### 6.1 - Loading Screen Implementation
 - [ ] Build Generation page / loading state shown after onboarding
-- [ ] Implement sequential generation orchestration (life model → personas → timelines → letters → regret/gratitude)
+- [x] Implement sequential generation orchestration (life model → personas → timelines → letters → regret/gratitude)
 - [ ] Add progress indicator showing current generation step
 - [ ] Implement error recovery (retry button, go back to edit)
 - [ ] Redirect to dashboard upon successful completion
