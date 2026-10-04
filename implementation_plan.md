@@ -317,8 +317,8 @@ The letter provides an emotional anchor to the generated personas, and TTS enhan
 ### 11.1 - Letter & TTS Implementation
 - [ ] Build Letter page (dynamic route: `/letter/current` or `/letter/improved`)
 - [ ] Create Letter view component (styled as a personal letter)
-- [ ] Implement `lib/tts.ts` (Web Speech API wrapper with voice/rate/pitch control)
-- [ ] Build TTS player component (play/pause/stop)
+- [x] Implement `lib/tts.ts` (Web Speech API wrapper with voice/rate/pitch control) (Step 11.1a)
+- [x] Build TTS player component (play/pause/stop) (Step 11.1a)
 - [ ] Highlight current sentence during playback
 - [ ] Add Download letter as text file option
 
