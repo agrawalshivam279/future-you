@@ -355,14 +355,14 @@ Completes the persona detail views accessible from the dashboard.
 Finalizing the entry point ensures all flows (first-time, returning, missing API key) route correctly.
 
 ### 13.1 - Landing Page Implementation
-- [ ] Build Landing page with headline, subtext, and CTA
-- [ ] Add link to settings if no API key is configured
-- [ ] Implement "Continue" button for in-progress onboarding
-- [ ] Implement "View Dashboard" button if generation is already complete
-- [ ] Add minimal ambient animation (reduced-motion safe)
+- [x] Build Landing page with headline, subtext, and CTA (Step 13.1)
+- [x] Add link to settings if no API key is configured (Step 13.1)
+- [x] Implement "Continue" button for in-progress onboarding (Step 13.1)
+- [x] Implement "View Dashboard" button if generation is already complete (Step 13.1)
+- [x] Add minimal ambient animation (reduced-motion safe) (Step 13.1)
 
 ### Phase 13 Exit Criteria
-- Users are routed to the appropriate next step based on their saved state.
+- [x] Users are routed to the appropriate next step based on their saved state.
 
 ---
 
