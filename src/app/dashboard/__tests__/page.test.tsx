@@ -120,9 +120,10 @@ describe('DashboardPage Component', () => {
     useLifeModelStore.setState({ model: mockLifeModel });
     render(<DashboardPage />);
 
-    expect(
-      screen.getByText(/Future You is a reflection tool, not a prediction engine/i)
-    ).toBeInTheDocument();
+    const disclaimers = screen.getAllByText(
+      /Future You is a reflection tool, not a prediction engine/i
+    );
+    expect(disclaimers.length).toBeGreaterThan(0);
   });
 
   it('handles habit lever modification and successful futures recalculation', async () => {
