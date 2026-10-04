@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 🟢 Phase 12 Complete (100% Shipped) ➔ Phase 13 Next
+> **Status**: 🟢 Phase 13 Complete (100% Shipped) ➔ Phase 14 Next (Final Polish)
 > **Last Synchronized**: 2026-10-04
 
 ---
@@ -25,7 +25,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Habit Levers** | Dynamic recalculation + Slider Panel | 🟢 Phase 10 Complete (100% Shipped) |
 | **Letter + TTS** | Web Speech API | 🟢 Phase 11 Complete (100% Shipped) |
 | **Regret & Gratitude** | Visual cards + reflection | 🟢 Phase 12 Complete (100% Shipped) |
-| **Landing Page** | Value prop + CTA | 🔴 Not Started |
+| **Landing Page** | Value prop + CTA | 🟢 Phase 13 Complete (100% Shipped) |
 
 ---
 
@@ -78,12 +78,17 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 10** | Habit Levers | 🟢 Completed |
 | **Phase 11** | Letter from Future Self + TTS | 🟢 Completed |
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
-| **Phase 13** | Landing Page | 🔴 Not Started |
+| **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🔴 Not Started |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 13.1: State-Aware Landing Page with Ambient Visuals & Dynamic CTAs Shipped (Phase 13 Complete)
+- **Details**: Redesigned and implemented state-aware HomePage landing view (`src/app/page.tsx`), `AmbientBackground` (`src/components/landing/ambient-background.tsx`) with reduced-motion safe glowing animation, and `FeatureHighlights` (`src/components/landing/feature-highlights.tsx`) with barrel export `src/components/landing/index.ts`. Provides context-sensitive routing (first-time visitor "Begin Journey" -> `/onboarding`, in-progress onboarding "Continue Onboarding (Step N)", completed simulation "View Your Futures" -> `/dashboard`), API key status alert/pill linking to `/settings`, core value pillar cards, and honesty reflection disclaimer. 100% test coverage with 86 passing test suites (496 tests).
+- **Commit**: `feat(landing): implement state-aware landing page with ambient visuals and dynamic ctas`
+- **Key Files**: `src/app/page.tsx`, `src/components/landing/ambient-background.tsx`, `src/components/landing/feature-highlights.tsx`, `src/components/landing/index.ts`, `src/app/__tests__/page.test.tsx`, `docs/specs/step-13-1-landing-page.md`
 
 ### [2026-10-04] — Step 12.1b: Reflections Page Route & Dashboard Integration Shipped (Phase 12 Complete)
 - **Details**: Implemented dedicated full route `ReflectionsPage` (`src/app/reflections/page.tsx`) with dynamic persona switcher tabs (Current Path amber vs Improved Path emerald), URL search parameter synchronization (`/reflections?persona=current|improved`), empty simulation state guard redirecting to onboarding, direct cross-navigation to `/dashboard`, `/letter`, and `/chat`, plus embedded `ReflectionsGrid` section in `src/app/dashboard/page.tsx` with toggleable persona selector. Formally concludes Phase 12 Regret & Gratitude View. 100% test coverage with 86 passing test suites (489 tests).
