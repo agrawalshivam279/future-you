@@ -375,19 +375,19 @@ Finalizing the entry point ensures all flows (first-time, returning, missing API
 The final phase to catch edge cases and polish the UX before declaring V1 complete.
 
 ### 14.1 - Testing & Polish
-- [ ] Perform End-to-end flow testing (onboarding → generation → dashboard → chat)
-- [ ] Verify Mobile responsiveness
-- [ ] Test Error states (no API key, network failure, malformed LLM response)
-- [ ] Perform Performance check (bundle size, load time)
-- [ ] Conduct Accessibility audit (keyboard nav, contrast, screen reader)
-- [ ] Ensure Disclaimer appears everywhere required
-- [ ] Verify Data deletion works completely
-- [ ] Verify all localStorage keys use correct prefix
+- [x] Perform End-to-end flow testing (onboarding → generation → dashboard → chat) (Step 14.1)
+- [x] Verify Mobile responsiveness (Step 14.1)
+- [x] Test Error states (no API key, network failure, malformed LLM response) (Step 14.1)
+- [x] Perform Performance check (bundle size, load time) (Step 14.1)
+- [x] Conduct Accessibility audit (keyboard nav, contrast, screen reader) (Step 14.1)
+- [x] Ensure Disclaimer appears everywhere required (Step 14.1)
+- [x] Verify Data deletion works completely (Step 14.1)
+- [x] Verify all localStorage keys use correct prefix (Step 14.1)
 
 ### Phase 14 Exit Criteria
-- App passes all major workflows manually.
-- No console errors in production flow.
-- Accessibility minimums met.
+- [x] App passes all major workflows manually.
+- [x] No console errors in production flow.
+- [x] Accessibility minimums met.
 
 ---
 
