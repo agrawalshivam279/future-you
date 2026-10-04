@@ -85,6 +85,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-04] — Step 11.1b: Letter View Component & Text Downloader Shipped
+- **Details**: Implemented `LetterView` in `src/components/letter/letter-view.tsx` with barrel export `src/components/letter/index.ts` and client-side formatting and export utility in `src/lib/export-letter.ts`. Delivers personal stationery layout for future-self reflections (5-year simulated date stamp, salutation, author persona badge), real-time sentence highlighting synchronized with `TTSPlayer` audio playback, embedded honesty reflection disclaimer, and one-click `.txt` text download without server dependencies. 100% test coverage with 82 passing test suites (469 tests).
+- **Commit**: `feat(letter): implement letter view component and text downloader with tests`
+- **Key Files**: `src/components/letter/letter-view.tsx`, `src/lib/export-letter.ts`, `src/components/letter/index.ts`, `src/lib/__tests__/export-letter.test.ts`, `src/components/letter/__tests__/letter-view.test.tsx`, `docs/specs/step-11-1b-letter-view-downloader.md`
+
 ### [2026-10-04] — Step 11.1a: TTS Engine & Audio Player Component Shipped
 - **Details**: Implemented client-side Web Speech API audio narration engine in `src/lib/tts.ts` and interactive accessible `TTSPlayer` component in `src/components/letter/tts-player.tsx` with barrel export `src/components/letter/index.ts`. Provides deterministic sentence segmentation (`splitIntoSentences`), async voice discovery (`getAvailableVoices`), sequential playback controller with lifecycle state callbacks, rate speed modifiers (0.75x, 1.0x, 1.25x, 1.5x), sentence index tracking for UI highlighting sync, and full WCAG AA accessibility (`role="region"`, `aria-label`, `aria-pressed`, `aria-live`). 100% test coverage with 80 passing test suites (462 tests).
 - **Commit**: `feat(letter): implement tts engine and audio player component with tests`
