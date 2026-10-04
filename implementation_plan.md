@@ -316,11 +316,11 @@ The letter provides an emotional anchor to the generated personas, and TTS enhan
 
 ### 11.1 - Letter & TTS Implementation
 - [ ] Build Letter page (dynamic route: `/letter/current` or `/letter/improved`)
-- [ ] Create Letter view component (styled as a personal letter)
+- [x] Create Letter view component (styled as a personal letter) (Step 11.1b)
 - [x] Implement `lib/tts.ts` (Web Speech API wrapper with voice/rate/pitch control) (Step 11.1a)
 - [x] Build TTS player component (play/pause/stop) (Step 11.1a)
-- [ ] Highlight current sentence during playback
-- [ ] Add Download letter as text file option
+- [x] Highlight current sentence during playback (Step 11.1b)
+- [x] Add Download letter as text file option (Step 11.1b)
 
 ### Phase 11 Exit Criteria
 - The letter is readable and can be played aloud, paused, and stopped natively in the browser.
