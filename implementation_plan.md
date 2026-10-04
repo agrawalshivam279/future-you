@@ -294,15 +294,15 @@ Chat is the primary interactive feature post-generation, requiring the complex s
 Habit levers demonstrate the dynamic nature of the tool, building on top of the dashboard and regeneration flows.
 
 ### 10.1 - Habit Levers Implementation
-- [ ] Add Habit levers panel on the dashboard (Step 10.1b)
+- [x] Add Habit levers panel on the dashboard (Step 10.1b)
 - [x] Implement dynamic sliders generated from the life model (Step 10.1a)
-- [ ] Add "Apply Changes" button to trigger regeneration flow (Step 10.1b)
-- [ ] Implement loading state during regeneration (skeleton over persona cards) (Step 10.1b)
+- [x] Add "Apply Changes" button to trigger regeneration flow (Step 10.1b)
+- [x] Implement loading state during regeneration (skeleton over persona cards) (Step 10.1b)
 - [x] Add Before/after diff indicators (Step 10.1a)
-- [ ] Debounce slider input (500ms) (Step 10.1b)
+- [x] Debounce slider input (500ms) (Step 10.1b)
 
 ### Phase 10 Exit Criteria
-- Adjusting levers successfully regenerates the persona data and updates the UI to reflect changes.
+- [x] Adjusting levers successfully regenerates the persona data and updates the UI to reflect changes.
 
 ---
 

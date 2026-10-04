@@ -22,7 +22,10 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Dashboard** | Split view + Timeline + Habit Levers | 🟢 Phase 7 Complete (100% Shipped) |
 | **Timeline** | Chronological dual-track visualization | 🟢 Phase 8 Complete (100% Shipped) |
 | **Chat** | Streaming persona chat | 🟢 Phase 9 Complete (100% Shipped) |
+| **Habit Levers** | Dynamic recalculation + Slider Panel | 🟢 Phase 10 Complete (100% Shipped) |
 | **Letter + TTS** | Web Speech API | 🔴 Not Started |
+| **Regret & Gratitude** | Visual cards + reflection | 🔴 Not Started |
+| **Landing Page** | Value prop + CTA | 🔴 Not Started |
 
 ---
 
@@ -72,7 +75,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 7** | Dashboard & Split View | 🟢 Completed |
 | **Phase 8** | Timeline | 🟢 Completed |
 | **Phase 9** | Chat Interface | 🟢 Completed |
-| **Phase 10** | Habit Levers | 🟡 In Progress (Step 10.1a Shipped) |
+| **Phase 10** | Habit Levers | 🟢 Completed |
 | **Phase 11** | Letter from Future Self + TTS | 🔴 Not Started |
 | **Phase 12** | Regret & Gratitude View | 🔴 Not Started |
 | **Phase 13** | Landing Page | 🔴 Not Started |
@@ -81,6 +84,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 10.1b: Dashboard Habit Levers Integration & Regeneration Flow Shipped (Phase 10 Complete)
+- **Details**: Integrated `HabitLeversPanel` into `DashboardPage` (`src/app/dashboard/page.tsx`), orchestrating dynamic futures recalculation via `regenerateFutures` (`src/lib/ai/regenerate-futures.ts`). Connects staged lever modifications directly to AI simulation recalculation, updating the Improved Path persona and timeline while preserving Current Path as the fixed baseline. Features live animated recalculation status banners, error alert banners with dismissal, test fixtures extraction, and 100% test coverage with 78 passing test suites (441 tests). Formally concludes Phase 10 Habit Levers.
+- **Commit**: `feat(dashboard): integrate habit levers panel and regeneration flow with tests`
+- **Key Files**: `src/app/dashboard/page.tsx`, `src/app/dashboard/__tests__/page.test.tsx`, `src/app/dashboard/__tests__/fixtures.ts`, `docs/specs/step-10-1b-habit-levers-integration.md`
 
 ### [2026-10-04] — Step 10.1a: Habit Lever Slider & Levers Panel Components Shipped
 - **Details**: Implemented `HabitLeverSlider` (`src/components/dashboard/habit-lever-slider.tsx`) and `HabitLeversPanel` (`src/components/dashboard/habit-levers-panel.tsx`) with dashboard barrel export updates (`src/components/dashboard/index.ts`). Features interactive range sliders displaying baseline reference, live value readout, real-time positive/negative delta badges (`+X` improved emerald vs `-X` current amber vs `Baseline` neutral), staged modification tracking, modified lever badge counter, and "Reset to Baseline" and "Apply Changes" control actions. 100% test coverage with 77 passing test suites (437 tests).
