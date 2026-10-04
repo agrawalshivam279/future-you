@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 📋 Phase 10 / Habit Levers
+> **Status**: 🟡 Phase 11 / Letter from Future Self + TTS
 > **Last Synchronized**: 2026-10-04
 
 ---
@@ -23,7 +23,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Timeline** | Chronological dual-track visualization | 🟢 Phase 8 Complete (100% Shipped) |
 | **Chat** | Streaming persona chat | 🟢 Phase 9 Complete (100% Shipped) |
 | **Habit Levers** | Dynamic recalculation + Slider Panel | 🟢 Phase 10 Complete (100% Shipped) |
-| **Letter + TTS** | Web Speech API | 🔴 Not Started |
+| **Letter + TTS** | Web Speech API | 🟡 In Progress (Step 11.1a Shipped) |
 | **Regret & Gratitude** | Visual cards + reflection | 🔴 Not Started |
 | **Landing Page** | Value prop + CTA | 🔴 Not Started |
 
@@ -76,7 +76,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 8** | Timeline | 🟢 Completed |
 | **Phase 9** | Chat Interface | 🟢 Completed |
 | **Phase 10** | Habit Levers | 🟢 Completed |
-| **Phase 11** | Letter from Future Self + TTS | 🔴 Not Started |
+| **Phase 11** | Letter from Future Self + TTS | 🟡 In Progress |
 | **Phase 12** | Regret & Gratitude View | 🔴 Not Started |
 | **Phase 13** | Landing Page | 🔴 Not Started |
 | **Phase 14** | Polish & Integration Testing | 🔴 Not Started |
@@ -84,6 +84,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 11.1a: TTS Engine & Audio Player Component Shipped
+- **Details**: Implemented client-side Web Speech API audio narration engine in `src/lib/tts.ts` and interactive accessible `TTSPlayer` component in `src/components/letter/tts-player.tsx` with barrel export `src/components/letter/index.ts`. Provides deterministic sentence segmentation (`splitIntoSentences`), async voice discovery (`getAvailableVoices`), sequential playback controller with lifecycle state callbacks, rate speed modifiers (0.75x, 1.0x, 1.25x, 1.5x), sentence index tracking for UI highlighting sync, and full WCAG AA accessibility (`role="region"`, `aria-label`, `aria-pressed`, `aria-live`). 100% test coverage with 80 passing test suites (462 tests).
+- **Commit**: `feat(letter): implement tts engine and audio player component with tests`
+- **Key Files**: `src/lib/tts.ts`, `src/components/letter/tts-player.tsx`, `src/components/letter/index.ts`, `src/lib/__tests__/tts.test.ts`, `src/components/letter/__tests__/tts-player.test.tsx`, `docs/specs/step-11-1a-tts-engine-player.md`
 
 ### [2026-10-04] — Step 10.1b: Dashboard Habit Levers Integration & Regeneration Flow Shipped (Phase 10 Complete)
 - **Details**: Integrated `HabitLeversPanel` into `DashboardPage` (`src/app/dashboard/page.tsx`), orchestrating dynamic futures recalculation via `regenerateFutures` (`src/lib/ai/regenerate-futures.ts`). Connects staged lever modifications directly to AI simulation recalculation, updating the Improved Path persona and timeline while preserving Current Path as the fixed baseline. Features live animated recalculation status banners, error alert banners with dismissal, test fixtures extraction, and 100% test coverage with 78 passing test suites (441 tests). Formally concludes Phase 10 Habit Levers.
