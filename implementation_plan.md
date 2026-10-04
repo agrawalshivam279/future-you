@@ -315,7 +315,7 @@ Habit levers demonstrate the dynamic nature of the tool, building on top of the 
 The letter provides an emotional anchor to the generated personas, and TTS enhances accessibility.
 
 ### 11.1 - Letter & TTS Implementation
-- [ ] Build Letter page (dynamic route: `/letter/current` or `/letter/improved`)
+- [x] Build Letter page (dynamic route: `/letter/current` or `/letter/improved`) (Step 11.1c)
 - [x] Create Letter view component (styled as a personal letter) (Step 11.1b)
 - [x] Implement `lib/tts.ts` (Web Speech API wrapper with voice/rate/pitch control) (Step 11.1a)
 - [x] Build TTS player component (play/pause/stop) (Step 11.1a)
@@ -323,7 +323,7 @@ The letter provides an emotional anchor to the generated personas, and TTS enhan
 - [x] Add Download letter as text file option (Step 11.1b)
 
 ### Phase 11 Exit Criteria
-- The letter is readable and can be played aloud, paused, and stopped natively in the browser.
+- [x] The letter is readable and can be played aloud, paused, and stopped natively in the browser.
 
 ---
 
