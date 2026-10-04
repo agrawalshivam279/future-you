@@ -6,6 +6,7 @@ import { Settings, RotateCcw, Sparkles, ArrowRight } from 'lucide-react';
 import { useLifeModelStore } from '@/stores/life-model-store';
 import { SplitViewContainer, HabitLeversPanel } from '@/components/dashboard';
 import { DualTimeline } from '@/components/timeline';
+import { ReflectionsGrid } from '@/components/reflections';
 import { Button } from '@/components/ui/button';
 import { Modal } from '@/components/ui/modal';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
@@ -27,6 +28,7 @@ export default function DashboardPage(): React.JSX.Element {
   const [isRegenerateModalOpen, setIsRegenerateModalOpen] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [recalculationError, setRecalculationError] = useState<string | null>(null);
+  const [reflectionsPersona, setReflectionsPersona] = useState<PersonaId>('improved');
 
   const handleChat = (personaId: PersonaId) => {
     router.push(`/chat?persona=${personaId}`);
@@ -191,6 +193,53 @@ export default function DashboardPage(): React.JSX.Element {
           currentMilestones={model.currentPath.timeline || []}
           improvedMilestones={model.improvedPath.timeline || []}
         />
+
+        {/* Psychological Reflections Matrix */}
+        <section aria-label="Dashboard Reflections Section" className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <h2 className="text-xl font-bold tracking-tight text-text-primary">
+                Psychological Reflections
+              </h2>
+              <p className="text-xs text-text-secondary mt-0.5">
+                Explore what each future self looks back on with regret or gratitude.
+              </p>
+            </div>
+
+            <div
+              role="tablist"
+              aria-label="Reflections trajectory selector"
+              className="flex items-center p-1 rounded-xl bg-bg-secondary border border-border-primary text-xs self-start sm:self-center"
+            >
+              {(['current', 'improved'] as const).map((id) => (
+                <button
+                  key={id}
+                  type="button"
+                  role="tab"
+                  aria-selected={reflectionsPersona === id}
+                  onClick={() => setReflectionsPersona(id)}
+                  className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
+                    reflectionsPersona === id
+                      ? id === 'current'
+                        ? 'bg-accent-current text-bg-primary font-bold shadow-sm'
+                        : 'bg-accent-improved text-bg-primary font-bold shadow-sm'
+                      : 'text-text-secondary hover:text-text-primary'
+                  }`}
+                  aria-label={`Show ${id === 'current' ? 'Current' : 'Improved'} Path reflections on dashboard`}
+                >
+                  {id === 'current' ? 'Current Path' : 'Improved Path'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <ReflectionsGrid
+            regrets={(reflectionsPersona === 'current' ? model.currentPath : model.improvedPath).regrets || []}
+            gratitudes={(reflectionsPersona === 'current' ? model.currentPath : model.improvedPath).gratitudes || []}
+            personaId={reflectionsPersona}
+            personaName={(reflectionsPersona === 'current' ? model.currentPath : model.improvedPath).name}
+          />
+        </section>
 
         {/* Honesty Disclaimer Banner */}
         <footer className="pt-6 border-t border-border-primary/60 text-center">

@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 🟡 Phase 12 / Regret & Gratitude View
+> **Status**: 🟢 Phase 12 Complete (100% Shipped) ➔ Phase 13 Next
 > **Last Synchronized**: 2026-10-04
 
 ---
@@ -24,7 +24,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Chat** | Streaming persona chat | 🟢 Phase 9 Complete (100% Shipped) |
 | **Habit Levers** | Dynamic recalculation + Slider Panel | 🟢 Phase 10 Complete (100% Shipped) |
 | **Letter + TTS** | Web Speech API | 🟢 Phase 11 Complete (100% Shipped) |
-| **Regret & Gratitude** | Visual cards + reflection | 🟡 In Progress (Step 12.1a Shipped) |
+| **Regret & Gratitude** | Visual cards + reflection | 🟢 Phase 12 Complete (100% Shipped) |
 | **Landing Page** | Value prop + CTA | 🔴 Not Started |
 
 ---
@@ -77,13 +77,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 9** | Chat Interface | 🟢 Completed |
 | **Phase 10** | Habit Levers | 🟢 Completed |
 | **Phase 11** | Letter from Future Self + TTS | 🟢 Completed |
-| **Phase 12** | Regret & Gratitude View | 🟡 In Progress |
+| **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🔴 Not Started |
 | **Phase 14** | Polish & Integration Testing | 🔴 Not Started |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 12.1b: Reflections Page Route & Dashboard Integration Shipped (Phase 12 Complete)
+- **Details**: Implemented dedicated full route `ReflectionsPage` (`src/app/reflections/page.tsx`) with dynamic persona switcher tabs (Current Path amber vs Improved Path emerald), URL search parameter synchronization (`/reflections?persona=current|improved`), empty simulation state guard redirecting to onboarding, direct cross-navigation to `/dashboard`, `/letter`, and `/chat`, plus embedded `ReflectionsGrid` section in `src/app/dashboard/page.tsx` with toggleable persona selector. Formally concludes Phase 12 Regret & Gratitude View. 100% test coverage with 86 passing test suites (489 tests).
+- **Commit**: `feat(reflections): integrate reflections into dashboard and page route with tests`
+- **Key Files**: `src/app/reflections/page.tsx`, `src/app/dashboard/page.tsx`, `src/app/reflections/__tests__/page.test.tsx`, `src/app/dashboard/__tests__/page.test.tsx`, `docs/specs/step-12-1b-reflections-page-dashboard.md`
 
 ### [2026-10-04] — Step 12.1a: Regrets & Gratitudes Reflection Grid Component Shipped
 - **Details**: Implemented `ReflectionItemCard` (`src/components/reflections/reflection-item-card.tsx`) and `ReflectionsGrid` (`src/components/reflections/reflections-grid.tsx`) with barrel export `src/components/reflections/index.ts`. Provides responsive two-column layout contrasting 5-year future regrets (left column, rose/amber) against gratitudes (right column, emerald), expandable reflection insight cards with accessible keyboard controls (`aria-expanded`), item counters, Framer Motion staggered list reveal animations, and mandatory honesty reflection disclaimer. 100% test coverage with 85 passing test suites (481 tests).
