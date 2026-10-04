@@ -9,3 +9,9 @@ export type {
 
 export { SplitViewContainer } from './split-view-container';
 export type { SplitViewContainerProps } from './split-view-container';
+
+export { HabitLeverSlider } from './habit-lever-slider';
+export type { HabitLeverSliderProps } from './habit-lever-slider';
+
+export { HabitLeversPanel } from './habit-levers-panel';
+export type { HabitLeversPanelProps } from './habit-levers-panel';

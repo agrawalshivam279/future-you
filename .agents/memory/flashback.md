@@ -72,7 +72,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 7** | Dashboard & Split View | 🟢 Completed |
 | **Phase 8** | Timeline | 🟢 Completed |
 | **Phase 9** | Chat Interface | 🟢 Completed |
-| **Phase 10** | Habit Levers | 🔴 Not Started |
+| **Phase 10** | Habit Levers | 🟡 In Progress (Step 10.1a Shipped) |
 | **Phase 11** | Letter from Future Self + TTS | 🔴 Not Started |
 | **Phase 12** | Regret & Gratitude View | 🔴 Not Started |
 | **Phase 13** | Landing Page | 🔴 Not Started |
@@ -81,6 +81,11 @@ Future You is a client-side web application using AI to generate two simulated f
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 10.1a: Habit Lever Slider & Levers Panel Components Shipped
+- **Details**: Implemented `HabitLeverSlider` (`src/components/dashboard/habit-lever-slider.tsx`) and `HabitLeversPanel` (`src/components/dashboard/habit-levers-panel.tsx`) with dashboard barrel export updates (`src/components/dashboard/index.ts`). Features interactive range sliders displaying baseline reference, live value readout, real-time positive/negative delta badges (`+X` improved emerald vs `-X` current amber vs `Baseline` neutral), staged modification tracking, modified lever badge counter, and "Reset to Baseline" and "Apply Changes" control actions. 100% test coverage with 77 passing test suites (437 tests).
+- **Commit**: `feat(dashboard): implement habit lever slider and levers panel with tests`
+- **Key Files**: `src/components/dashboard/habit-lever-slider.tsx`, `src/components/dashboard/habit-levers-panel.tsx`, `src/components/dashboard/index.ts`, `src/components/dashboard/__tests__/habit-lever-slider.test.tsx`, `src/components/dashboard/__tests__/habit-levers-panel.test.tsx`, `docs/specs/step-10-1a-habit-levers-panel.md`
 
 ### [2026-10-04] — Step 9.1c: Chat Page Route & Streaming Persona Integration Shipped (Phase 9 Complete)
 - **Details**: Implemented `usePersonaChat` orchestration hook (`src/hooks/use-persona-chat.ts`) and full-page `ChatPage` route (`src/app/chat/page.tsx`). Coordinates real-time token streaming accumulation via `chatWithPersona`, `useChatStore` IndexedDB persistence, URL query synchronization (`/chat?persona=...`), persona switcher tabs (Current Path amber vs Improved Path emerald), empty simulation redirection guards, clear conversation confirmation modal, and browser Web Speech API text-to-speech audio playback. Executed `/eval_persona` audit validating tone contrast between inertia-bound Current Path and compounding Improved Path. Formally concludes Phase 9 Chat Interface. 100% test coverage with 75 passing test suites (424 tests).
