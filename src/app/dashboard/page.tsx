@@ -4,24 +4,29 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Settings, RotateCcw, Sparkles, ArrowRight } from 'lucide-react';
 import { useLifeModelStore } from '@/stores/life-model-store';
-import { SplitViewContainer } from '@/components/dashboard';
+import { SplitViewContainer, HabitLeversPanel } from '@/components/dashboard';
 import { DualTimeline } from '@/components/timeline';
 import { Button } from '@/components/ui/button';
 import { Modal } from '@/components/ui/modal';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { PersonaId } from '@/types';
+import { PersonaId, HabitLever } from '@/types';
+import { regenerateFutures } from '@/lib/ai/regenerate-futures';
 
 /**
  * DashboardPage displays the split-view comparison between Current Path
- * and Improved Path personas, providing navigation to Chat, Letter,
- * and Reflections, alongside a regeneration action.
+ * and Improved Path personas, interactive Habit Levers for dynamic futures recalculation,
+ * and navigation to Chat, Letter, and Reflections.
  *
  * @returns JSX Element rendering the primary dashboard view
  */
 export default function DashboardPage(): React.JSX.Element {
   const router = useRouter();
   const model = useLifeModelStore((state) => state.model);
+  const setLifeModel = useLifeModelStore((state) => state.setLifeModel);
+
   const [isRegenerateModalOpen, setIsRegenerateModalOpen] = useState(false);
+  const [isRegenerating, setIsRegenerating] = useState(false);
+  const [recalculationError, setRecalculationError] = useState<string | null>(null);
 
   const handleChat = (personaId: PersonaId) => {
     router.push(`/chat?persona=${personaId}`);
@@ -38,6 +43,22 @@ export default function DashboardPage(): React.JSX.Element {
   const handleConfirmRegenerate = () => {
     setIsRegenerateModalOpen(false);
     router.push('/generate');
+  };
+
+  const handleApplyHabitLevers = async (updatedLevers: HabitLever[]) => {
+    if (!model) return;
+    setIsRegenerating(true);
+    setRecalculationError(null);
+
+    try {
+      const updatedModel = await regenerateFutures(model, updatedLevers);
+      setLifeModel(updatedModel);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to recalculate futures.';
+      setRecalculationError(message);
+    } finally {
+      setIsRegenerating(false);
+    }
   };
 
   if (!model) {
@@ -116,6 +137,38 @@ export default function DashboardPage(): React.JSX.Element {
           </div>
         </header>
 
+        {/* Live Recalculation Notification Banner */}
+        {isRegenerating && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="flex items-center gap-3 p-4 rounded-xl bg-accent-improved/10 border border-accent-improved/30 text-accent-improved text-sm font-medium"
+            data-testid="recalculating-indicator"
+          >
+            <Sparkles className="w-5 h-5 animate-spin shrink-0" aria-hidden="true" />
+            <span>Recalculating your Improved Path simulation based on updated habit levers...</span>
+          </div>
+        )}
+
+        {/* Recalculation Error Banner */}
+        {recalculationError && (
+          <div
+            role="alert"
+            className="flex items-center justify-between p-4 rounded-xl bg-accent-danger/10 border border-accent-danger/30 text-accent-danger text-sm font-medium"
+            data-testid="recalculation-error-banner"
+          >
+            <span>{recalculationError}</span>
+            <button
+              type="button"
+              onClick={() => setRecalculationError(null)}
+              className="text-xs underline hover:opacity-80"
+              aria-label="Dismiss recalculation error"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
+
         {/* Responsive Split View Container */}
         <SplitViewContainer
           lifeModel={model}
@@ -123,6 +176,15 @@ export default function DashboardPage(): React.JSX.Element {
           onLetterClick={handleLetter}
           onReflectionsClick={handleReflections}
         />
+
+        {/* Habit Levers Panel */}
+        {model.habitLevers && model.habitLevers.length > 0 && (
+          <HabitLeversPanel
+            levers={model.habitLevers}
+            isRegenerating={isRegenerating}
+            onApplyChanges={handleApplyHabitLevers}
+          />
+        )}
 
         {/* 5-Year Milestone Timeline */}
         <DualTimeline
