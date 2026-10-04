@@ -1,7 +1,7 @@
 # 🕰️ FLASHBACK — Project Memory & Decision Ledger
 
 > **Project**: Future You
-> **Status**: 🟢 Phase 11 Complete (100% Shipped)
+> **Status**: 🟡 Phase 12 / Regret & Gratitude View
 > **Last Synchronized**: 2026-10-04
 
 ---
@@ -24,7 +24,7 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Chat** | Streaming persona chat | 🟢 Phase 9 Complete (100% Shipped) |
 | **Habit Levers** | Dynamic recalculation + Slider Panel | 🟢 Phase 10 Complete (100% Shipped) |
 | **Letter + TTS** | Web Speech API | 🟢 Phase 11 Complete (100% Shipped) |
-| **Regret & Gratitude** | Visual cards + reflection | 🔴 Not Started |
+| **Regret & Gratitude** | Visual cards + reflection | 🟡 In Progress (Step 12.1a Shipped) |
 | **Landing Page** | Value prop + CTA | 🔴 Not Started |
 
 ---
@@ -77,13 +77,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 9** | Chat Interface | 🟢 Completed |
 | **Phase 10** | Habit Levers | 🟢 Completed |
 | **Phase 11** | Letter from Future Self + TTS | 🟢 Completed |
-| **Phase 12** | Regret & Gratitude View | 🔴 Not Started |
+| **Phase 12** | Regret & Gratitude View | 🟡 In Progress |
 | **Phase 13** | Landing Page | 🔴 Not Started |
 | **Phase 14** | Polish & Integration Testing | 🔴 Not Started |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-04] — Step 12.1a: Regrets & Gratitudes Reflection Grid Component Shipped
+- **Details**: Implemented `ReflectionItemCard` (`src/components/reflections/reflection-item-card.tsx`) and `ReflectionsGrid` (`src/components/reflections/reflections-grid.tsx`) with barrel export `src/components/reflections/index.ts`. Provides responsive two-column layout contrasting 5-year future regrets (left column, rose/amber) against gratitudes (right column, emerald), expandable reflection insight cards with accessible keyboard controls (`aria-expanded`), item counters, Framer Motion staggered list reveal animations, and mandatory honesty reflection disclaimer. 100% test coverage with 85 passing test suites (481 tests).
+- **Commit**: `feat(reflections): implement regrets and gratitudes reflection grid component with tests`
+- **Key Files**: `src/components/reflections/reflection-item-card.tsx`, `src/components/reflections/reflections-grid.tsx`, `src/components/reflections/index.ts`, `src/components/reflections/__tests__/reflection-item-card.test.tsx`, `src/components/reflections/__tests__/reflections-grid.test.tsx`, `docs/specs/step-12-1a-reflections-grid.md`
 
 ### [2026-10-04] — Step 11.1c: Letter Page Route & Multi-Persona Flow Integration Shipped (Phase 11 Complete)
 - **Details**: Implemented dedicated full-page `LetterPage` route (`src/app/letter/page.tsx`) with URL search parameter synchronization (`/letter?persona=current` vs `/letter?persona=improved`), persona trajectory switcher tabs (Current Path amber vs Improved Path emerald), empty simulation state guards redirecting to onboarding, back-to-dashboard navigation, and App Router Suspense boundary. Formally concludes Phase 11 Letter from Future Self + TTS. 100% test coverage with 83 passing test suites (476 tests).

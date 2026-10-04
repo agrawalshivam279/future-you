@@ -337,9 +337,9 @@ Completes the persona detail views accessible from the dashboard.
 
 ### 12.1 - Regret & Gratitude Implementation
 - [ ] Build Regret & Gratitude section on the dashboard
-- [ ] Implement Two-column layout per persona (regrets left, gratitudes right)
-- [ ] Add Animated list reveal (staggered fade-in)
-- [ ] Implement Expandable items (click for full context)
+- [x] Implement Two-column layout per persona (regrets left, gratitudes right) (Step 12.1a)
+- [x] Add Animated list reveal (staggered fade-in) (Step 12.1a)
+- [x] Implement Expandable items (click for full context) (Step 12.1a)
 
 ### Phase 12 Exit Criteria
 - Regrets and gratitudes are clearly displayed and animated smoothly.
