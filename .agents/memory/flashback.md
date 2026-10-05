@@ -99,6 +99,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-06] — Step 16.4b: Header Navigation Link & Dashboard Check-in CTA Shipped
+- **Details**: Added accessible Check-in navigation link in `src/components/layout/header.tsx` with `Activity` branding icon, built `CheckInSummaryCard` in `src/components/dashboard/check-in-summary-card.tsx` (barrel export in `src/components/dashboard/index.ts`), and embedded both V3 modules (`DecisionSimulatorCard` and `CheckInSummaryCard`) in a responsive two-column grid on `/dashboard` (`src/app/dashboard/page.tsx`). Displays live checkpoint counts and alignment score percentages synchronized with `useCheckInStore`, while maintaining strict `<300` LOC limit across all modified files. 100% test coverage across 107 passing test suites (623 tests).
+- **Commit**: `feat(navigation): add check-in header link and dashboard cta card`
+- **Key Files**: `src/components/layout/header.tsx`, `src/components/dashboard/check-in-summary-card.tsx`, `src/components/dashboard/index.ts`, `src/app/dashboard/page.tsx`, `src/components/dashboard/__tests__/check-in-summary-card.test.tsx`, `src/components/layout/__tests__/header.test.tsx`, `src/app/dashboard/__tests__/page.test.tsx`, `docs/specs/step-16-4b-header-nav-dashboard-cta.md`
+
 ### [2026-10-06] — Step 16.4a: Check-in Page Route & History Timeline Shipped
 - **Details**: Implemented dedicated page route `CheckInPage` in `src/app/check-in/page.tsx` and history coordinator `CheckInHistoryCard` in `src/components/check-in/check-in-history-card.tsx` (barrel export in `src/components/check-in/index.ts`). Integrates `CheckInForm`, `AlignmentGauge`, `DriftVectorList`, and `ReflectionBadge` with `useLifeModelStore` and `useCheckInStore`. Includes onboarding guard redirecting to `/onboarding`, active evaluation overview grid, recording mode toggle with cancel flow, AI evaluation orchestrator invocation with animated progress indicators, error alert banner with dismissal, and historical timeline allowing inspection and deletion of previous checkpoints. 100% test coverage across 106 passing test suites (619 tests).
 - **Commit**: `feat(checkin): implement dedicated /check-in page route and history`
