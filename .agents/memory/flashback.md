@@ -99,6 +99,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-06] — Step 16.4a: Check-in Page Route & History Timeline Shipped
+- **Details**: Implemented dedicated page route `CheckInPage` in `src/app/check-in/page.tsx` and history coordinator `CheckInHistoryCard` in `src/components/check-in/check-in-history-card.tsx` (barrel export in `src/components/check-in/index.ts`). Integrates `CheckInForm`, `AlignmentGauge`, `DriftVectorList`, and `ReflectionBadge` with `useLifeModelStore` and `useCheckInStore`. Includes onboarding guard redirecting to `/onboarding`, active evaluation overview grid, recording mode toggle with cancel flow, AI evaluation orchestrator invocation with animated progress indicators, error alert banner with dismissal, and historical timeline allowing inspection and deletion of previous checkpoints. 100% test coverage across 106 passing test suites (619 tests).
+- **Commit**: `feat(checkin): implement dedicated /check-in page route and history`
+- **Key Files**: `src/app/check-in/page.tsx`, `src/components/check-in/check-in-history-card.tsx`, `src/components/check-in/index.ts`, `src/app/check-in/__tests__/page.test.tsx`, `docs/specs/step-16-4a-check-in-page.md`
+
 ### [2026-10-06] — Step 16.3d: Future Self Reflection Badge & TTS Component Shipped
 - **Details**: Built `ReflectionBadge` in `src/components/check-in/reflection-badge.tsx` and barrel exported from `src/components/check-in/index.ts`. Displays the AI-generated reflection note and micro-adjustment from the Improved Path Future Self (5 years ahead). Integrated Web Speech API audio playback controls (Play, Pause, Stop) powered by `createTTSController`, one-click clipboard copy action with toast feedback, and permanent reflection honesty disclaimer (*"A reflection tool, not a prediction engine"*). Unit tests validate playback controls, clipboard interaction, and accessibility with 100% test coverage. 105 passing test suites (613 tests).
 - **Commit**: `feat(checkin): implement future self reflection badge and tts component`
