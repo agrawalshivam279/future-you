@@ -91,13 +91,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
-| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a-d, 15.4a Complete) |
+| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a-d, 15.4a-b Complete) |
 | **Phase 16** | Check-in Mode | ⚪ Pending |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 15.4b: Dashboard Decision Simulator Quick-Action Card Shipped (15.4 Complete)
+- **Details**: Built `DecisionSimulatorCard` in `src/components/dashboard/decision-simulator-card.tsx` and exported via `src/components/dashboard/index.ts`. Embedded directly within `src/app/dashboard/page.tsx` between the 5-year timeline and reflections matrix. Displays dynamic evaluated fork counters synchronized with `useDecisionStore`, clean feature overview copy, `GitFork` branding icon, and accessible CTA navigating directly to `/simulator`. Concludes Step 15.4 route and dashboard integration while maintaining `<300` LOC limit across all modified files. 100% test coverage with 96 passing test suites (562 tests).
+- **Commit**: `feat(dashboard): embed decision simulator quick-action card`
+- **Key Files**: `src/components/dashboard/decision-simulator-card.tsx`, `src/components/dashboard/index.ts`, `src/app/dashboard/page.tsx`, `src/components/dashboard/__tests__/decision-simulator-card.test.tsx`, `src/app/dashboard/__tests__/page.test.tsx`, `docs/specs/step-15-4b-dashboard-simulator-card.md`
 
 ### [2026-10-06] — Step 15.4a: Dedicated `/simulator` Page Route & Scenario History Shipped
 - **Details**: Implemented dedicated page route `SimulatorPage` in `src/app/simulator/page.tsx` and modular `ScenarioOverview` in `src/components/simulator/scenario-overview.tsx` (barrel export in `src/components/simulator/index.ts`). Integrates `DecisionForm`, `ImpactMatrix`, `PersonaVerdicts`, and `TradeOffsCard` with `useLifeModelStore` and `useDecisionStore`. Features onboarding guard redirecting to `/onboarding`, horizontal scrollable tab bar for saved scenarios, live AI evaluation orchestrator with progress indicator and timeout safeguards, error banner with dismissal, active scenario overview card with delete capability, and seamless creation of new life forks. 100% test coverage with 95 passing test suites (556 tests).

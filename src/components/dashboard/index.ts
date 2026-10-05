@@ -15,3 +15,6 @@ export type { HabitLeverSliderProps } from './habit-lever-slider';
 
 export { HabitLeversPanel } from './habit-levers-panel';
 export type { HabitLeversPanelProps } from './habit-levers-panel';
+
+export { DecisionSimulatorCard } from './decision-simulator-card';
+export type { DecisionSimulatorCardProps } from './decision-simulator-card';

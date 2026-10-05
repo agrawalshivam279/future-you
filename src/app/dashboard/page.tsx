@@ -4,7 +4,11 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Settings, RotateCcw, Sparkles, ArrowRight } from 'lucide-react';
 import { useLifeModelStore } from '@/stores/life-model-store';
-import { SplitViewContainer, HabitLeversPanel } from '@/components/dashboard';
+import {
+  SplitViewContainer,
+  HabitLeversPanel,
+  DecisionSimulatorCard,
+} from '@/components/dashboard';
 import { DualTimeline } from '@/components/timeline';
 import { ReflectionsGrid } from '@/components/reflections';
 import { Button } from '@/components/ui/button';
@@ -193,6 +197,9 @@ export default function DashboardPage(): React.JSX.Element {
           currentMilestones={model.currentPath.timeline || []}
           improvedMilestones={model.improvedPath.timeline || []}
         />
+
+        {/* Decision Simulator Quick-Action */}
+        <DecisionSimulatorCard onNavigate={() => router.push('/simulator')} />
 
         {/* Psychological Reflections Matrix */}
         <section aria-label="Dashboard Reflections Section" className="space-y-4">
