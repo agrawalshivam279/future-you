@@ -91,13 +91,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
-| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a, 15.3b Complete) |
+| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a, 15.3b, 15.3c Complete) |
 | **Phase 16** | Check-in Mode | ⚪ Pending |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 15.3c: Persona Verdicts Reaction Cards Shipped
+- **Details**: Built `PersonaVerdicts` in `src/components/simulator/persona-verdicts.tsx` and exported via `src/components/simulator/index.ts`. Displays contrasting, first-person commentary from both future identities (Current Path vs. Improved Path) evaluating user decision scenarios. Features amber/emerald persona-aware borders and backgrounds, distinct badge pill indicators ("Current Self" vs "Improved Self"), thematic icons (`ShieldAlert` for status quo protection vs `Sparkles` for compounding agency), accessible blockquotes with decorative quote glyphs, fallback message handling, and responsive desktop side-by-side / mobile vertical stacking. 100% test coverage with 94 passing test suites (542 tests).
+- **Commit**: `feat(decision): implement persona verdicts reaction cards`
+- **Key Files**: `src/components/simulator/persona-verdicts.tsx`, `src/components/simulator/index.ts`, `src/components/simulator/__tests__/persona-verdicts.test.tsx`, `docs/specs/step-15-3c-persona-verdicts.md`
 
 ### [2026-10-06] — Step 15.3b: Impact Matrix & Multi-Horizon Projections Shipped
 - **Details**: Built `ImpactMatrix` in `src/components/simulator/impact-matrix.tsx` and exported via `src/components/simulator/index.ts`. Displays domain score deltas (-10 to +10) across Career, Finances, Health, Relationships, and Lifestyle with animated progress bars, directional trend badges (emerald `+N` vs amber `-N`), and qualitative reasoning. Implemented chronological multi-horizon cards for Years 1, 3, and 5 featuring phase titles, compounding narratives, primary friction alerts, and strategic advantage markers. 100% test coverage with 93 passing test suites (537 tests).
