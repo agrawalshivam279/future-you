@@ -417,7 +417,7 @@ With the core dual-persona simulation and habit levers complete, the Decision Si
 - [x] Implement `trade-offs-card.tsx` (hidden frictions and blindspot warnings) (Step 15.3d)
 
 ### 15.4 - Route & Dashboard Integration
-- [ ] Implement dedicated `/simulator` page route with scenario history list and responsive mobile view (Step 15.4a)
+- [x] Implement dedicated `/simulator` page route with scenario history list and responsive mobile view (Step 15.4a)
 - [ ] Embed Decision Simulator trigger card / quick-action in `/dashboard` (Step 15.4b)
 
 ### 15.5 - Testing & Verification
