@@ -477,7 +477,7 @@ Gives users an exportable artifact to keep or share, completing the Version 3 fe
 
 ### 17.1 - Card Component & Privacy Masking
 - [x] Define `share.types.ts` (`ShareCardConfig`, `ShareCardTheme`, `CardExportFormat`) (Step 17.1a)
-- [ ] Implement `shareable-card.tsx` visual preview with persona contrast, letter quote, and branding (Step 17.1b)
+- [x] Implement `shareable-card.tsx` visual preview with persona contrast, letter quote, and branding (Step 17.1b)
 - [ ] Implement `privacy-toggles.tsx` for masking sensitive finances and private anxieties (Step 17.1c)
 
 ### 17.2 - Client-Side Canvas/SVG Exporter

@@ -93,11 +93,16 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
 | **Phase 15** | Decision Simulator | 🟢 Completed |
 | **Phase 16** | Check-in Mode | 🟢 Completed |
-| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.1a Complete) |
+| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.1b Complete) |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 17.1b: Shareable Card Visual Preview Component Shipped
+- **Details**: Built `ShareableCard` visual preview in `src/components/share/shareable-card.tsx` with barrel export `src/components/share/index.ts`. Supports 4 color themes (`midnight`, `emerald`, `amber`, `monochrome`), 3 aspect ratio modes (`square`, `portrait`, `landscape`), and 3 persona display modes (`split`, `improved`, `current`). Integrates client-side financial masking (`••••••`), toggleable anxiety reflection disclosure, 5-year Future Self quote display, alignment score badge, and mandatory reflection honesty disclaimer (*"A reflection tool, not a prediction engine"*). 100% test coverage across 110 passing test suites (648 tests).
+- **Commit**: `feat(share): implement shareable card visual preview component`
+- **Key Files**: `src/components/share/shareable-card.tsx`, `src/components/share/index.ts`, `src/components/share/__tests__/shareable-card.test.tsx`, `docs/specs/step-17-1b-shareable-card.md`
 
 ### [2026-10-06] — Step 17.1a: Shareable Card Domain Types & Defaults Shipped
 - **Details**: Established domain type definitions, export format types (`png`, `svg`), aspect ratios (`square`, `portrait`, `landscape`), and privacy masking controls (`ShareCardPrivacyConfig`, `ShareCardConfig`, `ShareCardData`) in `src/types/share.types.ts` with barrel export `src/types/index.ts`. Provided safe default configs with privacy masks enabled (`maskFinances: true`, `maskAnxieties: true`). Fully validated with unit tests verifying schema safety and preset dimensions. 100% test coverage across 109 passing test suites (639 tests).
