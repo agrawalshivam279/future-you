@@ -486,11 +486,11 @@ Gives users an exportable artifact to keep or share, completing the Version 3 fe
 - [x] Implement `share-modal.tsx` triggerable from `/dashboard` (Step 17.2c)
 
 ### 17.3 - V3 Integration Audit & Final Polish
-- [ ] Verify local-first invariants (`future-you:*` prefixes) across all new stores (Step 17.3a)
-- [ ] Verify complete data deletion clears `future-you:decisions` and `future-you:check-ins` (Step 17.3b)
-- [ ] Conduct accessibility audit (keyboard nav, contrast $\ge 4.5:1$, aria-labels) across all new V3 routes (Step 17.3c)
-- [ ] Verify bundle size remains $< 500$ kB (Step 17.3d)
-- [ ] Verify 100% test pass rate across all suites (Step 17.3e)
+- [x] Verify local-first invariants (`future-you:*` prefixes) across all new stores (Step 17.3a)
+- [x] Verify complete data deletion clears `future-you:decisions` and `future-you:check-ins` (Step 17.3b)
+- [x] Conduct accessibility audit (keyboard nav, contrast $\ge 4.5:1$, aria-labels) across all new V3 routes (Step 17.3c)
+- [x] Verify bundle size remains $< 500$ kB (Step 17.3d)
+- [x] Verify 100% test pass rate across all suites (Step 17.3e)
 
 ### Phase 17 Exit Criteria
 - Shareable cards render and download entirely client-side with zero data leakage.
