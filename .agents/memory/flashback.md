@@ -93,11 +93,16 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
 | **Phase 15** | Decision Simulator | 🟢 Completed |
 | **Phase 16** | Check-in Mode | 🟢 Completed |
-| **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
+| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.1a Complete) |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 17.1a: Shareable Card Domain Types & Defaults Shipped
+- **Details**: Established domain type definitions, export format types (`png`, `svg`), aspect ratios (`square`, `portrait`, `landscape`), and privacy masking controls (`ShareCardPrivacyConfig`, `ShareCardConfig`, `ShareCardData`) in `src/types/share.types.ts` with barrel export `src/types/index.ts`. Provided safe default configs with privacy masks enabled (`maskFinances: true`, `maskAnxieties: true`). Fully validated with unit tests verifying schema safety and preset dimensions. 100% test coverage across 109 passing test suites (639 tests).
+- **Commit**: `feat(share): define share card domain types, formats, and privacy schema`
+- **Key Files**: `src/types/share.types.ts`, `src/types/index.ts`, `src/types/__tests__/share-types.test.ts`, `docs/specs/step-17-1a-share-types.md`
 
 ### [2026-10-06] — Step 16.5: Check-in Mode End-to-End Suite Shipped (Phase 16 Complete)
 - **Details**: Authored and validated comprehensive end-to-end integration and architectural invariants suite in `src/__tests__/integration/check-in-mode-e2e.test.ts`. Validated pure client-side mathematical scoring across standard and inverted polarities, zero-denominator edge cases, categorical-to-numeric frequency mappings, and outlier clamping. Verified mandatory reflection honesty disclaimer in AI prompt (*"You are a reflection tool, not a prediction engine"*), tone grounding, structured JSON parsing, persistent storage under `future-you:check-ins`, single-click privacy purge via `deleteAllLocalData()`, and instantaneous client-side scoring (<50ms). Concludes Phase 16 exit criteria. 100% test coverage with 108 passing test suites (634 tests).
