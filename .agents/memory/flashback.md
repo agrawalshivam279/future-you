@@ -99,6 +99,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-06] — Step 16.2b: AI Check-in Reflection Prompt & Feedback Engine Shipped
+- **Details**: Implemented `src/lib/prompts/check-in-reflection.ts` and `src/lib/ai/check-in-feedback.ts` (barrel exports in `src/lib/prompts/index.ts` and `src/lib/ai/index.ts`). Integrates the mathematical drift scoring engine with an empathetic, grounded reflection note voiced by the 5-year Improved Path Future Self without toxic positivity. Features structured JSON generation, 60s timeout handling with AbortController, transient error retries, deterministic fallback reflection mode, and automatic persistence into `useCheckInStore`. 100% test coverage with 101 passing test suites (597 tests).
+- **Commit**: `feat(checkin): implement ai check-in reflection prompt and feedback engine`
+- **Key Files**: `src/lib/prompts/check-in-reflection.ts`, `src/lib/prompts/index.ts`, `src/lib/ai/check-in-feedback.ts`, `src/lib/ai/index.ts`, `src/lib/prompts/__tests__/check-in-reflection.test.ts`, `src/lib/ai/__tests__/check-in-feedback.test.ts`, `docs/specs/step-16-2b-check-in-feedback.md`
+
 ### [2026-10-06] — Step 16.2a: Trajectory Drift & Alignment Calculator Shipped
 - **Details**: Implemented pure client-side mathematical scoring engine in `src/lib/scoring/drift-calculator.ts` with barrel export `src/lib/scoring/index.ts`. Computes per-habit drift vectors across 5 core dimensions (sleep, exercise, screen time, deep work, savings rate) comparing check-in logs to baseline onboarding inputs and dynamic habit lever targets. Features directional progress math supporting inverted metrics (screen time), discrete status categorization (`surpassing`, `aligned`, `drifting_current`), and an outlier-clamped composite alignment score (0-100%). Comprehensive unit tests cover standard and inverted metrics, zero denominators, outlier clamping, and dynamic lever overrides. 100% test coverage with 100 passing test suites (590 tests).
 - **Commit**: `feat(checkin): implement pure client-side drift calculator`

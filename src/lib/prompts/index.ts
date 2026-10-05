@@ -6,3 +6,4 @@ export * from './timeline-generator';
 export * from './letter-generator';
 export * from './regret-gratitude-generator';
 export * from './decision-simulator';
+export * from './check-in-reflection';

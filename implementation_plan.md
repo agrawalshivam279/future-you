@@ -444,7 +444,7 @@ Transforms Future You from a one-time simulation into an ongoing reflection comp
 
 ### 16.2 - Scoring Algorithm & AI Reflection Prompt
 - [x] Implement pure client-side `drift-calculator.ts` (deterministic math comparing logged habits to baseline & target) (Step 16.2a)
-- [ ] Author `lib/prompts/check-in-reflection.ts` and `lib/ai/check-in-feedback.ts` for Future Self voice note (Step 16.2b)
+- [x] Author `lib/prompts/check-in-reflection.ts` and `lib/ai/check-in-feedback.ts` for Future Self voice note (Step 16.2b)
 
 ### 16.3 - UI Components
 - [ ] Implement `check-in-form.tsx` (habit log sliders and input controls) (Step 16.3a)
