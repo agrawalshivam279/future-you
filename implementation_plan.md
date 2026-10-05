@@ -457,8 +457,8 @@ Transforms Future You from a one-time simulation into an ongoing reflection comp
 - [x] Add Check-in navigation link in Header and CTA in Dashboard (Step 16.4b)
 
 ### 16.5 - Testing & Verification
-- [ ] Hermetic tests for drift calculation math across edge cases (Step 16.5a)
-- [ ] Store and component integration tests (Step 16.5b)
+- [x] Hermetic tests for drift calculation math across edge cases (Step 16.5a)
+- [x] Store and component integration tests (Step 16.5b)
 
 ### Phase 16 Exit Criteria
 - Users can log weekly habit checkpoints in under 2 minutes.
