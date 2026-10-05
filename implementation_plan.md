@@ -453,7 +453,7 @@ Transforms Future You from a one-time simulation into an ongoing reflection comp
 - [x] Implement `reflection-badge.tsx` (Future Self voice feedback note with TTS integration) (Step 16.3d)
 
 ### 16.4 - Route & History Visualization
-- [ ] Implement `/check-in` page route with historical logs and streak timeline (Step 16.4a)
+- [x] Implement `/check-in` page route with historical logs and streak timeline (Step 16.4a)
 - [ ] Add Check-in navigation link in Header and CTA in Dashboard (Step 16.4b)
 
 ### 16.5 - Testing & Verification
