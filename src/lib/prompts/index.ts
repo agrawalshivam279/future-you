@@ -5,3 +5,4 @@ export * from './system-improved-path';
 export * from './timeline-generator';
 export * from './letter-generator';
 export * from './regret-gratitude-generator';
+export * from './decision-simulator';
