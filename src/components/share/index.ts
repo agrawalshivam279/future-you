@@ -3,3 +3,4 @@
  */
 
 export * from './shareable-card';
+export * from './privacy-toggles';
