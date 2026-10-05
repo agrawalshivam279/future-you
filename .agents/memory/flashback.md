@@ -93,11 +93,16 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
 | **Phase 15** | Decision Simulator | 🟢 Completed |
 | **Phase 16** | Check-in Mode | 🟢 Completed |
-| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.2a Complete) |
+| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.2b Complete) |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 17.2b: Card Download & Clipboard Actions Shipped
+- **Details**: Implemented client-side `downloadCard` and `copyCardToClipboard` in `src/lib/export/card-export-actions.ts` (barrel export in `src/lib/export/index.ts`) and built `ShareActions` action button bar in `src/components/share/share-actions.tsx` (barrel export in `src/components/share/index.ts`). Enables instant client-side PNG downloads, SVG downloads, and direct system clipboard copying with accessible loading spinners and toast notifications via `useToast`. Unit tests validate filename generation, browser downloads, clipboard writing, and UI loading states. 100% test coverage across 114 passing test suites (672 tests).
+- **Commit**: `feat(export): implement card download and clipboard actions`
+- **Key Files**: `src/lib/export/card-export-actions.ts`, `src/lib/export/index.ts`, `src/components/share/share-actions.tsx`, `src/components/share/index.ts`, `src/components/share/__tests__/share-actions.test.tsx`, `src/lib/export/__tests__/card-export-actions.test.ts`, `docs/specs/step-17-2b-card-export-actions.md`
 
 ### [2026-10-06] — Step 17.2a: Client-Side Card Canvas & Vector SVG Renderer Shipped
 - **Details**: Implemented pure client-side `renderCardToSVG`, `svgToDataUri`, `renderCardToCanvas`, and `exportCardBlob` in `src/lib/export/card-canvas-renderer.ts` with barrel export `src/lib/export/index.ts`. Transforms simulation cards into vector SVG markup and raster HTML5 Canvas blobs with zero server or cloud dependencies. Enforces financial masking (`••••••`), aspect ratio presets (`square`, `portrait`, `landscape`), color themes (`midnight`, `emerald`, `amber`, `monochrome`), and the mandatory reflection honesty disclaimer (*"A reflection tool, not a prediction engine"*). Unit tests validate SVG XML structure, dimensions, XML escaping, and blob export. 100% test coverage across 112 passing test suites (664 tests).
