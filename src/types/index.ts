@@ -8,3 +8,4 @@ export * from './persona.types';
 export * from './life-model.types';
 export * from './chat.types';
 export * from './settings.types';
+export * from './decision.types';
