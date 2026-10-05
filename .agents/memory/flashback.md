@@ -93,11 +93,16 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
 | **Phase 15** | Decision Simulator | 🟢 Completed |
 | **Phase 16** | Check-in Mode | 🟢 Completed |
-| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.1c Complete) |
+| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.2a Complete) |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 17.2a: Client-Side Card Canvas & Vector SVG Renderer Shipped
+- **Details**: Implemented pure client-side `renderCardToSVG`, `svgToDataUri`, `renderCardToCanvas`, and `exportCardBlob` in `src/lib/export/card-canvas-renderer.ts` with barrel export `src/lib/export/index.ts`. Transforms simulation cards into vector SVG markup and raster HTML5 Canvas blobs with zero server or cloud dependencies. Enforces financial masking (`••••••`), aspect ratio presets (`square`, `portrait`, `landscape`), color themes (`midnight`, `emerald`, `amber`, `monochrome`), and the mandatory reflection honesty disclaimer (*"A reflection tool, not a prediction engine"*). Unit tests validate SVG XML structure, dimensions, XML escaping, and blob export. 100% test coverage across 112 passing test suites (664 tests).
+- **Commit**: `feat(export): implement pure client-side card canvas and svg renderer`
+- **Key Files**: `src/lib/export/card-canvas-renderer.ts`, `src/lib/export/index.ts`, `src/lib/export/__tests__/card-canvas-renderer.test.ts`, `docs/specs/step-17-2a-card-canvas-renderer.md`
 
 ### [2026-10-06] — Step 17.1c: Share Card Privacy Toggles & Customization Controls Shipped
 - **Details**: Built `PrivacyToggles` in `src/components/share/privacy-toggles.tsx` with barrel export `src/components/share/index.ts`. Provides accessible controls for financial masking (`••••••`), private anxiety reflection redaction, content inclusions (Future Self quote, alignment score, habit levers), visual theme selection (`midnight`, `emerald`, `amber`, `monochrome`), format aspect ratios (`square`, `portrait`, `landscape`), and persona focus mode (`split`, `improved`, `current`). Unit tests validate state updates, ARIA attributes, and accessibility. 100% test coverage across 111 passing test suites (655 tests).
