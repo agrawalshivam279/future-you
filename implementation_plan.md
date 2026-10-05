@@ -447,7 +447,7 @@ Transforms Future You from a one-time simulation into an ongoing reflection comp
 - [x] Author `lib/prompts/check-in-reflection.ts` and `lib/ai/check-in-feedback.ts` for Future Self voice note (Step 16.2b)
 
 ### 16.3 - UI Components
-- [ ] Implement `check-in-form.tsx` (habit log sliders and input controls) (Step 16.3a)
+- [x] Implement `check-in-form.tsx` (habit log sliders and input controls) (Step 16.3a)
 - [ ] Implement `alignment-gauge.tsx` (radial/progress indicator for 0-100% alignment) (Step 16.3b)
 - [ ] Implement `drift-vector-list.tsx` (per-habit breakdown: aligned, surpassing, drifting) (Step 16.3c)
 - [ ] Implement `reflection-badge.tsx` (Future Self voice feedback note with TTS integration) (Step 16.3d)

@@ -99,6 +99,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-06] — Step 16.3a: Habit Check-in Form Component Shipped
+- **Details**: Built `CheckInForm` in `src/components/check-in/check-in-form.tsx` and barrel exported from `src/components/check-in/index.ts`. Provides an accessible, responsive habit checkpoint form capturing sleep hours (0-12h), physical exercise cadence radio group (daily, weekly, rarely, never), deep work hours (0-60h), screen time (0-16h), savings rate (0-100%), and optional friction/reflection notes. Pre-populates inputs from the user's latest check-in or onboarding baseline. Includes ARIA radiogroups, range slider labels, disabled states during generation, and unit tests passing at 100% coverage. 102 passing test suites (601 tests).
+- **Commit**: `feat(checkin): implement habit check-in form component`
+- **Key Files**: `src/components/check-in/check-in-form.tsx`, `src/components/check-in/index.ts`, `src/components/check-in/__tests__/check-in-form.test.tsx`, `docs/specs/step-16-3a-check-in-form.md`
+
 ### [2026-10-06] — Step 16.2b: AI Check-in Reflection Prompt & Feedback Engine Shipped
 - **Details**: Implemented `src/lib/prompts/check-in-reflection.ts` and `src/lib/ai/check-in-feedback.ts` (barrel exports in `src/lib/prompts/index.ts` and `src/lib/ai/index.ts`). Integrates the mathematical drift scoring engine with an empathetic, grounded reflection note voiced by the 5-year Improved Path Future Self without toxic positivity. Features structured JSON generation, 60s timeout handling with AbortController, transient error retries, deterministic fallback reflection mode, and automatic persistence into `useCheckInStore`. 100% test coverage with 101 passing test suites (597 tests).
 - **Commit**: `feat(checkin): implement ai check-in reflection prompt and feedback engine`
