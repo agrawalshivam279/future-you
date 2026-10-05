@@ -91,13 +91,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
-| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a Complete) |
+| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a, 15.3b Complete) |
 | **Phase 16** | Check-in Mode | ⚪ Pending |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 15.3b: Impact Matrix & Multi-Horizon Projections Shipped
+- **Details**: Built `ImpactMatrix` in `src/components/simulator/impact-matrix.tsx` and exported via `src/components/simulator/index.ts`. Displays domain score deltas (-10 to +10) across Career, Finances, Health, Relationships, and Lifestyle with animated progress bars, directional trend badges (emerald `+N` vs amber `-N`), and qualitative reasoning. Implemented chronological multi-horizon cards for Years 1, 3, and 5 featuring phase titles, compounding narratives, primary friction alerts, and strategic advantage markers. 100% test coverage with 93 passing test suites (537 tests).
+- **Commit**: `feat(decision): implement impact matrix and multi-horizon projection cards`
+- **Key Files**: `src/components/simulator/impact-matrix.tsx`, `src/components/simulator/index.ts`, `src/components/simulator/__tests__/impact-matrix.test.tsx`, `docs/specs/step-15-3b-impact-matrix.md`
 
 ### [2026-10-06] — Step 15.3a: Interactive Decision Form & Preset Selector Shipped
 - **Details**: Built interactive scenario authoring form `DecisionForm` in `src/components/simulator/decision-form.tsx` and barrel export `src/components/simulator/index.ts`. Supports custom life fork input (title min 3 chars, primary domain selector across career/finances/health/relationships/lifestyle with accessible `aria-pressed` chips, time horizon radio toggles for immediate/<6m/1yr, and motivation/context description min 10 chars). Integrates one-click template exploration using `DECISION_PRESETS` from `decision-store`. Accessible WCAG AA design with loading spinner indicators, clear action, and form validation. 100% test coverage with 92 passing test suites (534 tests).

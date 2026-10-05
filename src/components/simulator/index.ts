@@ -3,3 +3,4 @@
  */
 
 export * from './decision-form';
+export * from './impact-matrix';
