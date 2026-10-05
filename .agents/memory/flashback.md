@@ -91,13 +91,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
-| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a-d, 15.4a-b Complete) |
+| **Phase 15** | Decision Simulator | 🟢 Completed |
 | **Phase 16** | Check-in Mode | ⚪ Pending |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 15.5: Decision Simulator End-to-End Suite Shipped (Phase 15 Complete)
+- **Details**: Authored and validated comprehensive end-to-end integration and architectural invariants suite in `src/__tests__/integration/decision-simulator-e2e.test.ts`. Validated strict `future-you:decisions` localStorage namespace prefixing, preset loading from `DECISION_PRESETS`, mandatory reflection honesty disclaimer in system prompt (*"You are a reflection tool, not a prediction engine"*), multi-horizon timeline validation (Years 1, 3, 5), domain delta clamping within [-10, 10], and single-click privacy purge via `deleteAllLocalData()` clearing all scenarios and cached evaluations. Formally satisfies all Phase 15 exit criteria. 100% test coverage with 97 passing test suites (570 tests).
+- **Commit**: `feat(decision): complete decision simulator e2e tests and phase 15 exit criteria`
+- **Key Files**: `src/__tests__/integration/decision-simulator-e2e.test.ts`, `docs/specs/step-15-5-decision-simulator-e2e.md`
 
 ### [2026-10-06] — Step 15.4b: Dashboard Decision Simulator Quick-Action Card Shipped (15.4 Complete)
 - **Details**: Built `DecisionSimulatorCard` in `src/components/dashboard/decision-simulator-card.tsx` and exported via `src/components/dashboard/index.ts`. Embedded directly within `src/app/dashboard/page.tsx` between the 5-year timeline and reflections matrix. Displays dynamic evaluated fork counters synchronized with `useDecisionStore`, clean feature overview copy, `GitFork` branding icon, and accessible CTA navigating directly to `/simulator`. Concludes Step 15.4 route and dashboard integration while maintaining `<300` LOC limit across all modified files. 100% test coverage with 96 passing test suites (562 tests).
