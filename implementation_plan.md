@@ -443,7 +443,7 @@ Transforms Future You from a one-time simulation into an ongoing reflection comp
 - [x] Implement `check-in-store.ts` with `future-you:check-ins` localStorage persistence (Step 16.1)
 
 ### 16.2 - Scoring Algorithm & AI Reflection Prompt
-- [ ] Implement pure client-side `drift-calculator.ts` (deterministic math comparing logged habits to baseline & target) (Step 16.2a)
+- [x] Implement pure client-side `drift-calculator.ts` (deterministic math comparing logged habits to baseline & target) (Step 16.2a)
 - [ ] Author `lib/prompts/check-in-reflection.ts` and `lib/ai/check-in-feedback.ts` for Future Self voice note (Step 16.2b)
 
 ### 16.3 - UI Components
