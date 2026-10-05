@@ -99,6 +99,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-06] — Step 16.2a: Trajectory Drift & Alignment Calculator Shipped
+- **Details**: Implemented pure client-side mathematical scoring engine in `src/lib/scoring/drift-calculator.ts` with barrel export `src/lib/scoring/index.ts`. Computes per-habit drift vectors across 5 core dimensions (sleep, exercise, screen time, deep work, savings rate) comparing check-in logs to baseline onboarding inputs and dynamic habit lever targets. Features directional progress math supporting inverted metrics (screen time), discrete status categorization (`surpassing`, `aligned`, `drifting_current`), and an outlier-clamped composite alignment score (0-100%). Comprehensive unit tests cover standard and inverted metrics, zero denominators, outlier clamping, and dynamic lever overrides. 100% test coverage with 100 passing test suites (590 tests).
+- **Commit**: `feat(checkin): implement pure client-side drift calculator`
+- **Key Files**: `src/lib/scoring/drift-calculator.ts`, `src/lib/scoring/index.ts`, `src/lib/scoring/__tests__/drift-calculator.test.ts`, `docs/specs/step-16-2a-drift-calculator.md`
+
 ### [2026-10-06] — Step 16.1: Check-in Mode Types & Persistent Store Shipped (Phase 16 Kickoff)
 - **Details**: Established the type definitions and persistent Zustand store for Phase 16 (Check-in Mode: Trajectory Drift & Habits). Defined `CheckInLog`, `HabitDriftVector`, and `CheckInEvaluation` in `src/types/check-in.types.ts` and barrel exported from `src/types/index.ts`. Implemented `useCheckInStore` in `src/stores/check-in-store.ts` with `future-you:check-ins` localStorage persistence, log CRUD, evaluation caching, and latest log selectors. Wired `resetCheckInStore()` into `deleteAllLocalData()` in `src/lib/storage/data-manager.ts` upholding the zero cloud storage / single-click data purge invariant. 100% test coverage with 99 passing test suites (578 tests).
 - **Commit**: `feat(checkin): implement check-in types and persistent zustand store`
