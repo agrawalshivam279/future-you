@@ -26,7 +26,10 @@ This document serves as the step-by-step implementation guide for the Future You
 - **PHASE 11 — Letter from Future Self + TTS**
 - **PHASE 12 — Regret & Gratitude View**
 - **PHASE 13 — Landing Page**
-- **PHASE 14 — Polish & Integration Testing**
+- **PHASE 14 — Polish & Integration Testing (V1/V2 Complete)**
+- **PHASE 15 — Decision Simulator ("What If?" Fork Engine) [V3]**
+- **PHASE 16 — Check-in Mode (Trajectory Drift & Habits) [V3]**
+- **PHASE 17 — Shareable Result Card & V3 Polish [V3]**
 
 ---
 
@@ -388,6 +391,111 @@ The final phase to catch edge cases and polish the UX before declaring V1 comple
 - [x] App passes all major workflows manually.
 - [x] No console errors in production flow.
 - [x] Accessibility minimums met.
+
+---
+
+## PHASE 15 — Decision Simulator ("What If?" Fork Engine)
+
+**Duration:** 2-3 Days  
+**Goal:** Empower users to simulate pivotal life decisions (career pivots, relocations, major investments) against their Life Model and evaluate multi-horizon impacts across both personas.
+
+### Why Now?
+With the core dual-persona simulation and habit levers complete, the Decision Simulator adds active agency—allowing users to test concrete forks rather than just tweaking daily sliders.
+
+### 15.1 - Types & State Store
+- [ ] Define `decision.types.ts` (`DecisionScenario`, `DomainDelta`, `HorizonProjection`, `DecisionEvaluation`) (Step 15.1)
+- [ ] Implement `decision-store.ts` with `future-you:decisions` localStorage persistence (Step 15.1)
+
+### 15.2 - AI Evaluation Prompt & Engine
+- [ ] Author `lib/prompts/decision-simulator.ts` with structured JSON schema and reflection disclaimer (Step 15.2)
+- [ ] Implement `lib/ai/simulate-decision.ts` with schema validation, error handling, and timeout safeguards (Step 15.2)
+
+### 15.3 - UI Components
+- [ ] Implement `decision-form.tsx` (title, domain selector, horizon, and pre-built templates) (Step 15.3a)
+- [ ] Implement `impact-matrix.tsx` (multi-horizon Y1/Y3/Y5 projection cards and delta score indicators) (Step 15.3b)
+- [ ] Implement `persona-verdicts.tsx` (Current Path vs Improved Path reaction cards) (Step 15.3c)
+- [ ] Implement `trade-offs-card.tsx` (hidden frictions and blindspot warnings) (Step 15.3d)
+
+### 15.4 - Route & Dashboard Integration
+- [ ] Implement dedicated `/simulator` page route with scenario history list and responsive mobile view (Step 15.4a)
+- [ ] Embed Decision Simulator trigger card / quick-action in `/dashboard` (Step 15.4b)
+
+### 15.5 - Testing & Verification
+- [ ] Hermetic unit tests for decision store, evaluator pipeline, and UI components (Step 15.5)
+
+### Phase 15 Exit Criteria
+- Users can create, save, and evaluate custom life forks.
+- Both personas deliver distinct, grounded verdicts without character drift.
+- Full local persistence under `future-you:decisions` with zero cloud leakage.
+
+---
+
+## PHASE 16 — Check-in Mode (Trajectory Drift & Habits)
+
+**Duration:** 2-3 Days  
+**Goal:** Enable periodic habit logging, calculate real-time trajectory alignment vs. baseline and target goals, and receive grounded Future Self reflection notes.
+
+### Why Now?
+Transforms Future You from a one-time simulation into an ongoing reflection companion that tracks real-world adherence and drift over time.
+
+### 16.1 - Types & State Store
+- [ ] Define `check-in.types.ts` (`CheckInLog`, `HabitDriftVector`, `CheckInEvaluation`) (Step 16.1)
+- [ ] Implement `check-in-store.ts` with `future-you:check-ins` localStorage persistence (Step 16.1)
+
+### 16.2 - Scoring Algorithm & AI Reflection Prompt
+- [ ] Implement pure client-side `drift-calculator.ts` (deterministic math comparing logged habits to baseline & target) (Step 16.2a)
+- [ ] Author `lib/prompts/check-in-reflection.ts` and `lib/ai/check-in-feedback.ts` for Future Self voice note (Step 16.2b)
+
+### 16.3 - UI Components
+- [ ] Implement `check-in-form.tsx` (habit log sliders and input controls) (Step 16.3a)
+- [ ] Implement `alignment-gauge.tsx` (radial/progress indicator for 0-100% alignment) (Step 16.3b)
+- [ ] Implement `drift-vector-list.tsx` (per-habit breakdown: aligned, surpassing, drifting) (Step 16.3c)
+- [ ] Implement `reflection-badge.tsx` (Future Self voice feedback note with TTS integration) (Step 16.3d)
+
+### 16.4 - Route & History Visualization
+- [ ] Implement `/check-in` page route with historical logs and streak timeline (Step 16.4a)
+- [ ] Add Check-in navigation link in Header and CTA in Dashboard (Step 16.4b)
+
+### 16.5 - Testing & Verification
+- [ ] Hermetic tests for drift calculation math across edge cases (Step 16.5a)
+- [ ] Store and component integration tests (Step 16.5b)
+
+### Phase 16 Exit Criteria
+- Users can log weekly habit checkpoints in under 2 minutes.
+- Alignment score and drift vectors calculate instantaneously client-side.
+- Future Self reflection note is empathetic, grounded, and free of toxic positivity.
+
+---
+
+## PHASE 17 — Shareable Result Card & V3 System Polish
+
+**Duration:** 2 Days  
+**Goal:** Create a high-res, client-side visual card exporter with privacy redaction, and perform a full system audit across the entire Version 3 release.
+
+### Why Now?
+Gives users an exportable artifact to keep or share, completing the Version 3 feature set before final quality gate verification.
+
+### 17.1 - Card Component & Privacy Masking
+- [ ] Define `share.types.ts` (`ShareCardConfig`, `ShareCardTheme`, `CardExportFormat`) (Step 17.1a)
+- [ ] Implement `shareable-card.tsx` visual preview with persona contrast, letter quote, and branding (Step 17.1b)
+- [ ] Implement `privacy-toggles.tsx` for masking sensitive finances and private anxieties (Step 17.1c)
+
+### 17.2 - Client-Side Canvas/SVG Exporter
+- [ ] Implement `card-canvas-renderer.ts` using HTML5 Canvas & vector SVG serialization (zero server/cloud dependencies) (Step 17.2a)
+- [ ] Implement PNG download, SVG download, and Clipboard copy actions with accessible toast notifications (Step 17.2b)
+- [ ] Implement `share-modal.tsx` triggerable from `/dashboard` (Step 17.2c)
+
+### 17.3 - V3 Integration Audit & Final Polish
+- [ ] Verify local-first invariants (`future-you:*` prefixes) across all new stores (Step 17.3a)
+- [ ] Verify complete data deletion clears `future-you:decisions` and `future-you:check-ins` (Step 17.3b)
+- [ ] Conduct accessibility audit (keyboard nav, contrast $\ge 4.5:1$, aria-labels) across all new V3 routes (Step 17.3c)
+- [ ] Verify bundle size remains $< 500$ kB (Step 17.3d)
+- [ ] Verify 100% test pass rate across all suites (Step 17.3e)
+
+### Phase 17 Exit Criteria
+- Shareable cards render and download entirely client-side with zero data leakage.
+- Full privacy wipe purges all Version 3 stores cleanly.
+- All test suites pass with zero compiler/lint errors.
 
 ---
 

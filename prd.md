@@ -297,6 +297,84 @@ The system generates content in this order:
 
 ---
 
+### 2.11 Decision Simulator ("What If?" Fork Engine)
+
+#### FR-2.11.1: Decision Scenario Definition
+- User can define a major life decision or fork (e.g., career switch, relocation, starting a company, education).
+- Input fields:
+  - Decision Title (concise text, e.g., "Transition from Corporate to Solo Founder")
+  - Detailed Description (context, risks, and motivation)
+  - Time Horizon (Immediate, 6 months, 1 year)
+  - Primary Domain (Career, Finance, Relationships, Health, Lifestyle)
+- Option to select an existing preset scenario or author a custom fork.
+
+#### FR-2.11.2: AI Impact Projection
+- Evaluates the proposed decision against the user's saved Life Model and baseline inputs.
+- Generates structured evaluation output:
+  - Multi-horizon projections: Year 1 (shock/transition), Year 3 (adaptation), Year 5 (compounding).
+  - Domain delta scores (-10 to +10) across: Career Growth, Financial Resilience, Energy & Vitality, Relationships, Deep Satisfaction.
+  - Persona Reactions: First-person commentary from both the Current Path self and Improved Path self on the proposed decision.
+  - Hidden Trade-offs & Unforeseen Blindspots (2-3 realistic frictions).
+- Honesty disclaimer: explicitly frames scenario as an exploratory heuristic, not a predictive certainty.
+
+#### FR-2.11.3: Scenario Management & Persistence
+- Stored client-side in Zustand store (`future-you:decisions`).
+- Supports saving multiple scenarios, comparing them side-by-side, or deleting scenarios.
+
+---
+
+### 2.12 Check-in Mode (Trajectory Alignment & Habit Drift)
+
+#### FR-2.12.1: Periodic Behavior Check-in
+- Interactive check-in interface (`/check-in`) enabling users to log their actual lived habits over the past week/month:
+  - Sleep average (hours/night)
+  - Exercise frequency (Never / Rarely / Weekly / Daily)
+  - Deep work / learning hours logged
+  - Screen time / wasted time estimates
+  - Savings rate discipline
+- Quick logging takes < 2 minutes.
+
+#### FR-2.12.2: Algorithmic Drift & Alignment Calculation
+- Pure client-side mathematical scoring engine comparing actual logs against:
+  - Baseline Onboarding metrics (Current Path starting point)
+  - Target Improved Path habits
+- Produces an **Alignment Score** (0% to 100%) and per-habit **Drift Vectors** (e.g., "Trending toward Improved Path in Career (+15%), but drifting toward Current Path in Sleep (-20%)").
+
+#### FR-2.12.3: Future Self Reflection Feedback
+- Lightweight AI prompt generating a personal 2-3 sentence reflection from the Improved Path future self:
+  - Acknowledges where the user stayed disciplined.
+  - Gently and realistically highlights the compounding risk of observed drifts without guilt or toxic positivity.
+
+#### FR-2.12.4: History & Streak Visualization
+- Chronological check-in log and alignment sparkline.
+- Persisted locally in Zustand store (`future-you:check-ins`).
+
+---
+
+### 2.13 Shareable Result Card (Privacy-Safe Visual Summary)
+
+#### FR-2.13.1: Visual Card Component
+- Aesthetically polished summary card rendered in dark theme with Future You branding:
+  - Call-sign / User persona header
+  - Dual Path contrast preview (5-Year Vision tags: Current vs. Improved)
+  - Core Future Self Quote from the generated Letter
+  - Trajectory metrics summary (Alignment / Habit focus)
+  - Mandatory footer disclaimer: *"A reflection tool, not a prediction engine"*
+
+#### FR-2.13.2: Privacy Redaction Mode
+- Toggleable privacy controls before exporting:
+  - Automatic masking/omission of sensitive financial brackets, debt, and private anxieties.
+  - Preview updates in real-time.
+
+#### FR-2.13.3: Pure Client-Side Rendering & Export
+- 100% in-browser rendering via HTML5 Canvas / SVG (zero external screenshot APIs, zero data leakage).
+- Export actions:
+  - "Download PNG" (high-resolution image export)
+  - "Download SVG" (vector format)
+  - "Copy to Clipboard" (using navigator.clipboard with fallback notification)
+
+---
+
 ## 3. Non-Functional Requirements
 
 ### 3.1 Privacy
@@ -383,6 +461,9 @@ The system generates content in this order:
 | Habit Levers | Sliders functional, "Apply" regenerates both futures |
 | Letter | Letter renders, TTS plays/pauses/stops, download works |
 | Regret/Gratitude | Lists render per persona, content is specific to user |
+| Decision Simulator | Scenario input, multi-horizon delta scores, persona reactions, local persistence |
+| Check-in Mode | Habit logging, algorithmic alignment & drift scores, reflection snippet |
+| Shareable Card | Clean visual card, privacy redaction, client-side PNG/SVG download & copy |
 | Settings | API key saves, provider presets work, test connection works, data deletion works |
 | Disclaimer | Visible on every page, first-time modal shows once |
 | Privacy | No network calls except to configured LLM API |
@@ -390,14 +471,11 @@ The system generates content in this order:
 
 ---
 
-## 6. Out of Scope (V1)
+## 6. Out of Scope (Version 3)
 
-- User accounts / authentication
-- Server-side storage
-- Decision simulator
-- Check-in mode (weekly behavior logging)
-- Shareable result card
-- Visual aging portrait (image generation)
-- Multi-language support
-- Payment / subscription
-- Native mobile app
+- User accounts / authentication (strictly client-side local architecture preserved)
+- Server-side storage or database
+- Visual aging portrait with GAN / Diffusion image models (Phase 4 scope)
+- Multi-language support / i18n
+- Payment / subscription processing
+- Native mobile app wrapper (React Native / Capacitor)

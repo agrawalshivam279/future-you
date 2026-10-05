@@ -102,11 +102,8 @@
 - No unnecessary re-renders — memoize expensive components
 
 ## What NOT to Build (Out of Scope)
-- User accounts / authentication
+- User accounts / authentication (client-side only invariant)
 - Server-side storage / database
 - Payment processing
 - Native mobile app
-- Image generation (Phase 4 — not in current scope)
-- Check-in mode (Phase 3 — not in current scope)
-- Decision simulator (Phase 3 — not in current scope)
-- Shareable card (Phase 3 — not in current scope)
+- Image generation with GAN / Diffusion models (Phase 4 — out of scope)
