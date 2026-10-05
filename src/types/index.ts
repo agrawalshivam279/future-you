@@ -10,3 +10,4 @@ export * from './chat.types';
 export * from './settings.types';
 export * from './decision.types';
 export * from './check-in.types';
+export * from './share.types';

@@ -476,7 +476,7 @@ Transforms Future You from a one-time simulation into an ongoing reflection comp
 Gives users an exportable artifact to keep or share, completing the Version 3 feature set before final quality gate verification.
 
 ### 17.1 - Card Component & Privacy Masking
-- [ ] Define `share.types.ts` (`ShareCardConfig`, `ShareCardTheme`, `CardExportFormat`) (Step 17.1a)
+- [x] Define `share.types.ts` (`ShareCardConfig`, `ShareCardTheme`, `CardExportFormat`) (Step 17.1a)
 - [ ] Implement `shareable-card.tsx` visual preview with persona contrast, letter quote, and branding (Step 17.1b)
 - [ ] Implement `privacy-toggles.tsx` for masking sensitive finances and private anxieties (Step 17.1c)
 
