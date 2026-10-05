@@ -18,3 +18,6 @@ export type { HabitLeversPanelProps } from './habit-levers-panel';
 
 export { DecisionSimulatorCard } from './decision-simulator-card';
 export type { DecisionSimulatorCardProps } from './decision-simulator-card';
+
+export { CheckInSummaryCard } from './check-in-summary-card';
+export type { CheckInSummaryCardProps } from './check-in-summary-card';

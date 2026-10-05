@@ -23,6 +23,13 @@ describe('Header Layout Component', () => {
     expect(settingsLink).toHaveAttribute('href', '/settings');
   });
 
+  it('renders check-in navigation link pointing to /check-in', () => {
+    render(<Header />);
+    const checkInLink = screen.getByLabelText('Trajectory Check-in');
+    expect(checkInLink).toBeInTheDocument();
+    expect(checkInLink).toHaveAttribute('href', '/check-in');
+  });
+
   it('triggers onOpenDisclaimer when disclaimer button is clicked', () => {
     const handleOpenDisclaimer = jest.fn();
     render(<Header onOpenDisclaimer={handleOpenDisclaimer} />);

@@ -454,7 +454,7 @@ Transforms Future You from a one-time simulation into an ongoing reflection comp
 
 ### 16.4 - Route & History Visualization
 - [x] Implement `/check-in` page route with historical logs and streak timeline (Step 16.4a)
-- [ ] Add Check-in navigation link in Header and CTA in Dashboard (Step 16.4b)
+- [x] Add Check-in navigation link in Header and CTA in Dashboard (Step 16.4b)
 
 ### 16.5 - Testing & Verification
 - [ ] Hermetic tests for drift calculation math across edge cases (Step 16.5a)

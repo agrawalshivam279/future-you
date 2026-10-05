@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Settings, ShieldAlert } from 'lucide-react';
+import { Settings, ShieldAlert, Activity } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { APP_NAME } from '@/lib/constants';
@@ -56,6 +56,15 @@ export function Header({
         {/* Navigation shortcuts */}
         {showNav && (
           <nav aria-label="Main Navigation" className="flex items-center space-x-2 sm:space-x-3">
+            <Link
+              href="/check-in"
+              className="text-xs text-text-secondary hover:text-text-primary px-2.5 py-1.5 rounded-md hover:bg-bg-hover transition-colors flex items-center space-x-1.5"
+              aria-label="Trajectory Check-in"
+            >
+              <Activity className="h-3.5 w-3.5 text-accent-improved" aria-hidden="true" />
+              <span className="hidden sm:inline">Check-in</span>
+            </Link>
+
             {onOpenDisclaimer && (
               <Button
                 variant="ghost"

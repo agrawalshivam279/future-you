@@ -8,6 +8,7 @@ import {
   SplitViewContainer,
   HabitLeversPanel,
   DecisionSimulatorCard,
+  CheckInSummaryCard,
 } from '@/components/dashboard';
 import { DualTimeline } from '@/components/timeline';
 import { ReflectionsGrid } from '@/components/reflections';
@@ -130,7 +131,6 @@ export default function DashboardPage(): React.JSX.Element {
             >
               Regenerate
             </Button>
-
             <Button
               variant="secondary"
               size="sm"
@@ -198,8 +198,11 @@ export default function DashboardPage(): React.JSX.Element {
           improvedMilestones={model.improvedPath.timeline || []}
         />
 
-        {/* Decision Simulator Quick-Action */}
-        <DecisionSimulatorCard onNavigate={() => router.push('/simulator')} />
+        {/* V3 Companion Modules: Decision Simulator & Trajectory Check-in */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <DecisionSimulatorCard onNavigate={() => router.push('/simulator')} />
+          <CheckInSummaryCard onNavigate={() => router.push('/check-in')} />
+        </div>
 
         {/* Psychological Reflections Matrix */}
         <section aria-label="Dashboard Reflections Section" className="space-y-4">
@@ -278,7 +281,6 @@ export default function DashboardPage(): React.JSX.Element {
             >
               Cancel
             </Button>
-
             <Button
               variant="primary"
               size="sm"

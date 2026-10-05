@@ -191,5 +191,16 @@ describe('DashboardPage Component', () => {
 
     expect(mockPush).toHaveBeenCalledWith('/simulator');
   });
+
+  it('renders CheckInSummaryCard and navigates to /check-in when clicked', () => {
+    useLifeModelStore.setState({ model: mockLifeModel });
+    render(<DashboardPage />);
+
+    expect(screen.getByText('Track Habit Trajectory Drift')).toBeInTheDocument();
+    const checkInBtn = screen.getByRole('button', { name: /open trajectory check-in/i });
+    fireEvent.click(checkInBtn);
+
+    expect(mockPush).toHaveBeenCalledWith('/check-in');
+  });
 });
 
