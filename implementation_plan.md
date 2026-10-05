@@ -439,8 +439,8 @@ With the core dual-persona simulation and habit levers complete, the Decision Si
 Transforms Future You from a one-time simulation into an ongoing reflection companion that tracks real-world adherence and drift over time.
 
 ### 16.1 - Types & State Store
-- [ ] Define `check-in.types.ts` (`CheckInLog`, `HabitDriftVector`, `CheckInEvaluation`) (Step 16.1)
-- [ ] Implement `check-in-store.ts` with `future-you:check-ins` localStorage persistence (Step 16.1)
+- [x] Define `check-in.types.ts` (`CheckInLog`, `HabitDriftVector`, `CheckInEvaluation`) (Step 16.1)
+- [x] Implement `check-in-store.ts` with `future-you:check-ins` localStorage persistence (Step 16.1)
 
 ### 16.2 - Scoring Algorithm & AI Reflection Prompt
 - [ ] Implement pure client-side `drift-calculator.ts` (deterministic math comparing logged habits to baseline & target) (Step 16.2a)

@@ -8,3 +8,4 @@ export * from './onboarding-store';
 export * from './life-model-store';
 export * from './chat-store';
 export * from './decision-store';
+export * from './check-in-store';
