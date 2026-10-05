@@ -91,13 +91,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
-| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a, 15.3b, 15.3c Complete) |
+| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a, 15.3b, 15.3c, 15.3d Complete) |
 | **Phase 16** | Check-in Mode | ⚪ Pending |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 15.3d: Trade-offs & Latent Blindspots Card Shipped (15.3 Component Suite Complete)
+- **Details**: Built `TradeOffsCard` in `src/components/simulator/trade-offs-card.tsx` and exported via `src/components/simulator/index.ts`. Visualizes explicit sacrifices and frictions alongside second-order unforeseen risks. Features dual-card layout with amber warning theme for direct trade-offs (`Scale` icon, badge "Trade-offs", numbered pills) and rose danger theme for unforeseen risks (`AlertOctagon` icon, badge "Blindspots", numbered pills). Implemented whitespace-resilient fallback rendering, accessible semantic lists (`role="list"`, `role="listitem"`), and responsive side-by-side / mobile vertical stacking. Concludes Step 15.3 simulator component suite. 100% test coverage with 94 passing test suites (548 tests).
+- **Commit**: `feat(decision): implement trade-offs and latent blindspots card`
+- **Key Files**: `src/components/simulator/trade-offs-card.tsx`, `src/components/simulator/index.ts`, `src/components/simulator/__tests__/trade-offs-card.test.tsx`, `docs/specs/step-15-3d-trade-offs-card.md`
 
 ### [2026-10-06] — Step 15.3c: Persona Verdicts Reaction Cards Shipped
 - **Details**: Built `PersonaVerdicts` in `src/components/simulator/persona-verdicts.tsx` and exported via `src/components/simulator/index.ts`. Displays contrasting, first-person commentary from both future identities (Current Path vs. Improved Path) evaluating user decision scenarios. Features amber/emerald persona-aware borders and backgrounds, distinct badge pill indicators ("Current Self" vs "Improved Self"), thematic icons (`ShieldAlert` for status quo protection vs `Sparkles` for compounding agency), accessible blockquotes with decorative quote glyphs, fallback message handling, and responsive desktop side-by-side / mobile vertical stacking. 100% test coverage with 94 passing test suites (542 tests).
