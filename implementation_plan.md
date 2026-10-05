@@ -411,7 +411,7 @@ With the core dual-persona simulation and habit levers complete, the Decision Si
 - [x] Implement `lib/ai/simulate-decision.ts` with schema validation, error handling, and timeout safeguards (Step 15.2)
 
 ### 15.3 - UI Components
-- [ ] Implement `decision-form.tsx` (title, domain selector, horizon, and pre-built templates) (Step 15.3a)
+- [x] Implement `decision-form.tsx` (title, domain selector, horizon, and pre-built templates) (Step 15.3a)
 - [ ] Implement `impact-matrix.tsx` (multi-horizon Y1/Y3/Y5 projection cards and delta score indicators) (Step 15.3b)
 - [ ] Implement `persona-verdicts.tsx` (Current Path vs Improved Path reaction cards) (Step 15.3c)
 - [ ] Implement `trade-offs-card.tsx` (hidden frictions and blindspot warnings) (Step 15.3d)
