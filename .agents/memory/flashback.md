@@ -91,13 +91,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
-| **Phase 15** | Decision Simulator | 🟡 In Progress (Step 15.1 Complete) |
+| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2 Complete) |
 | **Phase 16** | Check-in Mode | ⚪ Pending |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 15.2: AI Decision Simulator Prompt & Evaluation Engine Shipped
+- **Details**: Implemented the core AI projection and evaluation pipeline for the Decision Simulator. Built `buildDecisionSimulatorSystemPrompt()`, `buildDecisionSimulatorUserPrompt()`, and resilient `parseDecisionSimulatorResponse()` in `src/lib/prompts/decision-simulator.ts`. Enforced mandatory honesty reflection disclaimer (*"You are a reflection tool, not a prediction engine. Frame these projections as exploratory what-if heuristics, never as predetermined certainties"*). Configured multi-horizon projections (Years 1, 3, 5), clamped domain deltas (-10 to +10), and extracted persona reactions from Current and Improved paths. Built `simulateDecisionScenario()` in `src/lib/ai/simulate-decision.ts` with 60-second timeout safeguarding, exponential backoff retries, token usage telemetry, and automatic persistence to `useDecisionStore`. 100% test coverage with 91 passing test suites (527 tests).
+- **Commit**: `feat(decision): implement decision simulator prompt and evaluation engine`
+- **Key Files**: `src/lib/prompts/decision-simulator.ts`, `src/lib/ai/simulate-decision.ts`, `src/lib/prompts/__tests__/decision-simulator.test.ts`, `src/lib/ai/__tests__/simulate-decision.test.ts`, `docs/specs/step-15-2-decision-prompt-engine.md`
 
 ### [2026-10-05] — Step 15.1: Decision Simulator Types & Persistent Zustand Store Shipped (Phase 15 Kickoff)
 - **Details**: Established the TypeScript type system and persistent state store for the Decision Simulator ("What If?" Fork Engine) in Version 3. Defined `DecisionScenario`, `DomainDelta` (-10 to +10 impact scale), `HorizonProjection` (multi-horizon Years 1, 3, 5), `DecisionEvaluation`, and `DecisionPreset` templates in `src/types/decision.types.ts`. Implemented `useDecisionStore` in `src/stores/decision-store.ts` with `future-you:decisions` localStorage persistence, full scenario CRUD, evaluation indexing, and preset templates. Integrated store reset into `deleteAllLocalData()` in `src/lib/storage/data-manager.ts` to uphold the zero cloud storage / single-click privacy purge invariant. 100% test coverage with 89 passing test suites (514 tests).

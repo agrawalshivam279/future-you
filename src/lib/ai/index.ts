@@ -13,3 +13,4 @@ export * from './generate-regret-gratitude';
 export * from './chat-with-persona';
 export * from './regenerate-futures';
 export * from './generate-pipeline';
+export * from './simulate-decision';

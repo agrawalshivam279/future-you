@@ -407,8 +407,8 @@ With the core dual-persona simulation and habit levers complete, the Decision Si
 - [x] Implement `decision-store.ts` with `future-you:decisions` localStorage persistence (Step 15.1)
 
 ### 15.2 - AI Evaluation Prompt & Engine
-- [ ] Author `lib/prompts/decision-simulator.ts` with structured JSON schema and reflection disclaimer (Step 15.2)
-- [ ] Implement `lib/ai/simulate-decision.ts` with schema validation, error handling, and timeout safeguards (Step 15.2)
+- [x] Author `lib/prompts/decision-simulator.ts` with structured JSON schema and reflection disclaimer (Step 15.2)
+- [x] Implement `lib/ai/simulate-decision.ts` with schema validation, error handling, and timeout safeguards (Step 15.2)
 
 ### 15.3 - UI Components
 - [ ] Implement `decision-form.tsx` (title, domain selector, horizon, and pre-built templates) (Step 15.3a)
