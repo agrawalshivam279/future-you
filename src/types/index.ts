@@ -9,3 +9,4 @@ export * from './life-model.types';
 export * from './chat.types';
 export * from './settings.types';
 export * from './decision.types';
+export * from './check-in.types';

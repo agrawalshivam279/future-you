@@ -92,12 +92,17 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
 | **Phase 15** | Decision Simulator | 🟢 Completed |
-| **Phase 16** | Check-in Mode | ⚪ Pending |
+| **Phase 16** | Check-in Mode | 🟡 In Progress (Step 16.1 Complete) |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 16.1: Check-in Mode Types & Persistent Store Shipped (Phase 16 Kickoff)
+- **Details**: Established the type definitions and persistent Zustand store for Phase 16 (Check-in Mode: Trajectory Drift & Habits). Defined `CheckInLog`, `HabitDriftVector`, and `CheckInEvaluation` in `src/types/check-in.types.ts` and barrel exported from `src/types/index.ts`. Implemented `useCheckInStore` in `src/stores/check-in-store.ts` with `future-you:check-ins` localStorage persistence, log CRUD, evaluation caching, and latest log selectors. Wired `resetCheckInStore()` into `deleteAllLocalData()` in `src/lib/storage/data-manager.ts` upholding the zero cloud storage / single-click data purge invariant. 100% test coverage with 99 passing test suites (578 tests).
+- **Commit**: `feat(checkin): implement check-in types and persistent zustand store`
+- **Key Files**: `src/types/check-in.types.ts`, `src/types/index.ts`, `src/stores/check-in-store.ts`, `src/stores/index.ts`, `src/lib/storage/data-manager.ts`, `src/stores/__tests__/check-in-store.test.ts`, `docs/specs/step-16-1-check-in-types-store.md`
 
 ### [2026-10-06] — Step 15.5: Decision Simulator End-to-End Suite Shipped (Phase 15 Complete)
 - **Details**: Authored and validated comprehensive end-to-end integration and architectural invariants suite in `src/__tests__/integration/decision-simulator-e2e.test.ts`. Validated strict `future-you:decisions` localStorage namespace prefixing, preset loading from `DECISION_PRESETS`, mandatory reflection honesty disclaimer in system prompt (*"You are a reflection tool, not a prediction engine"*), multi-horizon timeline validation (Years 1, 3, 5), domain delta clamping within [-10, 10], and single-click privacy purge via `deleteAllLocalData()` clearing all scenarios and cached evaluations. Formally satisfies all Phase 15 exit criteria. 100% test coverage with 97 passing test suites (570 tests).
