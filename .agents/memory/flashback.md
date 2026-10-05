@@ -99,6 +99,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-06] — Step 16.3d: Future Self Reflection Badge & TTS Component Shipped
+- **Details**: Built `ReflectionBadge` in `src/components/check-in/reflection-badge.tsx` and barrel exported from `src/components/check-in/index.ts`. Displays the AI-generated reflection note and micro-adjustment from the Improved Path Future Self (5 years ahead). Integrated Web Speech API audio playback controls (Play, Pause, Stop) powered by `createTTSController`, one-click clipboard copy action with toast feedback, and permanent reflection honesty disclaimer (*"A reflection tool, not a prediction engine"*). Unit tests validate playback controls, clipboard interaction, and accessibility with 100% test coverage. 105 passing test suites (613 tests).
+- **Commit**: `feat(checkin): implement future self reflection badge and tts component`
+- **Key Files**: `src/components/check-in/reflection-badge.tsx`, `src/components/check-in/index.ts`, `src/components/check-in/__tests__/reflection-badge.test.tsx`, `docs/specs/step-16-3d-reflection-badge.md`
+
 ### [2026-10-06] — Step 16.3c: Habit Drift Vector List Component Shipped
 - **Details**: Built `DriftVectorList` in `src/components/check-in/drift-vector-list.tsx` and barrel exported from `src/components/check-in/index.ts`. Displays per-habit drift vector cards across sleep, exercise, screen time, deep work, and savings rate. Features summary status counts (Aligned, Surpassing, Drifting), individual metric readouts (logged actual vs. baseline and target), status badges, and color-coded progress bars with semantic ARIA progressbar roles. Unit tests pass at 100% coverage. 104 passing test suites (610 tests).
 - **Commit**: `feat(checkin): implement habit drift vector list component`
