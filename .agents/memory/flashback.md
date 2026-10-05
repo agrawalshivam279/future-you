@@ -61,6 +61,17 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ---
 
+## 2.1 Launch & Marketing Highlights / LinkedIn Notes
+
+> **Purpose**: Key architectural and philosophical value propositions captured for public launch announcement, portfolio showcase, and LinkedIn post generation.
+
+- **AI Independence & Model Neutrality (BYO Key)**: Future You provides 100% provider independence with zero vendor lock-in. Users configure their own API key in `/settings` and can switch effortlessly between OpenAI, Google Gemini, FreeLLMAPI, OpenRouter, or any custom OpenAI-compatible endpoint with custom model selection.
+- **Radical Privacy Invariant (Zero Cloud Storage)**: 100% client-side architecture. Deep personal reflections, financial brackets, habit metrics, anxieties, and streaming chat logs remain exclusively inside browser `localStorage` and `IndexedDB`. Zero backend databases, zero telemetry, zero trackers, and an instant one-click data deletion purge.
+- **Interactive Reflection vs. Fortune Telling**: Honest ethical framing (*"A reflection tool, not a prediction engine"*). Features dual simulated futures (5 years ahead: Current Path vs. Improved Path), dynamic habit levers with outcome recalculation, Web Speech API letters with real-time text-to-speech audio, and streaming conversational personas.
+- **Modern Clean Tech Stack**: Next.js 14 App Router, TypeScript strict mode, Tailwind CSS dark-first theme, Framer Motion, and Zustand state persistence with zero server baggage.
+
+---
+
 ## 3. Implementation Phase Tracker
 
 | Phase | Description | Status |
