@@ -418,7 +418,7 @@ With the core dual-persona simulation and habit levers complete, the Decision Si
 
 ### 15.4 - Route & Dashboard Integration
 - [x] Implement dedicated `/simulator` page route with scenario history list and responsive mobile view (Step 15.4a)
-- [ ] Embed Decision Simulator trigger card / quick-action in `/dashboard` (Step 15.4b)
+- [x] Embed Decision Simulator trigger card / quick-action in `/dashboard` (Step 15.4b)
 
 ### 15.5 - Testing & Verification
 - [ ] Hermetic unit tests for decision store, evaluator pipeline, and UI components (Step 15.5)

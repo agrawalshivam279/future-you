@@ -180,4 +180,16 @@ describe('DashboardPage Component', () => {
 
     expect(screen.queryByTestId('recalculation-error-banner')).not.toBeInTheDocument();
   });
+
+  it('renders DecisionSimulatorCard and navigates to /simulator when clicked', () => {
+    useLifeModelStore.setState({ model: mockLifeModel });
+    render(<DashboardPage />);
+
+    expect(screen.getByText('Test Major Life Decisions')).toBeInTheDocument();
+    const launchBtn = screen.getByRole('button', { name: /launch decision simulator/i });
+    fireEvent.click(launchBtn);
+
+    expect(mockPush).toHaveBeenCalledWith('/simulator');
+  });
 });
+
