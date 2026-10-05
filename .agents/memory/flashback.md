@@ -92,12 +92,17 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
 | **Phase 15** | Decision Simulator | 🟢 Completed |
-| **Phase 16** | Check-in Mode | 🟡 In Progress (Step 16.1 Complete) |
+| **Phase 16** | Check-in Mode | 🟢 Completed |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 16.5: Check-in Mode End-to-End Suite Shipped (Phase 16 Complete)
+- **Details**: Authored and validated comprehensive end-to-end integration and architectural invariants suite in `src/__tests__/integration/check-in-mode-e2e.test.ts`. Validated pure client-side mathematical scoring across standard and inverted polarities, zero-denominator edge cases, categorical-to-numeric frequency mappings, and outlier clamping. Verified mandatory reflection honesty disclaimer in AI prompt (*"You are a reflection tool, not a prediction engine"*), tone grounding, structured JSON parsing, persistent storage under `future-you:check-ins`, single-click privacy purge via `deleteAllLocalData()`, and instantaneous client-side scoring (<50ms). Concludes Phase 16 exit criteria. 100% test coverage with 108 passing test suites (634 tests).
+- **Commit**: `feat(checkin): complete check-in mode e2e tests and phase 16 exit criteria`
+- **Key Files**: `src/__tests__/integration/check-in-mode-e2e.test.ts`, `docs/specs/step-16-5-check-in-e2e.md`
 
 ### [2026-10-06] — Step 16.4b: Header Navigation Link & Dashboard Check-in CTA Shipped
 - **Details**: Added accessible Check-in navigation link in `src/components/layout/header.tsx` with `Activity` branding icon, built `CheckInSummaryCard` in `src/components/dashboard/check-in-summary-card.tsx` (barrel export in `src/components/dashboard/index.ts`), and embedded both V3 modules (`DecisionSimulatorCard` and `CheckInSummaryCard`) in a responsive two-column grid on `/dashboard` (`src/app/dashboard/page.tsx`). Displays live checkpoint counts and alignment score percentages synchronized with `useCheckInStore`, while maintaining strict `<300` LOC limit across all modified files. 100% test coverage across 107 passing test suites (623 tests).
