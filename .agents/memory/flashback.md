@@ -99,6 +99,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-06] — Step 16.3b: Trajectory Alignment Gauge Component Shipped
+- **Details**: Built `AlignmentGauge` in `src/components/check-in/alignment-gauge.tsx` and barrel exported from `src/components/check-in/index.ts`. Displays the composite 0-100% alignment score in a radial SVG meter with smooth Framer Motion animations. Implements tiered semantic color and status thresholds (emerald for >=80% Strong Alignment, amber for 50-79% Moderate Alignment, red/danger for <50% Drifting Trajectory) with accessible `role="meter"` ARIA semantics. Fully covered by unit tests validating bounds clamping, variant badges, and label options. 103 passing test suites (607 tests).
+- **Commit**: `feat(checkin): implement trajectory alignment gauge component`
+- **Key Files**: `src/components/check-in/alignment-gauge.tsx`, `src/components/check-in/index.ts`, `src/components/check-in/__tests__/alignment-gauge.test.tsx`, `docs/specs/step-16-3b-alignment-gauge.md`
+
 ### [2026-10-06] — Step 16.3a: Habit Check-in Form Component Shipped
 - **Details**: Built `CheckInForm` in `src/components/check-in/check-in-form.tsx` and barrel exported from `src/components/check-in/index.ts`. Provides an accessible, responsive habit checkpoint form capturing sleep hours (0-12h), physical exercise cadence radio group (daily, weekly, rarely, never), deep work hours (0-60h), screen time (0-16h), savings rate (0-100%), and optional friction/reflection notes. Pre-populates inputs from the user's latest check-in or onboarding baseline. Includes ARIA radiogroups, range slider labels, disabled states during generation, and unit tests passing at 100% coverage. 102 passing test suites (601 tests).
 - **Commit**: `feat(checkin): implement habit check-in form component`
