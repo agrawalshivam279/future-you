@@ -2,18 +2,19 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Settings, RotateCcw, Sparkles, ArrowRight } from 'lucide-react';
+import { Settings, RotateCcw, Sparkles, ArrowRight, Share2 } from 'lucide-react';
 import { useLifeModelStore } from '@/stores/life-model-store';
 import {
   SplitViewContainer,
   HabitLeversPanel,
   DecisionSimulatorCard,
   CheckInSummaryCard,
+  RegenerateModal,
 } from '@/components/dashboard';
+import { ShareModal } from '@/components/share';
 import { DualTimeline } from '@/components/timeline';
 import { ReflectionsGrid } from '@/components/reflections';
 import { Button } from '@/components/ui/button';
-import { Modal } from '@/components/ui/modal';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { PersonaId, HabitLever } from '@/types';
 import { regenerateFutures } from '@/lib/ai/regenerate-futures';
@@ -31,6 +32,7 @@ export default function DashboardPage(): React.JSX.Element {
   const setLifeModel = useLifeModelStore((state) => state.setLifeModel);
 
   const [isRegenerateModalOpen, setIsRegenerateModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState(false);
   const [recalculationError, setRecalculationError] = useState<string | null>(null);
   const [reflectionsPersona, setReflectionsPersona] = useState<PersonaId>('improved');
@@ -121,7 +123,16 @@ export default function DashboardPage(): React.JSX.Element {
           </div>
 
           {/* Header Action Controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={() => setIsShareModalOpen(true)}
+              aria-label="Share Simulation Card"
+              leftIcon={<Share2 className="w-4 h-4" aria-hidden="true" />}
+            >
+              Share
+            </Button>
             <Button
               variant="secondary"
               size="sm"
@@ -260,38 +271,17 @@ export default function DashboardPage(): React.JSX.Element {
       </div>
 
       {/* Confirmation Modal for Regeneration */}
-      <Modal
+      <RegenerateModal
         isOpen={isRegenerateModalOpen}
         onClose={() => setIsRegenerateModalOpen(false)}
-        title="Regenerate Your Futures?"
-        className="max-w-md"
-      >
-        <div className="space-y-4">
-          <p className="text-sm text-text-secondary leading-relaxed">
-            This will re-run the 5-stage AI simulation pipeline using your existing onboarding responses.
-            Newly generated personas, timelines, and letters will replace your current ones.
-          </p>
+        onConfirm={handleConfirmRegenerate}
+      />
 
-          <div className="flex items-center justify-end gap-3 pt-3">
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => setIsRegenerateModalOpen(false)}
-              aria-label="Cancel regeneration"
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={handleConfirmRegenerate}
-              aria-label="Confirm regeneration"
-            >
-              Yes, Regenerate
-            </Button>
-          </div>
-        </div>
-      </Modal>
+      {/* Share Simulation Modal */}
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+      />
     </main>
   );
 }

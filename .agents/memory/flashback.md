@@ -93,11 +93,16 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
 | **Phase 15** | Decision Simulator | 🟢 Completed |
 | **Phase 16** | Check-in Mode | 🟢 Completed |
-| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.2b Complete) |
+| **Phase 17** | Shareable Result Card & V3 Polish | 🟡 In Progress (Step 17.2c Complete) |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 17.2c: Share Modal & Dashboard Integration Shipped
+- **Details**: Implemented `ShareModal` in `src/components/share/share-modal.tsx` (barrel export in `src/components/share/index.ts`) uniting `ShareableCard`, `PrivacyToggles`, and `ShareActions`. Integrated "Share" CTA directly into the `/dashboard` header controls (`src/app/dashboard/page.tsx`), and refactored regeneration confirmation dialog into `src/components/dashboard/regenerate-modal.tsx` (barrel export in `src/components/dashboard/index.ts`), keeping `page.tsx` at 287 LOC (strictly $<300$ limit). Unit tests validate dialog open/close lifecycle, live previews, and store integration. 100% test coverage across 115 passing test suites (676 tests).
+- **Commit**: `feat(share): implement share modal and dashboard action integration`
+- **Key Files**: `src/components/share/share-modal.tsx`, `src/components/share/index.ts`, `src/components/dashboard/regenerate-modal.tsx`, `src/components/dashboard/index.ts`, `src/app/dashboard/page.tsx`, `src/components/share/__tests__/share-modal.test.tsx`, `docs/specs/step-17-2c-share-modal.md`
 
 ### [2026-10-06] — Step 17.2b: Card Download & Clipboard Actions Shipped
 - **Details**: Implemented client-side `downloadCard` and `copyCardToClipboard` in `src/lib/export/card-export-actions.ts` (barrel export in `src/lib/export/index.ts`) and built `ShareActions` action button bar in `src/components/share/share-actions.tsx` (barrel export in `src/components/share/index.ts`). Enables instant client-side PNG downloads, SVG downloads, and direct system clipboard copying with accessible loading spinners and toast notifications via `useToast`. Unit tests validate filename generation, browser downloads, clipboard writing, and UI loading states. 100% test coverage across 114 passing test suites (672 tests).
