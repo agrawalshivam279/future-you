@@ -421,12 +421,12 @@ With the core dual-persona simulation and habit levers complete, the Decision Si
 - [x] Embed Decision Simulator trigger card / quick-action in `/dashboard` (Step 15.4b)
 
 ### 15.5 - Testing & Verification
-- [ ] Hermetic unit tests for decision store, evaluator pipeline, and UI components (Step 15.5)
+- [x] Hermetic unit tests for decision store, evaluator pipeline, and UI components (Step 15.5)
 
 ### Phase 15 Exit Criteria
-- Users can create, save, and evaluate custom life forks.
-- Both personas deliver distinct, grounded verdicts without character drift.
-- Full local persistence under `future-you:decisions` with zero cloud leakage.
+- [x] Users can create, save, and evaluate custom life forks.
+- [x] Both personas deliver distinct, grounded verdicts without character drift.
+- [x] Full local persistence under `future-you:decisions` with zero cloud leakage.
 
 ---
 
