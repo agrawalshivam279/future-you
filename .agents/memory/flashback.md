@@ -91,10 +91,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
+| **Phase 15** | Decision Simulator | 🟡 In Progress (Step 15.1 Complete) |
+| **Phase 16** | Check-in Mode | ⚪ Pending |
+| **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-05] — Step 15.1: Decision Simulator Types & Persistent Zustand Store Shipped (Phase 15 Kickoff)
+- **Details**: Established the TypeScript type system and persistent state store for the Decision Simulator ("What If?" Fork Engine) in Version 3. Defined `DecisionScenario`, `DomainDelta` (-10 to +10 impact scale), `HorizonProjection` (multi-horizon Years 1, 3, 5), `DecisionEvaluation`, and `DecisionPreset` templates in `src/types/decision.types.ts`. Implemented `useDecisionStore` in `src/stores/decision-store.ts` with `future-you:decisions` localStorage persistence, full scenario CRUD, evaluation indexing, and preset templates. Integrated store reset into `deleteAllLocalData()` in `src/lib/storage/data-manager.ts` to uphold the zero cloud storage / single-click privacy purge invariant. 100% test coverage with 89 passing test suites (514 tests).
+- **Commit**: `feat(decision): implement decision simulator types and zustand store`
+- **Key Files**: `src/types/decision.types.ts`, `src/stores/decision-store.ts`, `src/stores/__tests__/decision-store.test.ts`, `docs/specs/step-15-1-decision-types-store.md`
 
 ### [2026-10-04] — Step 14.1: Final Polish, Invariants & End-to-End System Audit Shipped (Phase 14 Complete — V1 100% Shipped)
 - **Details**: Executed comprehensive system audit and end-to-end integration verification for Future You V1. Validated local-first storage invariants (`future-you:` prefixes across all stores), verified complete one-click data deletion (resetting all 5 Zustand stores and purging localStorage/IndexedDB), audited mandatory reflection honesty disclaimers across all 7 LLM system prompt builders, and verified the unbroken user lifecycle (settings configuration → onboarding steps 1-6 → AI generation payload validation → dashboard & habit lever tweaks → streaming persona chat → letters/reflections inspection → full privacy wipe). Confirmed Next.js production build succeeds with all routes $\le 189$ kB ($< 500$ kB budget) and 0 console/compiler errors. 100% test coverage with 88 passing test suites (506 tests).

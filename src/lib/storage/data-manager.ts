@@ -6,6 +6,7 @@ import {
   useOnboardingStore,
   useLifeModelStore,
   useChatStore,
+  useDecisionStore,
 } from '@/stores';
 
 export interface BackupPayload {
@@ -94,6 +95,7 @@ export async function deleteAllLocalData(): Promise<void> {
     useOnboardingStore.getState().resetOnboarding();
     useLifeModelStore.getState().resetLifeModel();
     useChatStore.getState().resetChat();
+    useDecisionStore.getState().resetDecisionStore();
   } catch {
     // Gracefully handle uninitialized store references in test runners
   }

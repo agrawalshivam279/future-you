@@ -403,8 +403,8 @@ The final phase to catch edge cases and polish the UX before declaring V1 comple
 With the core dual-persona simulation and habit levers complete, the Decision Simulator adds active agency—allowing users to test concrete forks rather than just tweaking daily sliders.
 
 ### 15.1 - Types & State Store
-- [ ] Define `decision.types.ts` (`DecisionScenario`, `DomainDelta`, `HorizonProjection`, `DecisionEvaluation`) (Step 15.1)
-- [ ] Implement `decision-store.ts` with `future-you:decisions` localStorage persistence (Step 15.1)
+- [x] Define `decision.types.ts` (`DecisionScenario`, `DomainDelta`, `HorizonProjection`, `DecisionEvaluation`) (Step 15.1)
+- [x] Implement `decision-store.ts` with `future-you:decisions` localStorage persistence (Step 15.1)
 
 ### 15.2 - AI Evaluation Prompt & Engine
 - [ ] Author `lib/prompts/decision-simulator.ts` with structured JSON schema and reflection disclaimer (Step 15.2)
