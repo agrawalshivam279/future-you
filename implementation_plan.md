@@ -412,7 +412,7 @@ With the core dual-persona simulation and habit levers complete, the Decision Si
 
 ### 15.3 - UI Components
 - [x] Implement `decision-form.tsx` (title, domain selector, horizon, and pre-built templates) (Step 15.3a)
-- [ ] Implement `impact-matrix.tsx` (multi-horizon Y1/Y3/Y5 projection cards and delta score indicators) (Step 15.3b)
+- [x] Implement `impact-matrix.tsx` (multi-horizon Y1/Y3/Y5 projection cards and delta score indicators) (Step 15.3b)
 - [ ] Implement `persona-verdicts.tsx` (Current Path vs Improved Path reaction cards) (Step 15.3c)
 - [ ] Implement `trade-offs-card.tsx` (hidden frictions and blindspot warnings) (Step 15.3d)
 
