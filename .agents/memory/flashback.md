@@ -91,13 +91,18 @@ Future You is a client-side web application using AI to generate two simulated f
 | **Phase 12** | Regret & Gratitude View | 🟢 Completed |
 | **Phase 13** | Landing Page | 🟢 Completed |
 | **Phase 14** | Polish & Integration Testing | 🟢 Completed |
-| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a, 15.3b, 15.3c, 15.3d Complete) |
+| **Phase 15** | Decision Simulator | 🟡 In Progress (Steps 15.1, 15.2, 15.3a-d, 15.4a Complete) |
 | **Phase 16** | Check-in Mode | ⚪ Pending |
 | **Phase 17** | Shareable Result Card & V3 Polish | ⚪ Pending |
 
 ---
 
 ## 4. Chronological Activity & Change Log
+
+### [2026-10-06] — Step 15.4a: Dedicated `/simulator` Page Route & Scenario History Shipped
+- **Details**: Implemented dedicated page route `SimulatorPage` in `src/app/simulator/page.tsx` and modular `ScenarioOverview` in `src/components/simulator/scenario-overview.tsx` (barrel export in `src/components/simulator/index.ts`). Integrates `DecisionForm`, `ImpactMatrix`, `PersonaVerdicts`, and `TradeOffsCard` with `useLifeModelStore` and `useDecisionStore`. Features onboarding guard redirecting to `/onboarding`, horizontal scrollable tab bar for saved scenarios, live AI evaluation orchestrator with progress indicator and timeout safeguards, error banner with dismissal, active scenario overview card with delete capability, and seamless creation of new life forks. 100% test coverage with 95 passing test suites (556 tests).
+- **Commit**: `feat(decision): implement dedicated /simulator page route and history`
+- **Key Files**: `src/app/simulator/page.tsx`, `src/components/simulator/scenario-overview.tsx`, `src/components/simulator/index.ts`, `src/app/simulator/__tests__/page.test.tsx`, `docs/specs/step-15-4a-simulator-page.md`
 
 ### [2026-10-06] — Step 15.3d: Trade-offs & Latent Blindspots Card Shipped (15.3 Component Suite Complete)
 - **Details**: Built `TradeOffsCard` in `src/components/simulator/trade-offs-card.tsx` and exported via `src/components/simulator/index.ts`. Visualizes explicit sacrifices and frictions alongside second-order unforeseen risks. Features dual-card layout with amber warning theme for direct trade-offs (`Scale` icon, badge "Trade-offs", numbered pills) and rose danger theme for unforeseen risks (`AlertOctagon` icon, badge "Blindspots", numbered pills). Implemented whitespace-resilient fallback rendering, accessible semantic lists (`role="list"`, `role="listitem"`), and responsive side-by-side / mobile vertical stacking. Concludes Step 15.3 simulator component suite. 100% test coverage with 94 passing test suites (548 tests).
