@@ -482,7 +482,7 @@ Gives users an exportable artifact to keep or share, completing the Version 3 fe
 
 ### 17.2 - Client-Side Canvas/SVG Exporter
 - [x] Implement `card-canvas-renderer.ts` using HTML5 Canvas & vector SVG serialization (zero server/cloud dependencies) (Step 17.2a)
-- [ ] Implement PNG download, SVG download, and Clipboard copy actions with accessible toast notifications (Step 17.2b)
+- [x] Implement PNG download, SVG download, and Clipboard copy actions with accessible toast notifications (Step 17.2b)
 - [ ] Implement `share-modal.tsx` triggerable from `/dashboard` (Step 17.2c)
 
 ### 17.3 - V3 Integration Audit & Final Polish
