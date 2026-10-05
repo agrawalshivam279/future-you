@@ -99,6 +99,11 @@ Future You is a client-side web application using AI to generate two simulated f
 
 ## 4. Chronological Activity & Change Log
 
+### [2026-10-06] — Step 16.3c: Habit Drift Vector List Component Shipped
+- **Details**: Built `DriftVectorList` in `src/components/check-in/drift-vector-list.tsx` and barrel exported from `src/components/check-in/index.ts`. Displays per-habit drift vector cards across sleep, exercise, screen time, deep work, and savings rate. Features summary status counts (Aligned, Surpassing, Drifting), individual metric readouts (logged actual vs. baseline and target), status badges, and color-coded progress bars with semantic ARIA progressbar roles. Unit tests pass at 100% coverage. 104 passing test suites (610 tests).
+- **Commit**: `feat(checkin): implement habit drift vector list component`
+- **Key Files**: `src/components/check-in/drift-vector-list.tsx`, `src/components/check-in/index.ts`, `src/components/check-in/__tests__/drift-vector-list.test.tsx`, `docs/specs/step-16-3c-drift-vector-list.md`
+
 ### [2026-10-06] — Step 16.3b: Trajectory Alignment Gauge Component Shipped
 - **Details**: Built `AlignmentGauge` in `src/components/check-in/alignment-gauge.tsx` and barrel exported from `src/components/check-in/index.ts`. Displays the composite 0-100% alignment score in a radial SVG meter with smooth Framer Motion animations. Implements tiered semantic color and status thresholds (emerald for >=80% Strong Alignment, amber for 50-79% Moderate Alignment, red/danger for <50% Drifting Trajectory) with accessible `role="meter"` ARIA semantics. Fully covered by unit tests validating bounds clamping, variant badges, and label options. 103 passing test suites (607 tests).
 - **Commit**: `feat(checkin): implement trajectory alignment gauge component`
