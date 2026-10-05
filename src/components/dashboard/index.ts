@@ -21,3 +21,6 @@ export type { DecisionSimulatorCardProps } from './decision-simulator-card';
 
 export { CheckInSummaryCard } from './check-in-summary-card';
 export type { CheckInSummaryCardProps } from './check-in-summary-card';
+
+export { RegenerateModal } from './regenerate-modal';
+export type { RegenerateModalProps } from './regenerate-modal';
