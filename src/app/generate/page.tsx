@@ -50,16 +50,16 @@ export default function GenerationPage(): React.JSX.Element {
 
   if (isVerifying) {
     return (
-      <main className="flex-1 flex items-center justify-center min-h-[60vh] px-4">
+      <div className="flex-1 flex items-center justify-center min-h-[60vh] px-4">
         <p className="text-sm font-mono text-neutral-500 animate-pulse">
           Verifying onboarding parameters...
         </p>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8 flex flex-col justify-center">
+    <div className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8 flex flex-col justify-center">
       {/* Page Header */}
       <div className="text-center space-y-2 max-w-xl mx-auto">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-neutral-800 text-neutral-300 border border-neutral-700/60">
@@ -95,6 +95,6 @@ export default function GenerationPage(): React.JSX.Element {
           {HONESTY_DISCLAIMER}
         </p>
       </footer>
-    </main>
+    </div>
   );
 }

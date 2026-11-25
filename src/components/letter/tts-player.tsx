@@ -1,15 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import {
-  Play,
-  Pause,
-  RotateCcw,
-  Volume2,
-  VolumeX,
-  Gauge,
-  User,
-} from 'lucide-react';
+import { Play, Pause, RotateCcw, Volume2, VolumeX, Gauge, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   isSpeechSynthesisSupported,
@@ -54,6 +46,16 @@ export function TTSPlayer({
   const [selectedVoiceURI, setSelectedVoiceURI] = useState<string>('');
 
   const controllerRef = useRef<TTSController | null>(null);
+  const latestRef = useRef({
+    onSentenceChange,
+    onPlaybackStateChange,
+    rate,
+    voice: null as SpeechSynthesisVoice | null,
+  });
+  latestRef.current.onSentenceChange = onSentenceChange;
+  latestRef.current.onPlaybackStateChange = onPlaybackStateChange;
+  latestRef.current.rate = rate;
+
   const sentences = React.useMemo(() => splitIntoSentences(text), [text]);
   const totalSentences = sentences.length;
 
@@ -77,80 +79,73 @@ export function TTSPlayer({
         setVoices(loadedVoices);
         if (loadedVoices.length > 0) {
           const defaultVoice =
-            loadedVoices.find((v) => v.default || v.lang.startsWith('en')) ||
-            loadedVoices[0];
+            loadedVoices.find((v) => v.default || v.lang.startsWith('en')) || loadedVoices[0];
           setSelectedVoiceURI(defaultVoice.voiceURI);
+          latestRef.current.voice = defaultVoice;
+          controllerRef.current?.setVoice(defaultVoice);
         }
       });
     }
   }, []);
 
-  // Initialize or re-create TTS controller
+  // Initialize TTS controller once on support detection (avoid recreating on rate/callback changes)
   useEffect(() => {
     if (!isSupported) return;
 
     const controller = createTTSController({
-      rate,
+      rate: latestRef.current.rate,
+      voice: latestRef.current.voice,
       onSentenceChange: (idx) => {
         setCurrentSentenceIndex(idx);
-        onSentenceChange?.(idx);
+        latestRef.current.onSentenceChange?.(idx);
       },
       onStateChange: (state) => {
         setPlaybackState(state);
-        onPlaybackStateChange?.(state);
+        latestRef.current.onPlaybackStateChange?.(state);
         if (state === 'stopped' || state === 'idle') {
           setCurrentSentenceIndex(0);
-          onSentenceChange?.(0);
+          latestRef.current.onSentenceChange?.(0);
         }
       },
       onEnd: () => {
         setPlaybackState('idle');
         setCurrentSentenceIndex(0);
-        onSentenceChange?.(0);
-        onPlaybackStateChange?.('idle');
+        latestRef.current.onSentenceChange?.(0);
+        latestRef.current.onPlaybackStateChange?.('idle');
       },
     });
 
     controllerRef.current = controller;
-
     return () => {
       controller.destroy();
       controllerRef.current = null;
     };
-  }, [isSupported, rate, onSentenceChange, onPlaybackStateChange]);
+  }, [isSupported]);
 
-  // Handle Play / Resume
   const handlePlayToggle = useCallback(() => {
     const controller = controllerRef.current;
     if (!controller) return;
-
-    if (playbackState === 'playing') {
-      controller.pause();
-    } else if (playbackState === 'paused') {
-      controller.resume();
-    } else {
-      controller.play(sentences, currentSentenceIndex);
-    }
+    if (playbackState === 'playing') controller.pause();
+    else if (playbackState === 'paused') controller.resume();
+    else controller.play(sentences, currentSentenceIndex);
   }, [playbackState, sentences, currentSentenceIndex]);
 
-  // Handle Stop / Reset
   const handleStop = useCallback(() => {
     controllerRef.current?.stop();
     setCurrentSentenceIndex(0);
-    onSentenceChange?.(0);
-  }, [onSentenceChange]);
+    latestRef.current.onSentenceChange?.(0);
+  }, []);
 
-  // Handle Speed Selection
   const handleSpeedChange = (newRate: number) => {
     setRate(newRate);
     controllerRef.current?.setRate(newRate);
   };
 
-  // Handle Voice Selection
   const handleVoiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const uri = e.target.value;
     setSelectedVoiceURI(uri);
     const chosenVoice = voices.find((v) => v.voiceURI === uri) || null;
+    latestRef.current.voice = chosenVoice;
     controllerRef.current?.setVoice(chosenVoice);
   };
 
@@ -179,9 +174,7 @@ export function TTSPlayer({
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border-primary/40 pb-3">
         <div className="flex items-center gap-2">
           <Volume2 className="w-5 h-5 shrink-0" aria-hidden="true" />
-          <span className="font-semibold text-sm tracking-wide">
-            Audio Narration
-          </span>
+          <span className="font-semibold text-sm tracking-wide">Audio Narration</span>
           <span
             className="text-xs uppercase px-2 py-0.5 rounded-full font-mono bg-bg-tertiary text-text-secondary"
             aria-live="polite"
@@ -235,15 +228,9 @@ export function TTSPlayer({
         </div>
 
         {/* Speed Controls */}
-        <div
-          className="flex items-center gap-1.5"
-          role="group"
-          aria-label="Playback speed"
-        >
+        <div className="flex items-center gap-1.5" role="group" aria-label="Playback speed">
           <Gauge className="w-3.5 h-3.5 text-text-tertiary hidden sm:block" aria-hidden="true" />
-          <span className="text-xs text-text-secondary font-medium mr-1 hidden sm:inline">
-            Speed:
-          </span>
+          <span className="text-xs text-text-secondary font-medium mr-1 hidden sm:inline">Speed:</span>
           {SPEED_OPTIONS.map((speed) => {
             const isSelected = rate === speed;
             return (
@@ -266,7 +253,7 @@ export function TTSPlayer({
         </div>
       </div>
 
-      {/* Voice Selection Selector (When multiple browser voices available) */}
+      {/* Voice Selection Selector */}
       {voices.length > 1 && (
         <div className="flex items-center gap-2 pt-1">
           <User className="w-3.5 h-3.5 text-text-tertiary shrink-0" aria-hidden="true" />

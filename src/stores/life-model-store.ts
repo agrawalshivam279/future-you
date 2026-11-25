@@ -100,6 +100,10 @@ export const useLifeModelStore = create<LifeModelState>()(
     }),
     {
       name: `${STORAGE_PREFIX}life-model`,
+      partialize: (state) => ({
+        model: state.model,
+        lastGeneratedAt: state.lastGeneratedAt,
+      }),
     }
   )
 );

@@ -72,7 +72,7 @@ export default function DashboardPage(): React.JSX.Element {
 
   if (!model) {
     return (
-      <main className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
+      <div className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
         <Card className="max-w-md w-full text-center space-y-5 p-8" data-testid="empty-dashboard-card">
           <div className="w-12 h-12 rounded-full bg-accent-info/10 text-accent-info flex items-center justify-center mx-auto">
             <Sparkles className="w-6 h-6" aria-hidden="true" />
@@ -99,12 +99,12 @@ export default function DashboardPage(): React.JSX.Element {
             </Button>
           </CardContent>
         </Card>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-bg-primary text-text-primary py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-bg-primary text-text-primary py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Dashboard Header */}
         <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-border-primary/80">
@@ -282,6 +282,6 @@ export default function DashboardPage(): React.JSX.Element {
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
       />
-    </main>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles, User, Calendar } from 'lucide-react';
 import { useOnboardingStore } from '@/stores';
 import { Input } from '@/components/ui/input';
@@ -38,6 +38,62 @@ const LONG_TERM_SUGGESTIONS = [
 export function GoalsStep({ className }: GoalsStepProps): React.JSX.Element {
   const { name, age, goals, updateBasics, updateGoals } = useOnboardingStore();
 
+  // Keep local text state so spaces and multi-digit numbers aren't trimmed/clamped mid-keystroke
+  const [nameInput, setNameInput] = useState<string>(name);
+  const [ageInput, setAgeInput] = useState<string>(age ? String(age) : '');
+  const nameInputRef = useRef(nameInput);
+  nameInputRef.current = nameInput;
+  const ageInputRef = useRef(ageInput);
+  ageInputRef.current = ageInput;
+
+  useEffect(() => {
+    if (name !== nameInputRef.current.trim()) {
+      setNameInput(name);
+    }
+  }, [name]);
+
+  useEffect(() => {
+    const parsedLocal = Number(ageInputRef.current);
+    if (age !== parsedLocal) {
+      setAgeInput(age ? String(age) : '');
+    }
+  }, [age]);
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    setNameInput(raw);
+    nameInputRef.current = raw;
+    updateBasics(raw, age);
+  };
+
+  const handleNameBlur = () => {
+    const trimmed = nameInput.trim();
+    setNameInput(trimmed);
+    nameInputRef.current = trimmed;
+  };
+
+  const handleAgeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    setAgeInput(raw);
+    ageInputRef.current = raw;
+    const parsed = Number(raw);
+    if (raw.trim() !== '' && !Number.isNaN(parsed) && parsed >= 16 && parsed <= 100) {
+      updateBasics(name, Math.round(parsed));
+    }
+  };
+
+  const handleAgeBlur = () => {
+    const parsed = Number(ageInput);
+    const clamped =
+      Number.isNaN(parsed) || ageInput.trim() === ''
+        ? 18
+        : Math.max(16, Math.min(100, Math.round(parsed)));
+    const nextAgeStr = String(clamped);
+    setAgeInput(nextAgeStr);
+    ageInputRef.current = nextAgeStr;
+    updateBasics(name, clamped);
+  };
+
   const handleAddShortTerm = (text: string) => {
     if (!goals.shortTerm.includes(text)) {
       updateGoals({ shortTerm: [...goals.shortTerm, text] });
@@ -71,8 +127,9 @@ export function GoalsStep({ className }: GoalsStepProps): React.JSX.Element {
             id="onboarding-name"
             label="What should your future selves call you?"
             placeholder="e.g. Alex, Maya"
-            value={name}
-            onChange={(e) => updateBasics(e.target.value, age)}
+            value={nameInput}
+            onChange={handleNameChange}
+            onBlur={handleNameBlur}
             leftIcon={<User className="w-4 h-4 text-text-muted" aria-hidden="true" />}
             helperText="Used by your future selves to address you in conversation."
             aria-label="Your preferred name or callsign"
@@ -86,10 +143,9 @@ export function GoalsStep({ className }: GoalsStepProps): React.JSX.Element {
             min={16}
             max={100}
             label="Current Age"
-            value={age || ''}
-            onChange={(e) =>
-              updateBasics(name, Math.max(16, Math.min(100, Number(e.target.value) || 18)))
-            }
+            value={ageInput}
+            onChange={handleAgeChange}
+            onBlur={handleAgeBlur}
             leftIcon={<Calendar className="w-4 h-4 text-text-muted" aria-hidden="true" />}
             helperText="Anchors the 5-year simulation."
             aria-label="Your current age"

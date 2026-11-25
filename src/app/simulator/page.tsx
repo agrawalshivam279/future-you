@@ -50,7 +50,7 @@ export default function SimulatorPage(): React.JSX.Element {
   // Empty state guard when onboarding has not been completed
   if (!model) {
     return (
-      <main className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
+      <div className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
         <Card
           className="max-w-md w-full text-center space-y-5 p-8 border border-border-primary"
           data-testid="empty-simulator-guard"
@@ -72,7 +72,7 @@ export default function SimulatorPage(): React.JSX.Element {
             Start Onboarding
           </Button>
         </Card>
-      </main>
+      </div>
     );
   }
 
@@ -111,7 +111,7 @@ export default function SimulatorPage(): React.JSX.Element {
   const showForm = isCreatingNew || !activeScenario || (!activeEvaluation && !isLoading);
 
   return (
-    <main className="min-h-screen bg-bg-primary text-text-primary px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-6xl mx-auto space-y-8">
+    <div className="min-h-screen bg-bg-primary text-text-primary px-4 sm:px-6 lg:px-8 py-8 md:py-12 max-w-6xl mx-auto space-y-8">
       {/* Top Header & Navigation */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border-primary pb-6">
         <div className="space-y-1">
@@ -288,6 +288,6 @@ export default function SimulatorPage(): React.JSX.Element {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }

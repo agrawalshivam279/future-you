@@ -55,15 +55,15 @@ export function computeProgress(
   target: number,
   isLowerBetter = false
 ): number {
-  if (target === baseline) {
-    if (isLowerBetter) {
+  if (isLowerBetter) {
+    if (baseline <= target) {
       return actual <= target ? 1.0 : 0.0;
     }
-    return actual >= target ? 1.0 : 0.0;
+    return (baseline - actual) / (baseline - target);
   }
 
-  if (isLowerBetter) {
-    return (baseline - actual) / (baseline - target);
+  if (baseline >= target) {
+    return actual >= target ? 1.0 : 0.0;
   }
 
   return (actual - baseline) / (target - baseline);

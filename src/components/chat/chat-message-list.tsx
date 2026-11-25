@@ -18,7 +18,7 @@ export interface ChatMessageListProps {
   /** Callback when user clicks a suggested starter question */
   onSelectStarter?: (question: string) => void;
   /** Callback for TTS voice playback */
-  onSpeakMessage?: (text: string) => void;
+  onSpeakMessage?: (text: string, messageId?: string) => void;
   /** Currently speaking message identifier */
   speakingMessageId?: string | null;
   /** Optional custom CSS classes */
@@ -118,7 +118,7 @@ export function ChatMessageList({
               key={message.id}
               message={message}
               personaName={personaName}
-              onSpeak={onSpeakMessage}
+              onSpeak={onSpeakMessage ? (text) => onSpeakMessage(text, message.id) : undefined}
               isSpeaking={speakingMessageId === message.id}
             />
           ))}

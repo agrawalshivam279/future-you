@@ -72,6 +72,18 @@ function generateId(): string {
 }
 
 /**
+ * Strips transient streaming flags from persisted chat messages.
+ */
+function sanitizeConversations(
+  conversations: Record<PersonaId, ChatMessage[]>
+): Record<PersonaId, ChatMessage[]> {
+  return {
+    current: (conversations.current || []).map((msg) => ({ ...msg, isStreaming: false })),
+    improved: (conversations.improved || []).map((msg) => ({ ...msg, isStreaming: false })),
+  };
+}
+
+/**
  * Zustand store managing multi-persona chat exchanges.
  * Persists messages asynchronously to IndexedDB under future-you:chat.
  * Filters out transient streaming flags during persistence.
@@ -174,7 +186,7 @@ export const useChatStore = create<ChatState>()(
         createIndexedDBStorage('future-you-db', 'chat')
       ),
       partialize: (state) => ({
-        conversations: state.conversations,
+        conversations: sanitizeConversations(state.conversations),
       }),
     }
   )

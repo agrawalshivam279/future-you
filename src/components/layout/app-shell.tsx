@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { DisclaimerModal } from '@/components/layout/disclaimer-modal';
-
+import { ErrorBoundary } from '@/components/layout/error-boundary';
 import { ToastProvider } from '@/components/ui/toast';
 
 export interface AppShellProps {
@@ -13,7 +13,7 @@ export interface AppShellProps {
 
 /**
  * Client-side application layout shell.
- * Coordinates Header, main content area, Footer, ToastProvider, and the Disclaimer modal.
+ * Coordinates Header, ErrorBoundary, main content area, Footer, ToastProvider, and the Disclaimer modal.
  */
 export function AppShell({ children }: AppShellProps) {
   const [isDisclaimerOpen, setIsDisclaimerOpen] = React.useState(false);
@@ -21,7 +21,9 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <ToastProvider>
       <Header onOpenDisclaimer={() => setIsDisclaimerOpen(true)} />
-      <main className="flex-1 flex flex-col">{children}</main>
+      <main className="flex-1 flex flex-col">
+        <ErrorBoundary>{children}</ErrorBoundary>
+      </main>
       <Footer onOpenDisclaimer={() => setIsDisclaimerOpen(true)} />
       <DisclaimerModal
         isOpen={isDisclaimerOpen}

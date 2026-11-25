@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowLeft, MessageSquare, Sparkles, Clock, ArrowRight } from 'lucide-react';
 import { useLifeModelStore } from '@/stores/life-model-store';
@@ -31,14 +31,16 @@ function LetterPageInner(): React.JSX.Element {
     return model?.inputs || getOnboardingData();
   }, [model, getOnboardingData]);
 
-  // Sync state if URL query param changes externally
+  // Sync state only when URL query param itself changes externally
+  const prevRequestedRef = useRef(requestedPersona);
   useEffect(() => {
-    if (requestedPersona && (requestedPersona === 'current' || requestedPersona === 'improved')) {
-      if (requestedPersona !== activePersona) {
+    if (requestedPersona !== prevRequestedRef.current) {
+      prevRequestedRef.current = requestedPersona;
+      if (requestedPersona === 'current' || requestedPersona === 'improved') {
         setActivePersona(requestedPersona);
       }
     }
-  }, [requestedPersona, activePersona]);
+  }, [requestedPersona]);
 
   // Handle switching personas and syncing URL without page reload
   const handleSelectPersona = (id: PersonaId) => {
@@ -49,7 +51,7 @@ function LetterPageInner(): React.JSX.Element {
   // Empty state guard if no simulation exists
   if (!model) {
     return (
-      <main className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
+      <div className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
         <Card className="max-w-md w-full text-center space-y-5 p-8" data-testid="empty-letter-card">
           <div className="w-12 h-12 rounded-full bg-accent-info/10 text-accent-info flex items-center justify-center mx-auto">
             <Sparkles className="w-6 h-6" aria-hidden="true" />
@@ -76,7 +78,7 @@ function LetterPageInner(): React.JSX.Element {
             </Button>
           </CardContent>
         </Card>
-      </main>
+      </div>
     );
   }
 
@@ -88,7 +90,7 @@ function LetterPageInner(): React.JSX.Element {
     'Take a moment to reflect on your current trajectory. Every choice compounds over time.';
 
   return (
-    <main className="min-h-screen bg-bg-primary text-text-primary py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-bg-primary text-text-primary py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Navigation & Persona Switcher Bar */}
         <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-border-primary/60">
@@ -170,7 +172,7 @@ function LetterPageInner(): React.JSX.Element {
           targetAge={activePersonaData.age}
         />
       </div>
-    </main>
+    </div>
   );
 }
 

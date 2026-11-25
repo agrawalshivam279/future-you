@@ -58,7 +58,7 @@ export async function simulateDecisionScenario(
   const settings = resolveAISettings(options?.customSettings);
   const maxRetries = options?.maxRetries ?? 1;
 
-  if (!settings.apiKey) {
+  if (settings.provider !== 'freellmapi' && !settings.apiKey?.trim()) {
     throw new Error('No API key configured. Please configure your API key in Settings.');
   }
 

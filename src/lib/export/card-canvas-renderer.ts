@@ -71,6 +71,21 @@ export function renderCardToSVG(data: ShareCardData, config: ShareCardConfig): s
   const { width, height } = CARD_DIMENSIONS[config.aspectRatio] || CARD_DIMENSIONS.square;
   const theme = SVG_THEMES[config.theme] || SVG_THEMES.midnight;
   const { privacy, personaMode } = config;
+  const isLandscape = config.aspectRatio === 'landscape';
+
+  const padX = 70;
+  const innerW = width - padX * 2;
+  const headerY = isLandscape ? 50 : 75;
+  const goalY = isLandscape ? 132 : 185;
+  const personaY = isLandscape ? 195 : 275;
+  const personaH = isLandscape ? 145 : 230;
+  const quoteY = isLandscape ? 360 : 550;
+  const quoteH = isLandscape ? 58 : 75;
+  const habitsLabelY = isLandscape ? 448 : 660;
+  const habitsGridY = isLandscape ? 464 : 690;
+  const habitCardH = isLandscape ? 54 : 70;
+  const habitRowStep = isLandscape ? 64 : 85;
+  const footerY = isLandscape ? height - 42 : height - 70;
 
   const formatValue = (val: string | number, isFin?: boolean): string => {
     if (privacy.maskFinances && (isFin || String(val).includes('$'))) {
@@ -81,21 +96,26 @@ export function renderCardToSVG(data: ShareCardData, config: ShareCardConfig): s
 
   const showImproved = personaMode === 'split' || personaMode === 'improved';
   const showCurrent = (personaMode === 'split' || personaMode === 'current') && !!data.currentHeadline;
+  const personaColGap = 30;
+  const personaBoxW = showImproved && showCurrent ? (innerW - personaColGap) / 2 : innerW;
+  const habitColGap = 30;
+  const habitBoxW = (innerW - habitColGap) / 2;
 
   let habitsXml = '';
   if (privacy.includeHabits && data.habits && data.habits.length > 0) {
     const habitItems = data.habits.slice(0, 4).map((h, i) => {
       const col = i % 2;
       const row = Math.floor(i / 2);
-      const x = 70 + col * 480;
-      const y = 690 + row * 85;
+      const x = padX + col * (habitBoxW + habitColGap);
+      const y = habitsGridY + row * habitRowStep;
+      const textY = Math.round(habitCardH * 0.6);
       const baselineStr = formatValue(h.baseline, h.isFinancial);
       const targetStr = formatValue(h.target, h.isFinancial);
       return `
         <g transform="translate(${x}, ${y})">
-          <rect width="450" height="70" rx="12" fill="${theme.cardBg}" stroke="${theme.border}" stroke-width="1.5" />
-          <text x="24" y="42" font-family="system-ui, sans-serif" font-size="20" fill="${theme.textSecondary}">${escapeXml(h.label)}</text>
-          <text x="426" y="42" text-anchor="end" font-family="monospace, monospace" font-size="20" fill="${theme.accent}" font-weight="bold">
+          <rect width="${habitBoxW}" height="${habitCardH}" rx="12" fill="${theme.cardBg}" stroke="${theme.border}" stroke-width="1.5" />
+          <text x="24" y="${textY}" font-family="system-ui, sans-serif" font-size="${isLandscape ? 17 : 20}" fill="${theme.textSecondary}">${escapeXml(h.label)}</text>
+          <text x="${habitBoxW - 24}" y="${textY}" text-anchor="end" font-family="monospace, monospace" font-size="${isLandscape ? 17 : 20}" fill="${theme.accent}" font-weight="bold">
             <tspan fill="${theme.textSecondary}" font-weight="normal">${baselineStr} → </tspan>${targetStr}
           </text>
         </g>
@@ -103,7 +123,7 @@ export function renderCardToSVG(data: ShareCardData, config: ShareCardConfig): s
     }).join('');
 
     habitsXml = `
-      <text x="70" y="660" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" letter-spacing="1.5" fill="${theme.textSecondary}">KEY HABIT LEVERS</text>
+      <text x="${padX}" y="${habitsLabelY}" font-family="system-ui, sans-serif" font-size="15" font-weight="bold" letter-spacing="1.5" fill="${theme.textSecondary}">KEY HABIT LEVERS</text>
       ${habitItems}
     `;
   }
@@ -111,9 +131,9 @@ export function renderCardToSVG(data: ShareCardData, config: ShareCardConfig): s
   let quoteXml = '';
   if (privacy.includeLetterQuote && data.improvedQuote) {
     quoteXml = `
-      <g transform="translate(70, 550)">
-        <rect width="940" height="75" rx="14" fill="#ffffff" fill-opacity="0.03" stroke="${theme.border}" stroke-width="1" />
-        <text x="30" y="45" font-family="system-ui, sans-serif" font-size="20" font-style="italic" fill="${theme.textPrimary}">
+      <g transform="translate(${padX}, ${quoteY})">
+        <rect width="${innerW}" height="${quoteH}" rx="14" fill="#ffffff" fill-opacity="0.03" stroke="${theme.border}" stroke-width="1" />
+        <text x="30" y="${Math.round(quoteH * 0.6)}" font-family="system-ui, sans-serif" font-size="${isLandscape ? 18 : 20}" font-style="italic" fill="${theme.textPrimary}">
           &ldquo;${escapeXml(data.improvedQuote.slice(0, 85))}${data.improvedQuote.length > 85 ? '...' : ''}&rdquo;
         </text>
       </g>
@@ -123,7 +143,7 @@ export function renderCardToSVG(data: ShareCardData, config: ShareCardConfig): s
   let alignmentBadgeXml = '';
   if (privacy.includeAlignmentScore && data.alignmentScore !== undefined) {
     alignmentBadgeXml = `
-      <g transform="translate(${width - 240}, 65)">
+      <g transform="translate(${width - 240}, ${headerY - 5})">
         <rect width="170" height="42" rx="21" fill="${theme.cardBg}" stroke="${theme.accent}" stroke-width="1.5" />
         <circle cx="28" cy="21" r="5" fill="${theme.accent}" />
         <text x="45" y="27" font-family="system-ui, sans-serif" font-size="17" font-weight="bold" fill="${theme.textPrimary}">${data.alignmentScore}% Aligned</text>
@@ -145,36 +165,36 @@ export function renderCardToSVG(data: ShareCardData, config: ShareCardConfig): s
   <rect x="25" y="25" width="${width - 50}" height="${height - 50}" rx="30" fill="none" stroke="${theme.border}" stroke-width="2" />
 
   <!-- Brand Header -->
-  <g transform="translate(70, 75)">
+  <g transform="translate(${padX}, ${headerY})">
     <text x="0" y="24" font-family="system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="4" fill="${theme.textPrimary}">FUTURE YOU</text>
     <text x="0" y="48" font-family="system-ui, sans-serif" font-size="14" letter-spacing="1.5" fill="${theme.textSecondary}">5-YEAR TRAJECTORY SIMULATION</text>
   </g>
   ${alignmentBadgeXml}
 
   <!-- Target Goal -->
-  <g transform="translate(70, 185)">
+  <g transform="translate(${padX}, ${goalY})">
     <text x="0" y="0" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" letter-spacing="2" fill="${theme.textSecondary}">TARGET TRAJECTORY</text>
-    <text x="0" y="38" font-family="system-ui, sans-serif" font-size="30" font-weight="bold" fill="${theme.textPrimary}">${escapeXml(data.primaryGoal.slice(0, 55))}</text>
+    <text x="0" y="34" font-family="system-ui, sans-serif" font-size="${isLandscape ? 26 : 30}" font-weight="bold" fill="${theme.textPrimary}">${escapeXml(data.primaryGoal.slice(0, 55))}</text>
   </g>
 
   <!-- Personas Container -->
   ${showImproved ? `
-  <g transform="translate(70, 275)">
-    <rect width="${showCurrent ? 450 : 940}" height="230" rx="18" fill="${theme.cardBg}" stroke="${theme.border}" stroke-width="1.5" />
-    <text x="30" y="45" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="${theme.accent}">IMPROVED PATH (YEAR 5)</text>
-    <text x="30" y="90" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="${theme.textPrimary}">
+  <g transform="translate(${padX}, ${personaY})">
+    <rect width="${personaBoxW}" height="${personaH}" rx="18" fill="${theme.cardBg}" stroke="${theme.border}" stroke-width="1.5" />
+    <text x="30" y="40" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="${theme.accent}">IMPROVED PATH (YEAR 5)</text>
+    <text x="30" y="80" font-family="system-ui, sans-serif" font-size="${isLandscape ? 20 : 22}" font-weight="600" fill="${theme.textPrimary}">
       <tspan x="30" dy="0">${escapeXml(data.improvedHeadline.slice(0, 36))}</tspan>
-      ${data.improvedHeadline.length > 36 ? `<tspan x="30" dy="32">${escapeXml(data.improvedHeadline.slice(36, 75))}</tspan>` : ''}
+      ${data.improvedHeadline.length > 36 ? `<tspan x="30" dy="30">${escapeXml(data.improvedHeadline.slice(36, 75))}</tspan>` : ''}
     </text>
   </g>` : ''}
 
   ${showCurrent ? `
-  <g transform="translate(${showImproved ? 560 : 70}, 275)">
-    <rect width="${showImproved ? 450 : 940}" height="230" rx="18" fill="${theme.cardBg}" stroke="${theme.border}" stroke-width="1.5" />
-    <text x="30" y="45" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#f59e0b">CURRENT PATH (YEAR 5)</text>
-    <text x="30" y="90" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="${theme.textSecondary}">
+  <g transform="translate(${showImproved ? padX + personaBoxW + personaColGap : padX}, ${personaY})">
+    <rect width="${personaBoxW}" height="${personaH}" rx="18" fill="${theme.cardBg}" stroke="${theme.border}" stroke-width="1.5" />
+    <text x="30" y="40" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" fill="#f59e0b">CURRENT PATH (YEAR 5)</text>
+    <text x="30" y="80" font-family="system-ui, sans-serif" font-size="${isLandscape ? 20 : 22}" font-weight="600" fill="${theme.textSecondary}">
       <tspan x="30" dy="0">${escapeXml((data.currentHeadline || '').slice(0, 36))}</tspan>
-      ${(data.currentHeadline || '').length > 36 ? `<tspan x="30" dy="32">${escapeXml((data.currentHeadline || '').slice(36, 75))}</tspan>` : ''}
+      ${(data.currentHeadline || '').length > 36 ? `<tspan x="30" dy="30">${escapeXml((data.currentHeadline || '').slice(36, 75))}</tspan>` : ''}
     </text>
   </g>` : ''}
 
@@ -182,9 +202,9 @@ export function renderCardToSVG(data: ShareCardData, config: ShareCardConfig): s
   ${habitsXml}
 
   <!-- Footer Disclaimer -->
-  <g transform="translate(70, ${height - 70})">
+  <g transform="translate(${padX}, ${footerY})">
     <text x="0" y="0" font-family="system-ui, sans-serif" font-size="16" fill="${theme.textSecondary}">futureyou.app</text>
-    <text x="${width - 140}" y="0" text-anchor="end" font-family="system-ui, sans-serif" font-size="15" font-style="italic" fill="${theme.textSecondary}">
+    <text x="${innerW}" y="0" text-anchor="end" font-family="system-ui, sans-serif" font-size="15" font-style="italic" fill="${theme.textSecondary}">
       A reflection tool, not a prediction engine
     </text>
   </g>

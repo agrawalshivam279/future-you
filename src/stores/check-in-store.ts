@@ -125,6 +125,11 @@ export const useCheckInStore = create<CheckInState>()(
     }),
     {
       name: `${STORAGE_PREFIX}check-ins`,
+      partialize: (state) => ({
+        logs: state.logs,
+        evaluations: state.evaluations,
+        activeLogId: state.activeLogId,
+      }),
     }
   )
 );

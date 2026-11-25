@@ -52,33 +52,32 @@ export function usePersonaChat({
 
   const abortControllerRef = useRef<AbortController | null>(null);
 
-  const chatStore = useChatStore();
+  const conversations = useChatStore((state) => state.conversations);
+  const isLoading = useChatStore((state) => state.isStreaming);
+  const error = useChatStore((state) => state.error);
   const lifeModel = useLifeModelStore((state) => state.model);
   const getOnboardingData = useOnboardingStore((state) => state.getOnboardingData);
-  const onboardingData = lifeModel?.inputs || getOnboardingData();
+  const onboardingData = useMemo(
+    () => lifeModel?.inputs || getOnboardingData(),
+    [lifeModel, getOnboardingData]
+  );
 
-  const rawMessages = chatStore.conversations[activePersona];
+  const rawMessages = conversations[activePersona];
   const messages = useMemo(() => rawMessages || [], [rawMessages]);
-  const isLoading = chatStore.isStreaming;
-  const error = chatStore.error;
 
   const currentPersonaData =
     activePersona === 'current'
       ? lifeModel?.currentPath ?? null
       : lifeModel?.improvedPath ?? null;
 
-  const setActivePersona = useCallback(
-    (id: PersonaId) => {
-      // Abort any ongoing streaming before switching persona
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-        abortControllerRef.current = null;
-      }
-      chatStore.setActivePersona(id);
-      setActivePersonaState(id);
-    },
-    [chatStore]
-  );
+  const setActivePersona = useCallback((id: PersonaId) => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+      abortControllerRef.current = null;
+    }
+    useChatStore.getState().setActivePersona(id);
+    setActivePersonaState(id);
+  }, []);
 
   const stopSpeaking = useCallback(() => {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
@@ -106,11 +105,7 @@ export function usePersonaChat({
       window.speechSynthesis.cancel();
 
       const utterance = new SpeechSynthesisUtterance(text);
-      if (messageId) {
-        setSpeakingMessageId(messageId);
-      } else {
-        setSpeakingMessageId('active');
-      }
+      setSpeakingMessageId(messageId || 'active');
 
       utterance.onend = () => {
         setSpeakingMessageId(null);
@@ -127,18 +122,21 @@ export function usePersonaChat({
   const sendMessage = useCallback(
     async (content: string) => {
       const trimmed = content.trim();
-      if (!trimmed || isLoading || !currentPersonaData) return;
+      const store = useChatStore.getState();
+      if (!trimmed || store.isStreaming || !currentPersonaData) return;
 
-      chatStore.setError(null);
+      store.setError(null);
+
+      const historySnapshot = store.conversations[activePersona] || [];
 
       // Add user message to conversation history
-      chatStore.addMessage(activePersona, {
+      store.addMessage(activePersona, {
         role: 'user',
         content: trimmed,
       });
 
       // Add placeholder assistant message marked as streaming
-      const assistantPlaceholder = chatStore.addMessage(activePersona, {
+      const assistantPlaceholder = store.addMessage(activePersona, {
         role: 'assistant',
         content: '',
         isStreaming: true,
@@ -155,21 +153,40 @@ export function usePersonaChat({
           onboardingData,
           {
             signal: abortController.signal,
-            chatHistory: messages,
+            chatHistory: historySnapshot,
             onToken: (token) => {
-              chatStore.appendStreamingToken(
-                activePersona,
-                assistantPlaceholder.id,
-                token
-              );
+              useChatStore
+                .getState()
+                .appendStreamingToken(activePersona, assistantPlaceholder.id, token);
             },
           }
         );
 
-        chatStore.finishStreaming(activePersona, assistantPlaceholder.id);
+        useChatStore.getState().finishStreaming(activePersona, assistantPlaceholder.id);
       } catch (err) {
-        if ((err as Error)?.name === 'AbortError') {
-          chatStore.finishStreaming(activePersona, assistantPlaceholder.id);
+        const currentStore = useChatStore.getState();
+        currentStore.finishStreaming(activePersona, assistantPlaceholder.id);
+
+        // Remove empty assistant placeholder if no tokens were streamed before error/abort
+        const targetMsg = currentStore.conversations[activePersona]?.find(
+          (m) => m.id === assistantPlaceholder.id
+        );
+        if (targetMsg && !targetMsg.content.trim()) {
+          useChatStore.setState((state) => ({
+            conversations: {
+              ...state.conversations,
+              [activePersona]: (state.conversations[activePersona] || []).filter(
+                (m) => m.id !== assistantPlaceholder.id
+              ),
+            },
+          }));
+        }
+
+        const isAborted =
+          abortController.signal.aborted ||
+          (err instanceof Error &&
+            (err.name === 'AbortError' || err.message.toLowerCase().includes('cancelled')));
+        if (isAborted) {
           return;
         }
 
@@ -178,22 +195,23 @@ export function usePersonaChat({
             ? err.message
             : 'Unable to connect with persona. Please check your AI API key.';
 
-        chatStore.finishStreaming(activePersona, assistantPlaceholder.id);
-        chatStore.setError(errorMessage);
+        currentStore.setError(errorMessage);
       } finally {
-        abortControllerRef.current = null;
+        if (abortControllerRef.current === abortController) {
+          abortControllerRef.current = null;
+        }
       }
     },
-    [activePersona, currentPersonaData, onboardingData, messages, isLoading, chatStore]
+    [activePersona, currentPersonaData, onboardingData]
   );
 
   const clearChat = useCallback(() => {
-    chatStore.clearChat(activePersona);
-  }, [chatStore, activePersona]);
+    useChatStore.getState().clearChat(activePersona);
+  }, [activePersona]);
 
   const clearError = useCallback(() => {
-    chatStore.setError(null);
-  }, [chatStore]);
+    useChatStore.getState().setError(null);
+  }, []);
 
   // Cleanup abort controller and speech synthesis on unmount
   useEffect(() => {

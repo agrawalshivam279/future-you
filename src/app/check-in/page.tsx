@@ -47,7 +47,7 @@ export default function CheckInPage(): React.JSX.Element {
   // Onboarding guard: user must generate future personas first
   if (!model) {
     return (
-      <main className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
+      <div className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
         <Card
           className="max-w-md w-full text-center space-y-5 p-8 border border-border-primary"
           data-testid="empty-checkin-guard"
@@ -69,7 +69,7 @@ export default function CheckInPage(): React.JSX.Element {
             Start Onboarding
           </Button>
         </Card>
-      </main>
+      </div>
     );
   }
 
@@ -113,7 +113,7 @@ export default function CheckInPage(): React.JSX.Element {
   };
 
   return (
-    <main className="min-h-screen bg-bg-primary text-text-primary px-4 py-8 max-w-6xl mx-auto space-y-8">
+    <div className="min-h-screen bg-bg-primary text-text-primary px-4 py-8 max-w-6xl mx-auto space-y-8">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/40 pb-5">
         <div className="space-y-1">
@@ -269,6 +269,6 @@ export default function CheckInPage(): React.JSX.Element {
           />
         </div>
       ) : null}
-    </main>
+    </div>
   );
 }

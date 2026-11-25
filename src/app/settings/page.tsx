@@ -25,7 +25,7 @@ export default function SettingsPage() {
             Settings &amp; Preferences
           </h1>
           <p className="text-sm text-text-secondary mt-1">
-            Manage your local AI credentials, endpoint endpoints, and stored reflection data.
+            Manage your local AI credentials, endpoint URLs, and stored reflection data.
           </p>
         </div>
       </div>

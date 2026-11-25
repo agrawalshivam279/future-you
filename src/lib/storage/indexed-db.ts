@@ -4,6 +4,18 @@ const DEFAULT_DB_NAME = 'future-you-db';
 const DEFAULT_STORE_NAME = 'chat';
 const DB_VERSION = 1;
 
+// Track open database handles and reset callbacks so deleteDatabase never blocks on stale handles
+const activeConnections = new Map<string, Set<{ db: IDBDatabase | null; reset: () => void }>>();
+
+function registerConnection(
+  dbName: string,
+  entry: { db: IDBDatabase | null; reset: () => void }
+): void {
+  const set = activeConnections.get(dbName) || new Set();
+  set.add(entry);
+  activeConnections.set(dbName, set);
+}
+
 /**
  * Creates a Promise-based StateStorage adapter backed by browser IndexedDB.
  * Fallback to in-memory storage if IndexedDB is not available in the environment.
@@ -16,14 +28,23 @@ export function createIndexedDBStorage(
   dbName: string = DEFAULT_DB_NAME,
   storeName: string = DEFAULT_STORE_NAME
 ): StateStorage {
-  // Check if indexedDB is supported
   const isIndexedDBAvailable =
     typeof window !== 'undefined' && typeof window.indexedDB !== 'undefined';
 
-  // Fallback memory map for restricted or non-browser environments
   const memoryFallback = new Map<string, string>();
-
   let dbPromise: Promise<IDBDatabase> | null = null;
+  const connEntry: { db: IDBDatabase | null; reset: () => void } = {
+    db: null,
+    reset: () => {
+      if (connEntry.db) {
+        connEntry.db.close();
+        connEntry.db = null;
+      }
+      dbPromise = null;
+      memoryFallback.clear();
+    },
+  };
+  registerConnection(dbName, connEntry);
 
   function getDB(): Promise<IDBDatabase> {
     if (dbPromise) return dbPromise;
@@ -43,7 +64,16 @@ export function createIndexedDBStorage(
         }
       };
 
-      request.onsuccess = () => resolve(request.result);
+      request.onsuccess = () => {
+        const db = request.result;
+        connEntry.db = db;
+        db.onversionchange = () => {
+          db.close();
+          connEntry.db = null;
+          dbPromise = null;
+        };
+        resolve(db);
+      };
 
       request.onerror = () => {
         dbPromise = null;
@@ -123,13 +153,18 @@ export function createIndexedDBStorage(
 }
 
 /**
- * Permanently deletes the specified IndexedDB database.
+ * Permanently deletes the specified IndexedDB database after closing any active handles.
  *
  * @param dbName - Database name to delete
  */
 export async function clearIndexedDBDatabase(
   dbName: string = DEFAULT_DB_NAME
 ): Promise<void> {
+  const entries = activeConnections.get(dbName);
+  if (entries) {
+    entries.forEach((entry) => entry.reset());
+  }
+
   if (typeof window === 'undefined' || typeof window.indexedDB === 'undefined') {
     return;
   }

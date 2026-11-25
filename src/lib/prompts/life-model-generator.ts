@@ -3,7 +3,7 @@
  * Formulates structured reflection prompts for synthesizing dual 5-year trajectories.
  */
 
-import { OnboardingData, LifeModel, HabitLever, Persona } from '@/types';
+import { OnboardingData, LifeModel, HabitLever, Persona, PersonaId } from '@/types';
 
 /**
  * Builds the system instructions for the LLM simulating two 5-year future selves.
@@ -94,7 +94,7 @@ function createDefaultLevers(inputs: OnboardingData): HabitLever[] {
 /**
  * Creates a baseline fallback Persona.
  */
-function createFallbackPersona(id: 'current' | 'improved', inputs: OnboardingData): Persona {
+function createFallbackPersona(id: PersonaId, inputs: OnboardingData): Persona {
   const isCurrent = id === 'current';
   return {
     id,
@@ -138,6 +138,36 @@ function createFallbackPersona(id: 'current' | 'improved', inputs: OnboardingDat
 }
 
 /**
+ * Deeply merges a partial LLM persona payload onto a safe fallback Persona.
+ */
+function normalizeParsedPersona(
+  id: PersonaId,
+  rawPersona: Partial<Persona> | undefined,
+  inputs: OnboardingData
+): Persona {
+  const fallback = createFallbackPersona(id, inputs);
+  const src = rawPersona && typeof rawPersona === 'object' ? rawPersona : {};
+
+  return {
+    ...fallback,
+    ...src,
+    id,
+    age: (inputs.age || 28) + 5,
+    career: { ...fallback.career, ...(src.career && typeof src.career === 'object' ? src.career : {}) },
+    health: { ...fallback.health, ...(src.health && typeof src.health === 'object' ? src.health : {}) },
+    finances: { ...fallback.finances, ...(src.finances && typeof src.finances === 'object' ? src.finances : {}) },
+    relationships: { ...fallback.relationships, ...(src.relationships && typeof src.relationships === 'object' ? src.relationships : {}) },
+    skills: Array.isArray(src.skills) ? src.skills : fallback.skills,
+    achievements: Array.isArray(src.achievements) ? src.achievements : fallback.achievements,
+    struggles: Array.isArray(src.struggles) ? src.struggles : fallback.struggles,
+    timeline: Array.isArray(src.timeline) ? src.timeline : [],
+    letter: typeof src.letter === 'string' ? src.letter : '',
+    regrets: Array.isArray(src.regrets) ? src.regrets : [],
+    gratitudes: Array.isArray(src.gratitudes) ? src.gratitudes : [],
+  };
+}
+
+/**
  * Robustly parses and validates the LLM response into a typed LifeModel structure.
  * Strips markdown code fencing, fills missing fields with fallbacks, and links inputs.
  *
@@ -153,13 +183,11 @@ export function parseLifeModelResponse(
     throw new Error('LLM returned an empty or invalid response string.');
   }
 
-  // Strip markdown code fences if present
   let cleanText = rawText.trim();
   if (cleanText.startsWith('```')) {
     cleanText = cleanText.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '');
   }
 
-  // Find the outermost JSON object bounds
   const firstBrace = cleanText.indexOf('{');
   const lastBrace = cleanText.lastIndexOf('}');
   if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
@@ -177,34 +205,12 @@ export function parseLifeModelResponse(
     );
   }
 
-  const currentPath: Persona = {
-    ...createFallbackPersona('current', inputs),
-    ...(parsed.currentPath || {}),
-    id: 'current',
-    age: (inputs.age || 28) + 5,
-    timeline: parsed.currentPath?.timeline || [],
-    letter: parsed.currentPath?.letter || '',
-    regrets: parsed.currentPath?.regrets || [],
-    gratitudes: parsed.currentPath?.gratitudes || [],
-  };
-
-  const improvedPath: Persona = {
-    ...createFallbackPersona('improved', inputs),
-    ...(parsed.improvedPath || {}),
-    id: 'improved',
-    age: (inputs.age || 28) + 5,
-    timeline: parsed.improvedPath?.timeline || [],
-    letter: parsed.improvedPath?.letter || '',
-    regrets: parsed.improvedPath?.regrets || [],
-    gratitudes: parsed.improvedPath?.gratitudes || [],
-  };
-
   return {
     id: `life-model-${Date.now()}`,
     createdAt: new Date().toISOString(),
     inputs,
-    currentPath,
-    improvedPath,
+    currentPath: normalizeParsedPersona('current', parsed.currentPath, inputs),
+    improvedPath: normalizeParsedPersona('improved', parsed.improvedPath, inputs),
     habitLevers: Array.isArray(parsed.habitLevers) && parsed.habitLevers.length > 0
       ? parsed.habitLevers
       : createDefaultLevers(inputs),

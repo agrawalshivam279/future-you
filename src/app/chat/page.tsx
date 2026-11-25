@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { ArrowRight, Bot, AlertCircle, X } from 'lucide-react';
 import { usePersonaChat } from '@/hooks/use-persona-chat';
@@ -40,14 +40,16 @@ function ChatView(): React.JSX.Element {
     speakMessage,
   } = usePersonaChat({ initialPersonaId: validInitialPersona });
 
-  // Sync state if URL query param changes
+  // Sync state only when URL query param itself changes externally
+  const prevRequestedRef = useRef(requestedPersona);
   useEffect(() => {
-    if (requestedPersona && (requestedPersona === 'current' || requestedPersona === 'improved')) {
-      if (requestedPersona !== activePersona) {
+    if (requestedPersona !== prevRequestedRef.current) {
+      prevRequestedRef.current = requestedPersona;
+      if (requestedPersona === 'current' || requestedPersona === 'improved') {
         setActivePersona(requestedPersona);
       }
     }
-  }, [requestedPersona, activePersona, setActivePersona]);
+  }, [requestedPersona, setActivePersona]);
 
   // Handle switching personas and syncing URL without re-rendering page
   const handleSelectPersona = (id: PersonaId) => {
@@ -63,7 +65,7 @@ function ChatView(): React.JSX.Element {
   // If no simulation exists in memory, display empty state guard
   if (!lifeModel) {
     return (
-      <main className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
+      <div className="min-h-screen bg-bg-primary text-text-primary px-4 py-16 flex items-center justify-center">
         <Card className="max-w-md w-full text-center space-y-5 p-8" data-testid="empty-chat-card">
           <div className="w-12 h-12 rounded-full bg-accent-info/10 text-accent-info flex items-center justify-center mx-auto">
             <Bot className="w-6 h-6" aria-hidden="true" />
@@ -90,7 +92,7 @@ function ChatView(): React.JSX.Element {
             </Button>
           </CardContent>
         </Card>
-      </main>
+      </div>
     );
   }
 
@@ -101,7 +103,7 @@ function ChatView(): React.JSX.Element {
       : 'Future Self (Improved Path)');
 
   return (
-    <main
+    <div
       className="min-h-screen bg-bg-primary flex flex-col justify-between"
       data-testid="chat-page-container"
     >
@@ -196,7 +198,7 @@ function ChatView(): React.JSX.Element {
           </div>
         </div>
       </Modal>
-    </main>
+    </div>
   );
 }
 

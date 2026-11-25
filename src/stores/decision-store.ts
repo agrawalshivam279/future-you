@@ -170,6 +170,11 @@ export const useDecisionStore = create<DecisionState>()(
     }),
     {
       name: `${STORAGE_PREFIX}decisions`,
+      partialize: (state) => ({
+        scenarios: state.scenarios,
+        evaluations: state.evaluations,
+        activeScenarioId: state.activeScenarioId,
+      }),
     }
   )
 );

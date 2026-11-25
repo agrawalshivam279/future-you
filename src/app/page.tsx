@@ -46,7 +46,7 @@ export default function HomePage(): React.JSX.Element {
     <div className="relative flex flex-col flex-1 items-center justify-start overflow-hidden">
       <AmbientBackground />
 
-      <main className="w-full flex-1 flex flex-col items-center justify-start pt-8 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="w-full flex-1 flex flex-col items-center justify-start pt-8 pb-16 px-4 sm:px-6 lg:px-8">
         {/* API Key Warning / Status Pill */}
         <div className="w-full max-w-xl mx-auto mb-8">
           {!hasConfiguredKey ? (
@@ -187,7 +187,7 @@ export default function HomePage(): React.JSX.Element {
             {HONESTY_DISCLAIMER}. Results are illustrative and based on your self-reported inputs.
           </p>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
